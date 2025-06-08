@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.card {
+    @apply border border-white rounded-2xl bg-gray-950/50 px-3 py-1 text-white text-center;
+}
+
+.input {
+    @apply hover:bg-sky-300/20 focus:bg-sky-300/20;
+}
+
+.badge {
+    @apply border border-white bg-gray-950 py-1 rounded-2xl absolute -bottom-4 left-[50%] translate-x-[-50%];
+}
