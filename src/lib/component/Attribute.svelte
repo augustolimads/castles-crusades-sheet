@@ -9,7 +9,7 @@
     <label for={id + 'Score'} class="text-xs">{name}</label>
     <input
       id={id + 'Score'}
-      class="text-5xl text-center my-2 input"
+      class="text-4xl py-3 text-center my-2 input"
       placeholder="10"
       value={score}
     />

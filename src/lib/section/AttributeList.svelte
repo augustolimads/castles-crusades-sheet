@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Attribute from "./Attribute.svelte";
+  import Attribute from "../component/Attribute.svelte";
 </script>
 
 <Attribute id="Str" row={1} name="Strength" score={10} />

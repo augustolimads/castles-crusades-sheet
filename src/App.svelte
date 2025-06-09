@@ -1,28 +1,30 @@
 <script lang="ts">
-  import Ac from './lib/Ac.svelte';
-  import AttributeList from './lib/AttributeList.svelte';
-  import Bio from './lib/Bio.svelte';
-  import CharacterName from './lib/CharacterName.svelte';
-  import Combat from './lib/Combat.svelte';
-  import Hp from './lib/hp.svelte';
-  import Info from './lib/Info.svelte';
-  import Portrait from './lib/Portrait.svelte';
-  import StatList from './lib/StatList.svelte';
+  import Ac from './lib/section/Ac.svelte';
+  import AttributeList from './lib/section/AttributeList.svelte';
+  import Coins from './lib/section/Coins.svelte';
+  import CharacterName from './lib/section/CharacterName.svelte';
+  import Combat from './lib/section/Combat.svelte';
+  import HP from './lib/section/HP.svelte';
+  import Info from './lib/section/Info.svelte';
+  import More from './lib/section/More.svelte';
+  import Portrait from './lib/section/Portrait.svelte';
+  import StatList from './lib/section/StatList.svelte';
 </script>
 
 <main>
   <div class="bg-[url(https://i.imgur.com/vGsKDFx.jpeg)] bg-cover">
     <div id="Container" class="w-full max-w-[1200px] m-auto px-4">
-      <div id="Grid" class="grid grid-cols-8 grid-rows-12 h-screen gap-x-4">
+      <div id="Grid" class="grid grid-cols-8 grid-rows-12 h-screen gap-x-4 pt-4">
         <AttributeList />
         <CharacterName />
         <Info />
         <Ac />
-        <Hp />
+        <HP />
         <StatList />
         <Combat />
+        <More />
         <Portrait />
-        <Bio />
+        <Coins />
       </div>
     </div>
   </div>

@@ -5,9 +5,13 @@
 }
 
 .input {
-    @apply hover:bg-sky-300/20 focus:bg-sky-300/20;
+    @apply hover:bg-sky-300/20 focus:bg-sky-300/20 font-extrabold;
 }
 
 .badge {
     @apply border border-white bg-gray-950 py-1 rounded-2xl absolute -bottom-4 left-[50%] translate-x-[-50%];
+}
+
+.tab-selected {
+    @apply cursor-pointer bg-white text-black font-bold
 }
