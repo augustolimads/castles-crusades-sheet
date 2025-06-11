@@ -13,5 +13,5 @@
     class="input flex flex-1 text-center py-2"
     value={defaultValue}
   />
-  <label for={id + 'Value'} class="badge w-12">{name}</label>
+  <label for={id + 'Value'} class="badge px-2 text-xs">{name}</label>
 </div>

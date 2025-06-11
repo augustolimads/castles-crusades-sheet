@@ -1,16 +1,19 @@
-<div id="HP" class="col-start-3 row-start-3 row-span-2">
+<div id="HP">
   <div
     id="CurrentHP"
-    class="border border-white bg-gray-950/50 rounded-xl rounded-b-none p-2 text-white text-center flex flex-col mb-1 relative"
+    class="card rounded-b-none! p-2 text-center flex flex-col mb-1 relative"
   >
-    <input
-      id="MaxHP"
-      class="input text-center border-b w-10"
-      type="number"
-      placeholder="0"
-      value="0"
-      min="0"
-    />
+    <div class="flex gap-1 align-center">
+      <input
+        id="MaxHP"
+        class="input text-center border-b w-10"
+        type="number"
+        placeholder="0"
+        value="0"
+        min="0"
+      />
+      <span class="text-xs">Max. HP</span>
+    </div>
     <input
       id="CurrentHPValue"
       class="input text-4xl text-center"
@@ -22,7 +25,7 @@
   </div>
   <div
     id="TempHP"
-    class="border border-white bg-gray-950/50 px-3 py-1 text-white text-center flex flex-col relative"
+    class="card rounded-none! px-3 py-1 text-white text-center flex flex-col relative"
   >
     <input
       id="TempHPValue"

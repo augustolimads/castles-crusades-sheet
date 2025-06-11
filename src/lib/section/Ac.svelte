@@ -1,6 +1,6 @@
 <div
   id="AC"
-  class="col-start-2 row-start-3 row-span-2 flex flex-col justify-between relative card rounded-t-none!"
+  class="flex flex-col justify-between relative card rounded-t-none!"
 >
   <div id="ACHead" class="flex flex-col w-10 text-center">
     <input id="ACHeadValue" class="border-b text-center input" value="0" />

@@ -4,7 +4,7 @@
 </script>
 <div
   id="Info"
-  class="border border-white bg-gray-950/50 rounded-xl py-3 pl-3 pr-12 text-white col-start-5 col-span-4 row-start-1 row-span-2 grid grid-cols-3 gap-x-2"
+  class="card py-3! col-start-6 col-span-5 row-start-1 row-span-2 grid grid-cols-3 gap-x-2"
 >
   <TextInput id="CharClass" name="Class" />
   <TextInput id="Race" name="Race" />

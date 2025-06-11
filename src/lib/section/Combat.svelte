@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { Plus } from '@lucide/svelte';
   import Weapon from '../component/Weapon.svelte';
+  import Title from '../component/Title.svelte';
+  import TextInput from '../component/TextInput.svelte';
 
   let weapons = $state([{}]);
 
@@ -14,14 +15,23 @@
 </script>
 
 <div
-  class="card mt-5 mb-4 overflow-hidden col-start-2 col-span-2 row-start-6 row-span-7"
+  class="card mt-12 mb-4 overflow-hidden col-start-2 col-span-3 row-start-6 row-span-7"
 >
   <div class="flex flex-col gap-2 h-full">
-    {#each weapons as weapon, i}
-      <Weapon index={i} {newWeapon} {deleteWeapon} />
-    {/each}
-    <button class="cursor-pointer flex justify-center" onclick={newWeapon}>
-      <Plus />
-    </button>
+    <Title name="Armors" />
+    <div class="grid grid-cols-2 gap-x-1">
+      <TextInput id="armor" name="helm" />
+      <TextInput id="armor" name="shield" />
+      <div class="col-span-2">
+        <TextInput id="armor" name="armor" />
+      </div>
+    </div>
+    <hr />
+    <Title name="Weapons" action={newWeapon} />
+    <div class="overflow-y-auto h-[256px] pt-1">
+      {#each weapons as weapon, i}
+        <Weapon index={i} {newWeapon} {deleteWeapon} />
+      {/each}
+    </div>
   </div>
 </div>

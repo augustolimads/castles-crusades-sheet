@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
+@layer base {
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
 .card {
-    @apply border border-white rounded-2xl bg-gray-950/50 px-3 py-1 text-white text-center;
+    @apply border border-white rounded-2xl bg-gray-950/70 px-3 py-1 text-white text-center;
 }
 
 .input {

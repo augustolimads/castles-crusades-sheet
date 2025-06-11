@@ -1,5 +1,8 @@
 <script lang="ts">
+  import Inventory from './Inventory.svelte';
   import Tabs from '../component/Tabs.svelte';
+  import Spells from './Spells.svelte';
+  import Notes from './Notes.svelte';
 
   let tabs = [
     {
@@ -16,7 +19,7 @@
     },
   ];
 
-  let selectedId: string | null = $state('');
+  let selectedId: string | null = $state('inventory');
 
   function handleSelected(id: string) {
     selectedId = id;
@@ -25,7 +28,14 @@
 
 <div
   id="More"
-  class="card overflow-hidden col-start-4 col-span-3 row-start-3 row-span-11 my-4"
+  class="card overflow-hidden col-start-5 col-span-4 row-start-3 row-span-11 my-4"
 >
   <Tabs {tabs} {selectedId} {handleSelected} />
+  {#if selectedId === 'inventory'}
+    <Inventory />
+  {:else if selectedId === 'spells'}
+    <Spells />
+  {:else if selectedId === 'notes'}
+    <Notes />
+  {/if}
 </div>

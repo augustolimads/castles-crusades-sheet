@@ -1,31 +1,38 @@
 <script lang="ts">
-  import Ac from './lib/section/Ac.svelte';
   import AttributeList from './lib/section/AttributeList.svelte';
-  import Coins from './lib/section/Coins.svelte';
+  import Bio from './lib/section/Conditions.svelte';
   import CharacterName from './lib/section/CharacterName.svelte';
   import Combat from './lib/section/Combat.svelte';
-  import HP from './lib/section/HP.svelte';
   import Info from './lib/section/Info.svelte';
   import More from './lib/section/More.svelte';
   import Portrait from './lib/section/Portrait.svelte';
   import StatList from './lib/section/StatList.svelte';
+  import Footer from './lib/section/Footer.svelte';
+
+  let bg = $state('https://i.imgur.com/vGsKDFx.jpeg');
+
+  function setBg(newBg: string) {
+    bg = newBg;
+  }
 </script>
 
 <main>
-  <div class="bg-[url(https://i.imgur.com/vGsKDFx.jpeg)] bg-cover">
+  <div class="bg-cover" style={`background-image: url(${bg})`}>
     <div id="Container" class="w-full max-w-[1200px] m-auto px-4">
-      <div id="Grid" class="grid grid-cols-8 grid-rows-12 h-screen gap-x-4 pt-4">
+      <div
+        id="Grid"
+        class="grid grid-cols-10 grid-rows-12 h-screen gap-x-4 pt-4"
+      >
         <AttributeList />
         <CharacterName />
         <Info />
-        <Ac />
-        <HP />
         <StatList />
         <Combat />
         <More />
         <Portrait />
-        <Coins />
+        <Bio />
       </div>
     </div>
+    <Footer bg={bg} setBg={setBg} />
   </div>
 </main>

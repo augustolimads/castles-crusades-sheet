@@ -4,8 +4,9 @@
     name: string;
     isNumber?: boolean;
     defaultValue?: string | number;
+    disabled?: boolean;
   }
-  let { id, name, isNumber, defaultValue }: Props = $props();
+  let { id, name, isNumber, defaultValue, disabled }: Props = $props();
 </script>
 
 <div class="flex flex-col text-left">
@@ -15,6 +16,7 @@
     placeholder={name}
     type={isNumber ? 'number' : 'text'}
     value={defaultValue}
+    disabled={disabled}
   />
   <label for={id} class="text-sm">{name}</label>
 </div>
