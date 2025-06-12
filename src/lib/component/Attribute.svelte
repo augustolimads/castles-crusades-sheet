@@ -2,17 +2,20 @@
   interface Props {
     id: string;
     name: string;
-    score: number;
-    row: number;
+    updateAttr: (id: any, newValue: string) => void;
+    togglePrimary: (id: any, newValue: boolean) => void;
+    score: {
+      value: number;
+      isPrimary: boolean;
+    };
   }
 
-  let { id, name, score, row }: Props = $props();
-  let isPrimaryAttribute = $state(false);
+  let { id, name, score, updateAttr, togglePrimary }: Props = $props();
 
   let attrMod = $state('0');
 
   function handleAttributeMod() {
-    const scoreValue = Number(score);
+    const scoreValue = Number(score.value);
     if (scoreValue === 1) {
       attrMod = '-4';
       return;
@@ -48,21 +51,21 @@
     attrMod = '0';
   }
 
-  function togglePrimaryAttribute() {
-    isPrimaryAttribute = !isPrimaryAttribute;
-  }
-
   $effect(handleAttributeMod);
 </script>
 
-<div {id} class={`col-start-1 row-start-${row} row-span-2`}>
+<div {id}>
   <div class="card flex flex-col relative">
     <label for={id + 'Score'} class="text-xs">{name}</label>
     <input
       id={id + 'Score'}
       class="text-4xl py-3 text-center my-2 input"
       placeholder="10"
-      bind:value={score}
+      value={score.value}
+      oninput={(e: Event) => {
+        const target = e.target as HTMLInputElement;
+        updateAttr(id, target.value);
+      }}
       type="number"
       min="1"
       max="99"
@@ -70,9 +73,11 @@
     <button
       class={[
         'cursor-pointer badge w-10',
-        { 'bg-emerald-500!': isPrimaryAttribute },
+        { 'bg-emerald-500!': score.isPrimary },
       ]}
-      onclick={togglePrimaryAttribute}>{attrMod}</button
+      onclick={() => {
+        togglePrimary(id, !score.isPrimary);
+      }}>{attrMod}</button
     >
   </div>
 </div>

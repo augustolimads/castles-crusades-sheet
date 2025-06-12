@@ -3,10 +3,11 @@
     id: string;
     name: string;
     isNumber?: boolean;
-    defaultValue?: string | number;
+    value?: string | number;
     disabled?: boolean;
+    updateInput: (id: any, newValue: string) => void;
   }
-  let { id, name, isNumber, defaultValue, disabled }: Props = $props();
+  let { id, name, isNumber, value, disabled, updateInput }: Props = $props();
 </script>
 
 <div class="flex flex-col text-left">
@@ -15,8 +16,13 @@
     class="input"
     placeholder={name}
     type={isNumber ? 'number' : 'text'}
-    value={defaultValue}
+    value={value}
     disabled={disabled}
+    oninput={(e) => {
+      if (updateInput) {
+        updateInput(id, e.currentTarget.value);
+      }
+    }}
   />
   <label for={id} class="text-sm">{name}</label>
 </div>

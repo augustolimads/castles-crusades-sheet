@@ -1,17 +1,27 @@
 <script lang="ts">
+  import { character } from '../state/character.svelte';
+
+  const { stats } = character;
+  type TStatKey = keyof typeof stats;
   interface Props {
     id: string;
     name: string;
-    defaultValue?: string;
+    value?: string;
+    updateStat?: (id: TStatKey, newValue: string) => void;
   }
-  let { id, name, defaultValue }: Props = $props();
+  let { id, name, value, updateStat }: Props = $props();
 </script>
 
 <div {id} class="card flex flex-col mb-1 relative px-2! pb-3!">
   <input
     id={id + 'Value'}
     class="input flex flex-1 text-center py-2"
-    value={defaultValue}
+    {value}
+    oninput={(e) => {
+      if (updateStat) {
+        updateStat(id as TStatKey, e.currentTarget.value);
+      }
+    }}
   />
   <label for={id + 'Value'} class="badge px-2 text-xs">{name}</label>
 </div>

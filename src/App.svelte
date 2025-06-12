@@ -8,16 +8,11 @@
   import Portrait from './lib/section/Portrait.svelte';
   import StatList from './lib/section/StatList.svelte';
   import Footer from './lib/section/Footer.svelte';
-
-  let bg = $state('https://i.imgur.com/vGsKDFx.jpeg');
-
-  function setBg(newBg: string) {
-    bg = newBg;
-  }
+  import { character } from './lib/state/character.svelte';
 </script>
 
 <main>
-  <div class="bg-cover" style={`background-image: url(${bg})`}>
+  <div class="bg-cover" style={`background-image: url(${character.bg})`}>
     <div id="Container" class="w-full max-w-[1200px] m-auto px-4">
       <div
         id="Grid"
@@ -33,6 +28,6 @@
         <Bio />
       </div>
     </div>
-    <Footer bg={bg} setBg={setBg} />
+    <Footer />
   </div>
 </main>

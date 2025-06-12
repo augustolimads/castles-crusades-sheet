@@ -1,19 +1,18 @@
 <script lang="ts">
   import { v4 } from 'uuid';
-  let characterName = '';
-  let uuid = "";
+  import { character } from '../state/character.svelte';
 
   function updateTitle() {
-    document.title = characterName
-      ? `C&C: ${characterName}`
+    document.title = character.name
+      ? `C&C: ${character.name}`
       : 'Castles & Crusades';
   }
 
   function newCharacter() {
-    uuid = v4();
+    character.id = v4();
     const searchParams = new URLSearchParams(window.location.search);
-    if (uuid) {
-      searchParams.set('char', uuid);
+    if (character.id) {
+      searchParams.set('char', character.id);
     } else {
       searchParams.delete('char');
     }
@@ -26,9 +25,9 @@
 
   function saveCharacter() {
     const searchParams = new URLSearchParams(window.location.search);
-    const id = searchParams.get('char')
+    const id = searchParams.get('char');
 
-    if(!characterName) {
+    if (!character.name) {
       alert('Please enter a character name before saving.');
       return;
     }
@@ -36,13 +35,13 @@
     if (!id) {
       newCharacter();
     } else {
-      uuid = id;
+      character.id = id;
     }
   }
 
   function setCharacterName(event: Event) {
     const input = event.target as HTMLInputElement;
-    characterName = input.value;
+    character.name = input.value;
     updateTitle();
   }
 </script>

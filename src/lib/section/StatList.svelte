@@ -1,7 +1,15 @@
-<script>
+<script lang="ts">
   import Stat from '../component/Stat.svelte';
   import Ac from './Ac.svelte';
   import Hp from './HP.svelte';
+  import { character } from '../state/character.svelte';
+
+  const { stats } = character;
+  type TStatKey = keyof typeof stats;
+
+  function updateStat(id: TStatKey, newValue: string) {
+    stats[id] = newValue;
+  }
 </script>
 
 <div
@@ -13,8 +21,8 @@
     <Hp />
   </div>
   <div class="grid grid-cols-3 gap-4">
-    <Stat id="Inic" name="Inic." defaultValue="+0" />
-    <Stat id="Speed" name="Speed" defaultValue="60ft" />
-    <Stat id="BTH" name="BTH" defaultValue="+0" />
+    <Stat id="Init" name="Init." value={stats.init} {updateStat} />
+    <Stat id="Speed" name="Speed" value={stats.speed} {updateStat} />
+    <Stat id="BTH" name="BTH" value={stats.bth} {updateStat} />
   </div>
 </div>

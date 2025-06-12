@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Plus } from '@lucide/svelte';
   import Item from '../component/Item.svelte';
   import Title from '../component/Title.svelte';
   import TextInput from '../component/TextInput.svelte';

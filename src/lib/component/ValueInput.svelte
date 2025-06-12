@@ -3,10 +3,10 @@
     id: string;
     label: string;
     placeholder: string;
-    defaultValue?: string | number;
+    value?: string | number;
     disabled?: boolean;
   }
-  let { id, label, placeholder, defaultValue, disabled }: Props = $props();
+  let { id, label, placeholder, value, disabled }: Props = $props();
 </script>
 
 <div class="text-left gap-2 items-center grid grid-cols-3">
@@ -14,9 +14,9 @@
   <input
     {id}
     class="input w-full col-span-2"
-    placeholder={placeholder}
+    {placeholder}
     type="number"
-    value={defaultValue}
-    disabled={disabled}
+    {value}
+    {disabled}
   />
 </div>

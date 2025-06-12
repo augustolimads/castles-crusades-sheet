@@ -1,3 +1,8 @@
+<script lang="ts">
+  import {character} from '../state/character.svelte'
+  const {hp} = character
+</script>
+
 <div id="HP">
   <div
     id="CurrentHP"
@@ -9,7 +14,7 @@
         class="input text-center border-b w-10"
         type="number"
         placeholder="0"
-        value="0"
+        value={hp.max}
         min="0"
       />
       <span class="text-xs">Max. HP</span>
@@ -18,7 +23,7 @@
       id="CurrentHPValue"
       class="input text-4xl text-center"
       placeholder="0"
-      value="0"
+      value={hp.current}
       type="number"
     />
     <label for="CurrentHPValue" class="text-xs">Current HP</label>
@@ -32,7 +37,7 @@
       class="input text-center"
       type="number"
       placeholder="0"
-      value="0"
+      value={hp.temp}
     />
     <label for="TempHPValue" class="text-xs">Temp HP</label>
   </div>

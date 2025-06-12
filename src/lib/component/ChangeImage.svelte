@@ -1,5 +1,9 @@
 <script lang="ts">
-  let { image, onChange } = $props();
+  interface Props {
+    image: string;
+    onChange: (value: string) => void;
+  }
+  let { image, onChange }: Props = $props();
 </script>
 
 <input

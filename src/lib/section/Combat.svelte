@@ -2,6 +2,9 @@
   import Weapon from '../component/Weapon.svelte';
   import Title from '../component/Title.svelte';
   import TextInput from '../component/TextInput.svelte';
+  import { character } from '../state/character.svelte';
+
+  const { armor } = character;
 
   let weapons = $state([{}]);
 
@@ -20,10 +23,10 @@
   <div class="flex flex-col gap-2 h-full">
     <Title name="Armors" />
     <div class="grid grid-cols-2 gap-x-1">
-      <TextInput id="armor" name="helm" />
-      <TextInput id="armor" name="shield" />
+      <TextInput id="armor" name="helm" value={armor.helm} />
+      <TextInput id="armor" name="shield" value={armor.shield} />
       <div class="col-span-2">
-        <TextInput id="armor" name="armor" />
+        <TextInput id="armor" name="armor" value={armor.main} />
       </div>
     </div>
     <hr />
