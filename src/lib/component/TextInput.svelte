@@ -5,7 +5,7 @@
     isNumber?: boolean;
     value?: string | number;
     disabled?: boolean;
-    updateInput: (id: any, newValue: string) => void;
+    updateInput: (id: any, value: string | number) => void;
   }
   let { id, name, isNumber, value, disabled, updateInput }: Props = $props();
 </script>
@@ -16,12 +16,11 @@
     class="input"
     placeholder={name}
     type={isNumber ? 'number' : 'text'}
-    value={value}
-    disabled={disabled}
+    {value}
+    {disabled}
     oninput={(e) => {
-      if (updateInput) {
-        updateInput(id, e.currentTarget.value);
-      }
+      const value = isNumber ? parseFloat(e.currentTarget.value) : e.currentTarget.value;
+      updateInput(id, value);
     }}
   />
   <label for={id} class="text-sm">{name}</label>

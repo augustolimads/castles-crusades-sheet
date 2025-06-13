@@ -1,10 +1,10 @@
 <script lang="ts">
   import { GripVertical } from '@lucide/svelte';
   import { onMount } from 'svelte';
-  const uid = $props.id();
+  import { character } from '../state/character.svelte';
 
   let inputRef: HTMLInputElement;
-  let { index, newSpell, deleteSpell } = $props();
+  let { newSpell, deleteSpell, data } = $props();
 
   let isHovered: boolean = $state(false);
 
@@ -20,11 +20,27 @@
     if (event.code === 'Enter') {
       newSpell();
     }
-    if (event.target.value === '' && event.code === 'Backspace') {
+    if (
+      data.name === '' &&
+      event.target.value === '' &&
+      event.code === 'Backspace'
+    ) {
       deleteSpell();
     }
-    if (event.code === 'Delete') {
-      deleteSpell();
+  }
+
+  function updateSpell(
+    id: string,
+    inputKey: 'name' | 'description' | 'slots' | 'level',
+    value: string | number
+  ) {
+    const spell = character.spells.known.find((spell) => spell.id === id);
+    if (spell) {
+      if (inputKey === 'slots' || inputKey === 'level') {
+        spell[inputKey] = Number(value);
+        return;
+      }
+      spell[inputKey] = String(value);
     }
   }
 
@@ -34,7 +50,7 @@
 </script>
 
 <div
-  id={uid}
+  id={data.id}
   role="button"
   tabindex="0"
   class="flex gap-2"
@@ -50,24 +66,48 @@
     {/if}
   </button>
   <input
-    id="spellSlots"
+    id="level"
+    class="input w-8"
+    onkeydown={handlePress}
+    placeholder="Level"
+    value={data.level}
+    type="number"
+    oninput={(event) => {
+      const target = event.target as HTMLInputElement;
+      updateSpell(data.id, 'level', target.value);
+    }}
+  />
+  <input
+    id="slots"
     class="input w-8"
     onkeydown={handlePress}
     placeholder="Slots"
-    value={1}
+    value={data.slots}
     type="number"
+    oninput={(event) => {
+      const target = event.target as HTMLInputElement;
+      updateSpell(data.id, 'slots', target.value);
+    }}
   />
   <input
-    id="spellName"
+    id="name"
     class="input w-full"
     onkeydown={handlePress}
     placeholder="Name"
     bind:this={inputRef}
+    oninput={(event) => {
+      const target = event.target as HTMLInputElement;
+      updateSpell(data.id, 'name', target.value);
+    }}
   />
   <input
     id="spellDesc"
     class="input w-full"
     onkeydown={handlePress}
     placeholder="Description"
+    oninput={(event) => {
+      const target = event.target as HTMLInputElement;
+      updateSpell(data.id, 'description', target.value);
+    }}
   />
 </div>

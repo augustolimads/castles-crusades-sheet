@@ -3,15 +3,46 @@
   import Title from '../component/Title.svelte';
   import TextInput from '../component/TextInput.svelte';
   import ValueInput from '../component/ValueInput.svelte';
+  import { character } from '../state/character.svelte';
+  import { v4 } from 'uuid';
 
-  let items = $state([{}]);
+  const { treasure } = character;
+  const { encumbrance } = character;
 
-  function newItem() {
-    items = [...items, {}];
+  function updateTreasure(id: string, value: number) {
+    if (
+      id === 'platinum' ||
+      id === 'gold' ||
+      id === 'silver' ||
+      id === 'copper'
+    ) {
+      treasure[id] = value;
+    }
   }
 
-  function deleteItem(i: number) {
-    items = items.filter((item, i) => i);
+  function updateEncumbrance(id: string, value: number | string) {
+    if (id === 'total' || (id === 'rating' && typeof value === 'number')) {
+      character.encumbrance[id] = Number(value);
+      character.encumbrance.enc3x = character.encumbrance.rating * 3;
+    }
+  }
+
+  function newItem() {
+    character.items = [
+      ...character.items,
+      {
+        id: v4(),
+        name: '',
+        description: '',
+        qtd: 1,
+        ev: 0,
+      },
+    ];
+  }
+
+  function deleteItem(id: string) {
+    const newItems = character.items.filter((item) => item.id !== id);
+    character.items = newItems;
   }
 </script>
 
@@ -19,8 +50,8 @@
   <div class="flex flex-col gap-2 flex-1">
     <Title name="Items" action={newItem} />
     <div class="flex flex-col gap-2 overflow-y-auto h-[420px] pt-1">
-      {#each items as item, i}
-        <Item index={i} {newItem} {deleteItem} />
+      {#each character.items as data (data.id)}
+        <Item {data} {newItem} {deleteItem} />
       {/each}
     </div>
   </div>
@@ -33,34 +64,57 @@
           id="platinum"
           label="Platinum"
           placeholder="Platinum"
-          defaultValue={0}
+          value={treasure.platinum}
+          updateValue={updateTreasure}
         />
         <ValueInput
           id="gold"
           label="Gold"
           placeholder="Gold"
-          defaultValue={0}
+          value={treasure.gold}
+          updateValue={updateTreasure}
         />
         <ValueInput
           id="silver"
           label="Silver"
           placeholder="Silver"
-          defaultValue={0}
+          value={treasure.silver}
+          updateValue={updateTreasure}
         />
         <ValueInput
           id="copper"
           label="Copper"
           placeholder="Copper"
-          defaultValue={0}
+          value={treasure.copper}
+          updateValue={updateTreasure}
         />
       </div>
     </div>
     <div>
       <Title name="Encumbrance" />
       <div class="grid grid-cols-3 gap-4 mb-4">
-        <TextInput id="EncEVTotal" name="total" isNumber />
-        <TextInput id="EncRating" name="Rating" isNumber />
-        <TextInput id="EncEnb" name="Enb." isNumber disabled />
+        <TextInput
+          id="total"
+          name="total"
+          isNumber
+          value={encumbrance.total}
+          updateInput={updateEncumbrance}
+        />
+        <TextInput
+          id="rating"
+          name="Rating"
+          isNumber
+          value={encumbrance.rating}
+          updateInput={updateEncumbrance}
+        />
+        <TextInput
+          id="enc3x"
+          name="3x"
+          isNumber
+          disabled
+          value={encumbrance.enc3x}
+          updateInput={() => {}}
+        />
       </div>
       <div class="text-left text-xs flex flex-col gap-1">
         <p>

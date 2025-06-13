@@ -1,10 +1,10 @@
 <script lang="ts">
   import { GripVertical } from '@lucide/svelte';
   import { onMount } from 'svelte';
-  const uid = $props.id();
+  import { character } from '../state/character.svelte';
 
   let inputRef: HTMLInputElement;
-  let { index, newItem, deleteItem } = $props();
+  let { data, newItem, deleteItem } = $props();
 
   let isHovered: boolean = $state(false);
 
@@ -20,11 +20,27 @@
     if (event.code === 'Enter') {
       newItem();
     }
-    if (event.target.value === '' && event.code === 'Backspace') {
+    if (
+      data.name === '' &&
+      event.target.value === '' &&
+      event.code === 'Backspace'
+    ) {
       deleteItem();
     }
-    if (event.code === 'Delete') {
-      deleteItem();
+  }
+
+  function updateItem(
+    id: string,
+    inputKey: 'name' | 'description' | 'ev' | 'qtd',
+    value: string | number
+  ) {
+    const item = character.items.find((item) => item.id === id);
+    if (item) {
+      if (inputKey === 'qtd' || inputKey === 'ev') {
+        item[inputKey] = Number(value);
+        return;
+      }
+      item[inputKey] = String(value);
     }
   }
 
@@ -34,7 +50,7 @@
 </script>
 
 <div
-  id={uid}
+  id={data.id}
   role="button"
   tabindex="0"
   class="flex gap-2"
@@ -50,31 +66,50 @@
     {/if}
   </button>
   <input
-    id="itemQtd"
+    id="qtd"
     class="input w-8"
     onkeydown={handlePress}
     placeholder="Qtd"
-    value={1}
+    value={data.qtd}
     type="number"
     min="1"
+    oninput={(e) => {
+      const target = e.target as HTMLInputElement;
+      updateItem(data.id, 'qtd', target.value);
+    }}
   />
   <input
-    id="itemName"
+    id="name"
     class="input w-full"
     onkeydown={handlePress}
     placeholder="Name"
+    value={data.name}
     bind:this={inputRef}
+    oninput={(e) => {
+      const target = e.target as HTMLInputElement;
+      updateItem(data.id, 'name', target.value);
+    }}
   />
   <input
-    id="idemDesc"
+    id="description"
     class="input w-full"
     onkeydown={handlePress}
     placeholder="Description"
+    value={data.description}
+    oninput={(e) => {
+      const target = e.target as HTMLInputElement;
+      updateItem(data.id, 'description', target.value);
+    }}
   />
-   <input
-    id="itemEncumbranceValue"
+  <input
+    id="ev"
     class="input w-10"
     onkeydown={handlePress}
     placeholder="EV"
+    value={data.ev}
+    oninput={(e) => {
+      const target = e.target as HTMLInputElement;
+      updateItem(data.id, 'ev', target.value);
+    }}
   />
 </div>

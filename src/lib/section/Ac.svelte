@@ -13,6 +13,9 @@
       class="border-b text-center input"
       value={ac.head}
       type="number"
+      oninput={(event) => {
+        ac.head = Number((event.target as HTMLInputElement).value);
+      }}
     />
     <label for="ACHeadValue">Head</label>
   </div>
@@ -22,6 +25,9 @@
       class="text-4xl text-center input flex flex-1"
       value={ac.main}
       type="number"
+      oninput={(event) => {
+        ac.main = Number((event.target as HTMLInputElement).value);
+      }}
     />
     <label for="ACMainValue">AC</label>
   </div>

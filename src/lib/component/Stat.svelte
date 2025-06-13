@@ -7,7 +7,7 @@
     id: string;
     name: string;
     value?: string;
-    updateStat?: (id: TStatKey, newValue: string) => void;
+    updateStat: (id: TStatKey, newValue: string) => void;
   }
   let { id, name, value, updateStat }: Props = $props();
 </script>
@@ -18,9 +18,7 @@
     class="input flex flex-1 text-center py-2"
     {value}
     oninput={(e) => {
-      if (updateStat) {
-        updateStat(id as TStatKey, e.currentTarget.value);
-      }
+      updateStat(id as TStatKey, e.currentTarget.value);
     }}
   />
   <label for={id + 'Value'} class="badge px-2 text-xs">{name}</label>

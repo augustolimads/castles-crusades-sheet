@@ -1,6 +1,6 @@
 <script lang="ts">
-  import {character} from '../state/character.svelte'
-  const {hp} = character
+  import { character } from '../state/character.svelte';
+  const { hp } = character;
 </script>
 
 <div id="HP">
@@ -16,6 +16,9 @@
         placeholder="0"
         value={hp.max}
         min="0"
+        oninput={(event) => {
+          hp.max = Number((event.target as HTMLInputElement).value);
+        }}
       />
       <span class="text-xs">Max. HP</span>
     </div>
@@ -25,6 +28,9 @@
       placeholder="0"
       value={hp.current}
       type="number"
+      oninput={(event) => {
+        hp.current = Number((event.target as HTMLInputElement).value);
+      }}
     />
     <label for="CurrentHPValue" class="text-xs">Current HP</label>
   </div>
@@ -38,6 +44,9 @@
       type="number"
       placeholder="0"
       value={hp.temp}
+      oninput={(event) => {
+        hp.temp = Number((event.target as HTMLInputElement).value);
+      }}
     />
     <label for="TempHPValue" class="text-xs">Temp HP</label>
   </div>

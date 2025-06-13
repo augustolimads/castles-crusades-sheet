@@ -9,6 +9,7 @@
   import StatList from './lib/section/StatList.svelte';
   import Footer from './lib/section/Footer.svelte';
   import { character } from './lib/state/character.svelte';
+  import Debugger from './lib/component/Debugger.svelte';
 </script>
 
 <main>
@@ -30,4 +31,5 @@
     </div>
     <Footer />
   </div>
+  <Debugger />
 </main>

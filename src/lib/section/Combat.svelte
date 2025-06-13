@@ -3,17 +3,35 @@
   import Title from '../component/Title.svelte';
   import TextInput from '../component/TextInput.svelte';
   import { character } from '../state/character.svelte';
+  import { v4 } from 'uuid';
 
   const { armor } = character;
 
-  let weapons = $state([{}]);
-
-  function newWeapon() {
-    weapons = [...weapons, {}];
+  function updateArmors(id: string, newValue: string | number) {
+    if (
+      id === 'helm' ||
+      id === 'main' ||
+      (id === 'shield' && typeof newValue === 'string')
+    ) {
+      armor[id] = String(newValue);
+    }
   }
 
-  function deleteWeapon(i: number) {
-    weapons = weapons.filter((weapon, i) => i);
+  function newWeapon() {
+    character.weapons = [
+      ...(character.weapons || []),
+      {
+        id: v4(),
+        name: '',
+        bth: '',
+        dmg: '',
+      },
+    ];
+  }
+
+  function deleteWeapon(id: string) {
+    const newWeapons = character.weapons.filter((w) => w.id !== id);
+    character.weapons = newWeapons;
   }
 </script>
 
@@ -23,17 +41,32 @@
   <div class="flex flex-col gap-2 h-full">
     <Title name="Armors" />
     <div class="grid grid-cols-2 gap-x-1">
-      <TextInput id="armor" name="helm" value={armor.helm} />
-      <TextInput id="armor" name="shield" value={armor.shield} />
+      <TextInput
+        id="helm"
+        name="helm"
+        value={armor.helm}
+        updateInput={updateArmors}
+      />
+      <TextInput
+        id="shield"
+        name="shield"
+        value={armor.shield}
+        updateInput={updateArmors}
+      />
       <div class="col-span-2">
-        <TextInput id="armor" name="armor" value={armor.main} />
+        <TextInput
+          id="main"
+          name="main"
+          value={armor.main}
+          updateInput={updateArmors}
+        />
       </div>
     </div>
     <hr />
     <Title name="Weapons" action={newWeapon} />
-    <div class="overflow-y-auto h-[256px] pt-1">
-      {#each weapons as weapon, i}
-        <Weapon index={i} {newWeapon} {deleteWeapon} />
+    <div class="overflow-y-auto h-[256px] pt-1 flex flex-col gap-2">
+      {#each character.weapons as data (data.id)}
+        <Weapon {newWeapon} {deleteWeapon} {data} />
       {/each}
     </div>
   </div>

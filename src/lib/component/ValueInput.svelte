@@ -5,8 +5,9 @@
     placeholder: string;
     value?: string | number;
     disabled?: boolean;
+    updateValue: (id: string, value: number) => void;
   }
-  let { id, label, placeholder, value, disabled }: Props = $props();
+  let { id, label, placeholder, value, disabled, updateValue }: Props = $props();
 </script>
 
 <div class="text-left gap-2 items-center grid grid-cols-3">
@@ -18,5 +19,11 @@
     type="number"
     {value}
     {disabled}
+    oninput={(event) => {
+      const inputValue = Number((event.target as HTMLInputElement).value);
+      if (!isNaN(inputValue)) {
+        updateValue(id, inputValue);
+      }
+    }}
   />
 </div>

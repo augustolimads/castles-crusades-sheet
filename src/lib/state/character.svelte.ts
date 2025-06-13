@@ -1,3 +1,26 @@
+interface IWeapon {
+    id: string
+    name: string
+    bth: string
+    dmg: string
+}
+
+interface IItem {
+    id: string
+    qtd: number
+    name: string
+    description: string
+    ev: number
+}
+
+interface ISpell {
+    id: string
+    name: string
+    level: number
+    slots: number
+    description: string
+}
+
 export const character = $state({
     id: '',
     name: '',
@@ -57,12 +80,40 @@ export const character = $state({
         main: '',
         shield: '',
     },
+    weapons: [] as unknown as IWeapon[],
+    items: [] as unknown as IItem[],
+    treasure: {
+        platinum: 0,
+        gold: 0,
+        silver: 0,
+        copper: 0,
+    },
+    encumbrance: {
+        total: 0,
+        rating: 0,
+        enc3x: 0,
+    },
     tracking: {
         water: 0,
         food: 0,
         arrows: 0,
         bolts: 0,
         conditions: ''
+    },
+    spells: {
+        level: {
+            lv0: 0,
+            lv1: 0,
+            lv2: 0,
+            lv3: 0,
+            lv4: 0,
+            lv5: 0,
+            lv6: 0,
+            lv7: 0,
+            lv8: 0,
+            lv9: 0
+        },
+        known: [] as unknown as ISpell[],
     },
     notes: '',
 })

@@ -21,8 +21,8 @@
     <Hp />
   </div>
   <div class="grid grid-cols-3 gap-4">
-    <Stat id="Init" name="Init." value={stats.init} {updateStat} />
-    <Stat id="Speed" name="Speed" value={stats.speed} {updateStat} />
-    <Stat id="BTH" name="BTH" value={stats.bth} {updateStat} />
+    <Stat id="init" name="Init." value={stats.init} {updateStat} />
+    <Stat id="speed" name="Speed" value={stats.speed} {updateStat} />
+    <Stat id="bth" name="BTH" value={stats.bth} {updateStat} />
   </div>
 </div>
