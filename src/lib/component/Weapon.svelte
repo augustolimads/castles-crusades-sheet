@@ -2,6 +2,7 @@
   import { GripVertical } from '@lucide/svelte';
   import { onMount } from 'svelte';
   import { character } from '../state/character.svelte';
+  import { handleInputChange } from '../state/appChanges.svelte';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();
@@ -26,6 +27,7 @@
   }
 
   function updateWeapon(id: string, keyInput:string, value: string | number) {
+    handleInputChange();
     const weapon = character.weapons.find((weapon) => weapon.id === id);
     if (weapon && (keyInput === 'name' || keyInput === 'bth' || keyInput === 'dmg')) {
         weapon[keyInput] = String(value);

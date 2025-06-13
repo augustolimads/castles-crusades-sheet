@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { handleInputChange } from "../state/appChanges.svelte";
+
   interface Props {
     id: string;
     name: string;
@@ -63,6 +65,7 @@
       placeholder="10"
       value={score.value}
       oninput={(e: Event) => {
+        handleInputChange();
         const target = e.target as HTMLInputElement;
         updateAttr(id, target.value);
       }}
@@ -76,6 +79,7 @@
         { 'bg-emerald-500!': score.isPrimary },
       ]}
       onclick={() => {
+        handleInputChange();
         togglePrimary(id, !score.isPrimary);
       }}>{attrMod}</button
     >

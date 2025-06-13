@@ -1,6 +1,7 @@
 <script lang="ts">
   import { v4 } from 'uuid';
   import { character } from '../state/character.svelte';
+  import { handleInputChange } from '../state/appChanges.svelte';
 
   function updateTitle() {
     document.title = character.name
@@ -40,6 +41,7 @@
   }
 
   function setCharacterName(event: Event) {
+    handleInputChange();
     const input = event.target as HTMLInputElement;
     character.name = input.value;
     updateTitle();

@@ -5,6 +5,7 @@
   import ValueInput from '../component/ValueInput.svelte';
   import { character } from '../state/character.svelte';
   import { v4 } from 'uuid';
+  import { handleInputChange } from '../state/appChanges.svelte';
 
   const { treasure } = character;
   const { encumbrance } = character;
@@ -28,6 +29,7 @@
   }
 
   function newItem() {
+    handleInputChange();
     character.items = [
       ...character.items,
       {
@@ -41,6 +43,7 @@
   }
 
   function deleteItem(id: string) {
+    handleInputChange();
     const newItems = character.items.filter((item) => item.id !== id);
     character.items = newItems;
   }

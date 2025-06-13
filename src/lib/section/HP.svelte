@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
   const { hp } = character;
 </script>
@@ -17,6 +18,7 @@
         value={hp.max}
         min="0"
         oninput={(event) => {
+          handleInputChange();
           hp.max = Number((event.target as HTMLInputElement).value);
         }}
       />
@@ -29,6 +31,7 @@
       value={hp.current}
       type="number"
       oninput={(event) => {
+        handleInputChange();
         hp.current = Number((event.target as HTMLInputElement).value);
       }}
     />
@@ -45,6 +48,7 @@
       placeholder="0"
       value={hp.temp}
       oninput={(event) => {
+        handleInputChange();
         hp.temp = Number((event.target as HTMLInputElement).value);
       }}
     />

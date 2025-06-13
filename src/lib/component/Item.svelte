@@ -2,6 +2,7 @@
   import { GripVertical } from '@lucide/svelte';
   import { onMount } from 'svelte';
   import { character } from '../state/character.svelte';
+  import { handleInputChange } from '../state/appChanges.svelte';
 
   let inputRef: HTMLInputElement;
   let { data, newItem, deleteItem } = $props();
@@ -34,6 +35,7 @@
     inputKey: 'name' | 'description' | 'ev' | 'qtd',
     value: string | number
   ) {
+    handleInputChange();
     const item = character.items.find((item) => item.id === id);
     if (item) {
       if (inputKey === 'qtd' || inputKey === 'ev') {

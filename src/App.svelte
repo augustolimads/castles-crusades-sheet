@@ -10,6 +10,15 @@
   import Footer from './lib/section/Footer.svelte';
   import { character } from './lib/state/character.svelte';
   import Debugger from './lib/component/Debugger.svelte';
+  import { handleBeforeUnload } from './lib/state/appChanges.svelte';
+
+
+  $effect(() => {
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  });
 </script>
 
 <main>

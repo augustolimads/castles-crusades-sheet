@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
 
   const { stats } = character;
@@ -18,6 +19,7 @@
     class="input flex flex-1 text-center py-2"
     {value}
     oninput={(e) => {
+      handleInputChange();
       updateStat(id as TStatKey, e.currentTarget.value);
     }}
   />

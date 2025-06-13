@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { handleInputChange } from "../state/appChanges.svelte";
+
   interface Props {
     id: string;
     label: string;
@@ -20,6 +22,7 @@
     {value}
     {disabled}
     oninput={(event) => {
+      handleInputChange();
       const inputValue = Number((event.target as HTMLInputElement).value);
       if (!isNaN(inputValue)) {
         updateValue(id, inputValue);

@@ -5,6 +5,7 @@
   import Title from '../component/Title.svelte';
 
   import { character } from '../state/character.svelte';
+  import { handleInputChange } from '../state/appChanges.svelte';
 
   const { spells } = character;
 
@@ -27,6 +28,7 @@
   }
 
   function newSpell() {
+    handleInputChange();
     spells.known = [
       ...spells.known,
       {
@@ -40,6 +42,7 @@
   }
 
   function deleteSpell(id: string) {
+    handleInputChange();
     const newSpells = spells.known.filter((spell) => spell.id !== id);
     spells.known = newSpells;
   }

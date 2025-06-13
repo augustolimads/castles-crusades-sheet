@@ -4,10 +4,12 @@
   import TextInput from '../component/TextInput.svelte';
   import { character } from '../state/character.svelte';
   import { v4 } from 'uuid';
+  import { handleInputChange } from '../state/appChanges.svelte';
 
   const { armor } = character;
 
   function updateArmors(id: string, newValue: string | number) {
+    handleInputChange();
     if (
       id === 'helm' ||
       id === 'main' ||
@@ -18,6 +20,7 @@
   }
 
   function newWeapon() {
+    handleInputChange();
     character.weapons = [
       ...(character.weapons || []),
       {
@@ -30,6 +33,7 @@
   }
 
   function deleteWeapon(id: string) {
+    handleInputChange();
     const newWeapons = character.weapons.filter((w) => w.id !== id);
     character.weapons = newWeapons;
   }

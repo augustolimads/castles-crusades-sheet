@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
   const { ac } = character;
 </script>
@@ -14,6 +15,7 @@
       value={ac.head}
       type="number"
       oninput={(event) => {
+        handleInputChange();
         ac.head = Number((event.target as HTMLInputElement).value);
       }}
     />
@@ -26,6 +28,7 @@
       value={ac.main}
       type="number"
       oninput={(event) => {
+        handleInputChange();
         ac.main = Number((event.target as HTMLInputElement).value);
       }}
     />

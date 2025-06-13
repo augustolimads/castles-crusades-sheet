@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { handleInputChange } from "../state/appChanges.svelte";
+
   interface Props {
     id: string;
     name: string;
@@ -19,6 +21,7 @@
     {value}
     {disabled}
     oninput={(e) => {
+      handleInputChange();
       const value = isNumber ? parseFloat(e.currentTarget.value) : e.currentTarget.value;
       updateInput(id, value);
     }}

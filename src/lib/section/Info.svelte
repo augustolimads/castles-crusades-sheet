@@ -1,11 +1,13 @@
 <script lang="ts">
   import TextInput from '../component/TextInput.svelte';
+  import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
 
   const { info } = character;
   type TInfoKey = keyof typeof info;
 
   function updateInput(id: TInfoKey, newValue: string | number) {
+    handleInputChange();
     if (id === 'charClass' || id === 'race' || id === 'disposition' || id === 'languages' && typeof newValue === 'string') {
       (info[id] as string) = String(newValue);
     } else if (id === 'level' || id === 'xp' || id === 'nextLevel' && typeof newValue === 'number') {

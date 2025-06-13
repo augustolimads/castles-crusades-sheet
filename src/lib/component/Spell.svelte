@@ -2,6 +2,7 @@
   import { GripVertical } from '@lucide/svelte';
   import { onMount } from 'svelte';
   import { character } from '../state/character.svelte';
+  import { handleInputChange } from '../state/appChanges.svelte';
 
   let inputRef: HTMLInputElement;
   let { newSpell, deleteSpell, data } = $props();
@@ -34,6 +35,7 @@
     inputKey: 'name' | 'description' | 'slots' | 'level',
     value: string | number
   ) {
+    handleInputChange();
     const spell = character.spells.known.find((spell) => spell.id === id);
     if (spell) {
       if (inputKey === 'slots' || inputKey === 'level') {

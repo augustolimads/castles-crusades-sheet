@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
 
   function updateNotes(e: Event) {
+    handleInputChange();
     character.notes = (e.target as HTMLTextAreaElement).value;
   }
 </script>

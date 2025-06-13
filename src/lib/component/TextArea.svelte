@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { handleInputChange } from "../state/appChanges.svelte";
+
   interface Props {
     id: string;
     name?: string;
@@ -16,6 +18,7 @@
     rows={3}
     {value}
     oninput={(e) => {
+      handleInputChange();
       const target = e.currentTarget as HTMLTextAreaElement;
       updateInput(id, target.value);
     }}
