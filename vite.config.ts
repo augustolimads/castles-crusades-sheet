@@ -6,5 +6,5 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [svelte(), tailwindcss()
   ],
-  base:"/castles-crusades-sheet"
+  base:"/castles-crusades-sheet/"
 })
