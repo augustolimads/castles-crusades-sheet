@@ -3,7 +3,7 @@
   import { character } from '../state/character.svelte';
 
   function changeBg(value: string) {
-    character.bg = value;
+    character.data.bg = value;
   }
 </script>
 
@@ -11,7 +11,7 @@
   <div class="max-w-[1200px] m-auto px-4 flex justify-between items-center">
     <div class="flex items-center flex-1 max-w-[350px] gap-2">
       <p>Background</p>
-      <ChangeImage image={character.bg} onChange={changeBg} />
+      <ChangeImage image={character.data.bg} onChange={changeBg} />
     </div>
     <p class="text-xs px-1">
       Made with ❤️ by <a href="https://github.com/augustolimads">Augusto</a>

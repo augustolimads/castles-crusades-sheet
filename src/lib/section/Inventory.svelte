@@ -7,8 +7,8 @@
   import { v4 } from 'uuid';
   import { handleInputChange } from '../state/appChanges.svelte';
 
-  const { treasure } = character;
-  const { encumbrance } = character;
+  const { treasure } = character.data;
+  const { encumbrance } = character.data;
 
   function updateTreasure(id: string, value: number) {
     if (
@@ -23,15 +23,15 @@
 
   function updateEncumbrance(id: string, value: number | string) {
     if (id === 'total' || (id === 'rating' && typeof value === 'number')) {
-      character.encumbrance[id] = Number(value);
-      character.encumbrance.enc3x = character.encumbrance.rating * 3;
+      character.data.encumbrance[id] = Number(value);
+      character.data.encumbrance.enc3x = character.data.encumbrance.rating * 3;
     }
   }
 
   function newItem() {
     handleInputChange();
-    character.items = [
-      ...character.items,
+    character.data.items = [
+      ...character.data.items,
       {
         id: v4(),
         name: '',
@@ -44,8 +44,8 @@
 
   function deleteItem(id: string) {
     handleInputChange();
-    const newItems = character.items.filter((item) => item.id !== id);
-    character.items = newItems;
+    const newItems = character.data.items.filter((item) => item.id !== id);
+    character.data.items = newItems;
   }
 </script>
 
@@ -53,7 +53,7 @@
   <div class="flex flex-col gap-2 flex-1">
     <Title name="Items" action={newItem} />
     <div class="flex flex-col gap-2 overflow-y-auto h-[420px] pt-1">
-      {#each character.items as data (data.id)}
+      {#each character.data.items as data (data.id)}
         <Item {data} {newItem} {deleteItem} />
       {/each}
     </div>

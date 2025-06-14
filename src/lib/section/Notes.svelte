@@ -4,7 +4,7 @@
 
   function updateNotes(e: Event) {
     handleInputChange();
-    character.notes = (e.target as HTMLTextAreaElement).value;
+    character.data.notes = (e.target as HTMLTextAreaElement).value;
   }
 </script>
 
@@ -12,5 +12,5 @@
   id="notes"
   class="h-[650px] w-full"
   oninput={updateNotes}
-  value={character.notes}
+  value={character.data.notes}
 ></textarea>

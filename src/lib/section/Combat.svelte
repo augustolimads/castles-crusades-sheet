@@ -6,7 +6,7 @@
   import { v4 } from 'uuid';
   import { handleInputChange } from '../state/appChanges.svelte';
 
-  const { armor } = character;
+  const { armor } = character.data;
 
   function updateArmors(id: string, newValue: string | number) {
     handleInputChange();
@@ -21,8 +21,8 @@
 
   function newWeapon() {
     handleInputChange();
-    character.weapons = [
-      ...(character.weapons || []),
+    character.data.weapons = [
+      ...(character.data.weapons || []),
       {
         id: v4(),
         name: '',
@@ -34,8 +34,8 @@
 
   function deleteWeapon(id: string) {
     handleInputChange();
-    const newWeapons = character.weapons.filter((w) => w.id !== id);
-    character.weapons = newWeapons;
+    const newWeapons = character.data.weapons.filter((w) => w.id !== id);
+    character.data.weapons = newWeapons;
   }
 </script>
 
@@ -69,7 +69,7 @@
     <hr />
     <Title name="Weapons" action={newWeapon} />
     <div class="overflow-y-auto h-[256px] pt-1 flex flex-col gap-2">
-      {#each character.weapons as data (data.id)}
+      {#each character.data.weapons as data (data.id)}
         <Weapon {newWeapon} {deleteWeapon} {data} />
       {/each}
     </div>

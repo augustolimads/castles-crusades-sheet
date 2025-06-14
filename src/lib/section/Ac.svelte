@@ -1,7 +1,7 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
-  const { ac } = character;
+  const { ac } = character.data;
 </script>
 
 <div

@@ -7,7 +7,7 @@
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
 
-  const { spells } = character;
+  const { spells } = character.data;
 
   function updateInput(id: string, value: string | number) {
     if (

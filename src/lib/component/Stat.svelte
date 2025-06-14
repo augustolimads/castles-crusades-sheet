@@ -2,7 +2,7 @@
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
 
-  const { stats } = character;
+  const { stats } = character.data;
   type TStatKey = keyof typeof stats;
   interface Props {
     id: string;

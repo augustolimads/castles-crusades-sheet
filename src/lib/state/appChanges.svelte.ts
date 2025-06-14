@@ -2,8 +2,8 @@ export const appChanges = $state({
     hasUnsavedChanges: false
 })
 
-export function handleInputChange() {
-    appChanges.hasUnsavedChanges = true;
+export function handleInputChange(newValue?:boolean) {
+    appChanges.hasUnsavedChanges = newValue ?? true;
 }
 
 export function handleBeforeUnload(event: BeforeUnloadEvent) {

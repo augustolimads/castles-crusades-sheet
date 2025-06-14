@@ -3,7 +3,7 @@
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
 
-  const { info } = character;
+  const { info } = character.data;
   type TInfoKey = keyof typeof info;
 
   function updateInput(id: TInfoKey, newValue: string | number) {

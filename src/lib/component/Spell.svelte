@@ -36,7 +36,7 @@
     value: string | number
   ) {
     handleInputChange();
-    const spell = character.spells.known.find((spell) => spell.id === id);
+    const spell = character.data.spells.known.find((spell) => spell.id === id);
     if (spell) {
       if (inputKey === 'slots' || inputKey === 'level') {
         spell[inputKey] = Number(value);

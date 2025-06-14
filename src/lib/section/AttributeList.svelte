@@ -2,7 +2,7 @@
   import Attribute from '../component/Attribute.svelte';
   import { character } from '../state/character.svelte';
 
-  const { attr } = character;
+  const { attr } = character.data;
 
   type TAttrKey = keyof typeof attr;
 

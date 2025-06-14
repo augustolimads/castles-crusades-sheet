@@ -36,7 +36,7 @@
     value: string | number
   ) {
     handleInputChange();
-    const item = character.items.find((item) => item.id === id);
+    const item = character.data.items.find((item) => item.id === id);
     if (item) {
       if (inputKey === 'qtd' || inputKey === 'ev') {
         item[inputKey] = Number(value);

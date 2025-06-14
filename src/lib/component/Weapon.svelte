@@ -28,7 +28,7 @@
 
   function updateWeapon(id: string, keyInput:string, value: string | number) {
     handleInputChange();
-    const weapon = character.weapons.find((weapon) => weapon.id === id);
+    const weapon = character.data.weapons.find((weapon) => weapon.id === id);
     if (weapon && (keyInput === 'name' || keyInput === 'bth' || keyInput === 'dmg')) {
         weapon[keyInput] = String(value);
       }

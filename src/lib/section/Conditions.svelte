@@ -4,7 +4,7 @@
   import ValueInput from '../component/ValueInput.svelte';
 
   import { character } from '../state/character.svelte';
-  const { tracking, info } = character;
+  const { tracking, info } = character.data;
 
   function updateLanguage(id = 'languages', value: string) {
     if (id === 'languages') {
