@@ -1,5 +1,4 @@
 import { writable } from "svelte/store"
-import { v4 } from "uuid"
 
 interface IWeapon {
     id: string

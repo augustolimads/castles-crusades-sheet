@@ -25,15 +25,10 @@
           ...c,
           spells: {
             ...c.spells,
-            known: c.spells.known.map((spell) => {
-              if (spell.id === id) {
-                return {
-                  ...spell,
-                  level: Number(value),
-                };
-              }
-              return spell;
-            }),
+            level: {
+              ...c.spells.level,
+              [id]: value,
+            },
           },
         };
       });
@@ -42,21 +37,19 @@
 
   function newSpell() {
     handleInputChange();
+    const newCharacterData = {
+      id: v4(),
+      name: '',
+      level: 0,
+      slots: 0,
+      description: '',
+    };
     character.update((c) => {
       return {
         ...c,
         spells: {
           ...c.spells,
-          known: [
-            ...c.spells.known,
-            {
-              id: v4(),
-              name: '',
-              level: 0,
-              slots: 0,
-              description: '',
-            },
-          ],
+          known: [...c.spells.known, newCharacterData],
         },
       };
     });

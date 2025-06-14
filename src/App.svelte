@@ -9,8 +9,8 @@
   import StatList from './lib/section/StatList.svelte';
   import Footer from './lib/section/Footer.svelte';
   import { character } from './lib/state/character.svelte';
-  import Debugger from './lib/component/Debugger.svelte';
   import { handleBeforeUnload } from './lib/state/appChanges.svelte';
+  import Debugger from './lib/component/Debugger.svelte';
 
   $effect(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -39,5 +39,4 @@
     </div>
     <Footer />
   </div>
-  <Debugger />
 </main>

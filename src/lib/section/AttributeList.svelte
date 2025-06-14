@@ -13,7 +13,18 @@
       id === 'wis' ||
       id === 'cha'
     ) {
-      $character.attr[id].value = Number(newValue);
+      character.update((c) => {
+        return {
+          ...c,
+          attr: {
+            ...c.attr,
+            [id]: {
+              ...c.attr[id],
+              score: parseInt(newValue),
+            },
+          },
+        };
+      })
     }
   }
 
@@ -26,7 +37,19 @@
       id === 'wis' ||
       id === 'cha'
     ) {
-      $character.attr[id].isPrimary = newValue;
+      console.log('togglePrimary', id, newValue);
+      character.update((c) => {
+        return {
+          ...c,
+          attr: {
+            ...c.attr,
+            [id]: {
+              ...c.attr[id],
+              isPrimary: newValue,
+            },
+          },
+        };
+      })
     }
   }
 </script>

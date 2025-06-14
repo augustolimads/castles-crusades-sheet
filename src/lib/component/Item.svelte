@@ -5,7 +5,7 @@
   import { handleInputChange } from '../state/appChanges.svelte';
 
   let inputRef: HTMLInputElement;
-  let { data, newItem, deleteItem } = $props();
+  let { data, newItem } = $props();
 
   let isHovered: boolean = $state(false);
 
@@ -17,6 +17,17 @@
     isHovered = false;
   }
 
+  function deleteItem(id: string) {
+    handleInputChange();
+    const newItems = $character.items.filter((item) => item.id !== id);
+    character.update((c) => {
+      return {
+        ...c,
+        items: newItems,
+      };
+    });
+  }
+
   function handlePress(event: any) {
     if (event.code === 'Enter') {
       newItem();
@@ -26,7 +37,7 @@
       event.target.value === '' &&
       event.code === 'Backspace'
     ) {
-      deleteItem();
+      deleteItem(data.id);
     }
   }
 
@@ -73,7 +84,7 @@
     class="input w-8"
     onkeydown={handlePress}
     placeholder="Qtd"
-    value={data.qtd}
+    bind:value={data.qtd}
     type="number"
     min="1"
     oninput={(e) => {
@@ -86,7 +97,7 @@
     class="input w-full"
     onkeydown={handlePress}
     placeholder="Name"
-    value={data.name}
+    bind:value={data.name}
     bind:this={inputRef}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
@@ -98,7 +109,7 @@
     class="input w-full"
     onkeydown={handlePress}
     placeholder="Description"
-    value={data.description}
+    bind:value={data.description}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateItem(data.id, 'description', target.value);
@@ -109,7 +120,7 @@
     class="input w-10"
     onkeydown={handlePress}
     placeholder="EV"
-    value={data.ev}
+    bind:value={data.ev}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateItem(data.id, 'ev', target.value);

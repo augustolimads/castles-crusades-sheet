@@ -42,33 +42,20 @@
   }
 
   function newItem() {
-    handleInputChange();
+    const newItem = {
+      id: v4(),
+      name: '',
+      qtd: 1,
+      description: '',
+      ev: 0,
+    };
     character.update((c) => {
       return {
         ...c,
-        items: {
-          ...c.items,
-          [v4()]: {
-            id: v4(),
-            name: '',
-            description: '',
-            qtd: 1,
-            ev: 0,
-          },
-        },
+        items: [...c.items, newItem],
       };
     });
-  }
-
-  function deleteItem(id: string) {
     handleInputChange();
-    const newItems = $character.items.filter((item) => item.id !== id);
-    character.update((c) => {
-      return {
-        ...c,
-        items: newItems,
-      };
-    });
   }
 </script>
 
@@ -77,7 +64,7 @@
     <Title name="Items" action={newItem} />
     <div class="flex flex-col gap-2 overflow-y-auto h-[420px] pt-1">
       {#each $character.items as data (data.id)}
-        <Item {data} {newItem} {deleteItem} />
+        <Item {data} {newItem} />
       {/each}
     </div>
   </div>

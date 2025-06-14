@@ -11,7 +11,7 @@
 <div class="flex items-center justify-between">
   <h2 class="font-bold text-xl text-left pb-1">{name}</h2>
   {#if action}
-    <button class="cursor-pointer flex justify-center" onclick={action}>
+    <button class="cursor-pointer flex justify-center" onclick={() => action?.()}>
       <Plus />
     </button>
   {/if}
