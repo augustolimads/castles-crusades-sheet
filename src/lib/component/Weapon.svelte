@@ -26,13 +26,16 @@
     }
   }
 
-  function updateWeapon(id: string, keyInput:string, value: string | number) {
+  function updateWeapon(id: string, keyInput: string, value: string | number) {
     handleInputChange();
-    const weapon = character.data.weapons.find((weapon) => weapon.id === id);
-    if (weapon && (keyInput === 'name' || keyInput === 'bth' || keyInput === 'dmg')) {
-        weapon[keyInput] = String(value);
-      }
-  
+    character.update((c) => {
+      return {
+        ...c,
+        weapons: c.weapons.map((weapon) =>
+          weapon.id === id ? { ...weapon, [keyInput]: value } : weapon
+        ),
+      };
+    });
   }
 
   onMount(() => {

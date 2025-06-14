@@ -1,7 +1,7 @@
 const KEY = 'myapp_character_';
 
-export function saveCharacterStorage(id: string, data: any) {
-    localStorage.setItem(KEY + id, JSON.stringify(data));
+export function saveCharacterStorage(data: any) {
+    localStorage.setItem(KEY + data.id, JSON.stringify(data));
 }
 
 export function loadCharacterStorage(id: string) {

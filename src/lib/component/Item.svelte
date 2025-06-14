@@ -36,14 +36,15 @@
     value: string | number
   ) {
     handleInputChange();
-    const item = character.data.items.find((item) => item.id === id);
-    if (item) {
-      if (inputKey === 'qtd' || inputKey === 'ev') {
-        item[inputKey] = Number(value);
-        return;
-      }
-      item[inputKey] = String(value);
-    }
+    character.update((c) => {
+      const item = $character.items.find((item) => item.id === id);
+      return  {
+        ...c,
+        items: c.items.map((item) =>
+          item.id === id ? { ...item, [inputKey]: value } : item
+        ),
+      };
+    })
   }
 
   onMount(() => {

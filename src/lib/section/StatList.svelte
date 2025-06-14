@@ -4,11 +4,19 @@
   import Hp from './HP.svelte';
   import { character } from '../state/character.svelte';
 
-  const { stats } = character.data;
+  const { stats } = $character;
   type TStatKey = keyof typeof stats;
 
   function updateStat(id: TStatKey, newValue: string) {
-    stats[id] = newValue;
+    character.update(c => {
+      return {
+        ...c,
+        stats: {
+          ...c.stats,
+          [id]: newValue
+        }
+      }
+    })
   }
 </script>
 

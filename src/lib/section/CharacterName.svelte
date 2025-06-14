@@ -1,31 +1,37 @@
 <script lang="ts">
-  import { character, newCharacterId } from '../state/character.svelte';
+  import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
   import {
     loadCharacterStorage,
     saveCharacterStorage,
   } from '../storage/characterStorage.svelte';
+  import { v4 } from 'uuid';
 
   function updateTitle() {
-    document.title = character.data.name
-      ? `C&C: ${character.data.name}`
+    document.title = $character.name
+      ? `C&C: ${$character.name}`
       : 'Castles & Crusades';
   }
 
   function saveCharacter() {
-    if (!character.data.name) {
+    if (!$character.name) {
       alert('Please enter a character name before saving.');
       return;
     }
     newCharacterId();
-    saveCharacterStorage(character.data.id, character.data);
+    saveCharacterStorage($character);
     handleInputChange(false);
   }
 
   function setCharacterName(event: Event) {
     handleInputChange();
     const input = event.target as HTMLInputElement;
-    character.data.name = input.value;
+    character.update((c) => {
+      return {
+        ...c,
+        name: input.value,
+      };
+    });
     updateTitle();
   }
 
@@ -34,10 +40,32 @@
     const charParamsId = url.searchParams.get('char');
     if (charParamsId) {
       const newData = loadCharacterStorage(charParamsId);
-      character.data = { ...character.data, ...newData };
+      character.set(newData);
     } else {
       newCharacterId();
     }
+  }
+
+  function newCharacterId() {
+    character.update((c) => {
+      return {
+        ...c,
+        id: v4(),
+      };
+    });
+
+    const searchParams = new URLSearchParams(window.location.search);
+
+    if ($character.id) {
+      searchParams.set('char', $character.id);
+    } else {
+      searchParams.delete('char');
+    }
+    window.history.replaceState(
+      {},
+      '',
+      `${window.location.pathname}?${searchParams}`
+    );
   }
 </script>
 

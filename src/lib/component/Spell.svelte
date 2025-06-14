@@ -36,14 +36,18 @@
     value: string | number
   ) {
     handleInputChange();
-    const spell = character.data.spells.known.find((spell) => spell.id === id);
-    if (spell) {
-      if (inputKey === 'slots' || inputKey === 'level') {
-        spell[inputKey] = Number(value);
-        return;
-      }
-      spell[inputKey] = String(value);
-    }
+    character.update((c) => {
+      const spell = c.spells.known.find((spell) => spell.id === id);
+      return {
+        ...c,
+        spells: {
+          ...c.spells,
+          known: c.spells.known.map((spell) =>
+            spell.id === id ? { ...spell, [inputKey]: value } : spell
+          ),
+        },
+      };
+    });
   }
 
   onMount(() => {

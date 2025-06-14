@@ -3,17 +3,42 @@
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
 
-  const { info } = character.data;
+  const { info } = $character;
   type TInfoKey = keyof typeof info;
 
   function updateInput(id: TInfoKey, newValue: string | number) {
     handleInputChange();
-    if (id === 'charClass' || id === 'race' || id === 'disposition' || id === 'languages' && typeof newValue === 'string') {
-      (info[id] as string) = String(newValue);
-    } else if (id === 'level' || id === 'xp' || id === 'nextLevel' && typeof newValue === 'number') {
-      (info[id] as number) = Number(newValue);
+    if (
+      id === 'charClass' ||
+      id === 'race' ||
+      id === 'disposition' ||
+      (id === 'languages' && typeof newValue === 'string')
+    ) {
+      character.update((c) => {
+        return {
+          ...c,
+          info: {
+            ...c.info,
+            [id]: newValue,
+          },
+        };
+      });
+    } else if (
+      id === 'level' ||
+      id === 'xp' ||
+      (id === 'nextLevel' && typeof newValue === 'number')
+    ) {
+      character.update((c) => {
+        return {
+          ...c,
+          info: {
+            ...c.info,
+            [id]: newValue,
+          },
+        };
+      });
     }
-}
+  }
 </script>
 
 <div

@@ -21,7 +21,7 @@
 </script>
 
 <main>
-  <div class="bg-cover" style={`background-image: url(${character.data.bg})`}>
+  <div class="bg-cover" style={`background-image: url(${$character.bg})`}>
     <div id="Container" class="w-full max-w-[1200px] m-auto px-4">
       <div
         id="Grid"
