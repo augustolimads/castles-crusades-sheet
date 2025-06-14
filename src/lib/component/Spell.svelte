@@ -37,14 +37,20 @@
   ) {
     handleInputChange();
     character.update((c) => {
-      const spell = c.spells.known.find((spell) => spell.id === id);
+      const newSpell = c.spells.known.find((spell) => spell.id === id);
       return {
         ...c,
         spells: {
           ...c.spells,
-          known: c.spells.known.map((spell) =>
-            spell.id === id ? { ...spell, [inputKey]: value } : spell
-          ),
+          known: c.spells.known.map((spell) => {
+            if (spell.id === id) {
+              return {
+                ...spell,
+                [inputKey]: value,
+              };
+            }
+            return spell;
+          }),
         },
       };
     });
@@ -76,8 +82,8 @@
     class="input w-8"
     onkeydown={handlePress}
     placeholder="Level"
-    value={data.level}
     type="number"
+    bind:value={data.level}
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'level', target.value);
@@ -88,8 +94,8 @@
     class="input w-8"
     onkeydown={handlePress}
     placeholder="Slots"
-    value={data.slots}
     type="number"
+    bind:value={data.slots}
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'slots', target.value);
@@ -101,6 +107,7 @@
     onkeydown={handlePress}
     placeholder="Name"
     bind:this={inputRef}
+    bind:value={data.name}
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'name', target.value);
@@ -111,6 +118,7 @@
     class="input w-full"
     onkeydown={handlePress}
     placeholder="Description"
+    bind:value={data.description}
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'description', target.value);

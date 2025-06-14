@@ -7,9 +7,6 @@
   import { v4 } from 'uuid';
   import { handleInputChange } from '../state/appChanges.svelte';
 
-  const { treasure } = $character;
-  const { encumbrance } = $character;
-
   function updateTreasure(id: string, value: number) {
     if (
       id === 'platinum' ||
@@ -17,7 +14,15 @@
       id === 'silver' ||
       id === 'copper'
     ) {
-      treasure[id] = value;
+      character.update((c) => {
+        return {
+          ...c,
+          treasure: {
+            ...c.treasure,
+            [id]: value,
+          },
+        };
+      });
     }
   }
 
@@ -85,28 +90,28 @@
           id="platinum"
           label="Platinum"
           placeholder="Platinum"
-          value={treasure.platinum}
+          value={$character.treasure.platinum}
           updateValue={updateTreasure}
         />
         <ValueInput
           id="gold"
           label="Gold"
           placeholder="Gold"
-          value={treasure.gold}
+          value={$character.treasure.gold}
           updateValue={updateTreasure}
         />
         <ValueInput
           id="silver"
           label="Silver"
           placeholder="Silver"
-          value={treasure.silver}
+          value={$character.treasure.silver}
           updateValue={updateTreasure}
         />
         <ValueInput
           id="copper"
           label="Copper"
           placeholder="Copper"
-          value={treasure.copper}
+          value={$character.treasure.copper}
           updateValue={updateTreasure}
         />
       </div>
@@ -118,14 +123,14 @@
           id="total"
           name="total"
           isNumber
-          value={encumbrance.total}
+          value={$character.encumbrance.total}
           updateInput={updateEncumbrance}
         />
         <TextInput
           id="rating"
           name="Rating"
           isNumber
-          value={encumbrance.rating}
+          value={$character.encumbrance.rating}
           updateInput={updateEncumbrance}
         />
         <TextInput
@@ -133,7 +138,7 @@
           name="3x"
           isNumber
           disabled
-          value={encumbrance.enc3x}
+          value={$character.encumbrance.enc3x}
           updateInput={() => {}}
         />
       </div>

@@ -4,7 +4,12 @@
 
   function updateNotes(e: Event) {
     handleInputChange();
-    $character.notes = (e.target as HTMLTextAreaElement).value;
+    character.update((c) => {
+      return {
+        ...c,
+        notes: (e.target as HTMLInputElement).value,
+      };
+    })
   }
 </script>
 
@@ -12,5 +17,5 @@
   id="notes"
   class="h-[650px] w-full"
   oninput={updateNotes}
-  value={$character.notes}
+  bind:value={$character.notes}
 ></textarea>

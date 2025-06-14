@@ -3,8 +3,7 @@
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
 
-  const { info } = $character;
-  type TInfoKey = keyof typeof info;
+  type TInfoKey = keyof typeof $character.info;
 
   function updateInput(id: TInfoKey, newValue: string | number) {
     handleInputChange();
@@ -45,27 +44,27 @@
   id="Info"
   class="card py-3! col-start-6 col-span-5 row-start-1 row-span-2 grid grid-cols-3 gap-x-2"
 >
-  <TextInput id="charClass" name="Class" value={info.charClass} {updateInput} />
-  <TextInput id="race" name="Race" value={info.race} {updateInput} />
+  <TextInput id="charClass" name="Class" value={$character.info.charClass} {updateInput} />
+  <TextInput id="race" name="Race" value={$character.info.race} {updateInput} />
   <TextInput
     id="disposition"
     name="Disposition"
-    value={info.disposition}
+    value={$character.info.disposition}
     {updateInput}
   />
   <TextInput
     id="level"
     name="Level"
     isNumber
-    value={info.level}
+    value={$character.info.level}
     {updateInput}
   />
-  <TextInput id="xp" name="XP" isNumber value={info.xp} {updateInput} />
+  <TextInput id="xp" name="XP" isNumber value={$character.info.xp} {updateInput} />
   <TextInput
     id="nextLevel"
     name="Next Level"
     isNumber
-    value={info.nextLevel}
+    value={$character.info.nextLevel}
     {updateInput}
   />
 </div>

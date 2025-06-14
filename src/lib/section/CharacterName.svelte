@@ -18,7 +18,11 @@
       alert('Please enter a character name before saving.');
       return;
     }
-    newCharacterId();
+    const url = new URL(window.location.href);
+    const charParamsId = url.searchParams.get('char');
+    if (!charParamsId) {
+      newCharacterId();
+    }
     saveCharacterStorage($character);
     handleInputChange(false);
   }
@@ -41,8 +45,6 @@
     if (charParamsId) {
       const newData = loadCharacterStorage(charParamsId);
       character.set(newData);
-    } else {
-      newCharacterId();
     }
   }
 
@@ -67,6 +69,8 @@
       `${window.location.pathname}?${searchParams}`
     );
   }
+
+  $effect(loadCharacter);
 </script>
 
 <div
@@ -86,5 +90,6 @@
     class="input w-full card border-r-none! rounded-r-none! text-3xl py-2"
     placeholder="Character Name"
     oninput={setCharacterName}
+    bind:value={$character.name}
   />
 </div>

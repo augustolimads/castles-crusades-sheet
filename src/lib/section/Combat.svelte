@@ -6,8 +6,6 @@
   import { v4 } from 'uuid';
   import { handleInputChange } from '../state/appChanges.svelte';
 
-  const { armor } = $character;
-
   function updateArmors(id: string, newValue: string | number) {
     handleInputChange();
     if (
@@ -15,7 +13,7 @@
       id === 'main' ||
       (id === 'shield' && typeof newValue === 'string')
     ) {
-      armor[id] = String(newValue);
+      $character.armor[id] = String(newValue);
     }
   }
 
@@ -58,20 +56,20 @@
       <TextInput
         id="helm"
         name="helm"
-        value={armor.helm}
+        value={$character.armor.helm}
         updateInput={updateArmors}
       />
       <TextInput
         id="shield"
         name="shield"
-        value={armor.shield}
+        value={$character.armor.shield}
         updateInput={updateArmors}
       />
       <div class="col-span-2">
         <TextInput
           id="main"
           name="main"
-          value={armor.main}
+          value={$character.armor.main}
           updateInput={updateArmors}
         />
       </div>

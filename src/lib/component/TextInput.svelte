@@ -18,7 +18,7 @@
     class="input"
     placeholder={name}
     type={isNumber ? 'number' : 'text'}
-    {value}
+    bind:value={value}
     {disabled}
     oninput={(e) => {
       handleInputChange();

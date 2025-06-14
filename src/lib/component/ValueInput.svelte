@@ -19,7 +19,7 @@
     class="input w-full col-span-2"
     {placeholder}
     type="number"
-    {value}
+    bind:value={value}
     {disabled}
     oninput={(event) => {
       handleInputChange();

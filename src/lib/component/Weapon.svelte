@@ -65,6 +65,7 @@
     onkeydown={handlePress}
     placeholder="name"
     bind:this={inputRef}
+    bind:value={data.name}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'name', target.value);
@@ -75,6 +76,7 @@
     class="input w-10"
     onkeydown={handlePress}
     placeholder="BTH"
+    bind:value={data.bth}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'bth', target.value);
@@ -85,6 +87,7 @@
     class="input w-16"
     onkeydown={handlePress}
     placeholder="dmg"
+    bind:value={data.dmg}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'dmg', target.value);

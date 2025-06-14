@@ -1,7 +1,6 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
-  const { hp } = $character;
 </script>
 
 <div id="HP">
@@ -15,11 +14,11 @@
         class="input text-center border-b w-10"
         type="number"
         placeholder="0"
-        value={hp.max}
+        value={$character.hp.max}
         min="0"
         oninput={(event) => {
           handleInputChange();
-          hp.max = Number((event.target as HTMLInputElement).value);
+          $character.hp.max = Number((event.target as HTMLInputElement).value);
         }}
       />
       <span class="text-xs">Max. HP</span>
@@ -28,11 +27,11 @@
       id="CurrentHPValue"
       class="input text-4xl text-center"
       placeholder="0"
-      value={hp.current}
+      value={$character.hp.current}
       type="number"
       oninput={(event) => {
         handleInputChange();
-        hp.current = Number((event.target as HTMLInputElement).value);
+        $character.hp.current = Number((event.target as HTMLInputElement).value);
       }}
     />
     <label for="CurrentHPValue" class="text-xs">Current HP</label>
@@ -46,10 +45,10 @@
       class="input text-center"
       type="number"
       placeholder="0"
-      value={hp.temp}
+      value={$character.hp.temp}
       oninput={(event) => {
         handleInputChange();
-        hp.temp = Number((event.target as HTMLInputElement).value);
+        $character.hp.temp = Number((event.target as HTMLInputElement).value);
       }}
     />
     <label for="TempHPValue" class="text-xs">Temp HP</label>

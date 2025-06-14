@@ -4,25 +4,45 @@
   import ValueInput from '../component/ValueInput.svelte';
 
   import { character } from '../state/character.svelte';
-  const { tracking, info } = $character;
 
   function updateLanguage(id = 'languages', value: string) {
     if (id === 'languages') {
-      info[id] = value;
+      character.update((c) => {
+        return  {
+          ...c,
+          languages: value,
+        };
+      })
     }
   }
 
-  type TTrackingKey = keyof typeof tracking;
+  type TTrackingKey = keyof typeof $character.tracking;
 
   function updateValue(id: string, value: number) {
     if (id === 'water' || id === 'food' || id === 'arrows' || id === 'bolts') {
-      tracking[id] = value;
+      character.update((c) => {
+        return  {
+          ...c,
+          tracking: {
+            ...c.tracking,
+            [id]: value,
+          },
+        };
+      })
     }
   }
 
   function updateConditions(id: string, value: string) {
     if (id === 'conditions') {
-      tracking[id] = value;
+      character.update((c) => {
+        return  {
+          ...c,
+          tracking: {
+            ...c.tracking,
+            [id]: value,
+          },
+        };
+      })
     }
   }
 </script>
@@ -34,7 +54,7 @@
   <TextArea
     id="languages"
     name="Languages"
-    value={info.languages}
+    value={$character.info.languages}
     updateInput={updateLanguage}
   />
   <hr />
@@ -43,34 +63,34 @@
     id="water"
     label="Water"
     placeholder="Water"
-    value={tracking.water}
+    value={$character.tracking.water}
     {updateValue}
   />
   <ValueInput
     id="food"
     label="Food"
     placeholder="Food"
-    value={tracking.food}
+    value={$character.tracking.food}
     {updateValue}
   />
   <ValueInput
     id="arrows"
     label="Arrows"
     placeholder="Arrows"
-    value={tracking.arrows}
+    value={$character.tracking.arrows}
     {updateValue}
   />
   <ValueInput
     id="bolts"
     label="Bolts"
     placeholder="Bolts"
-    value={tracking.bolts}
+    value={$character.tracking.bolts}
     {updateValue}
   />
   <TextArea
     id="conditions"
     name="Conditions"
-    value={tracking.conditions}
+    value={$character.tracking.conditions}
     updateInput={updateConditions}
   />
 </div>

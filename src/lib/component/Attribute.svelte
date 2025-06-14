@@ -63,7 +63,7 @@
       id={id + 'Score'}
       class="text-4xl py-3 text-center my-2 input"
       placeholder="10"
-      value={score.value}
+      bind:value={score.value}
       oninput={(e: Event) => {
         handleInputChange();
         const target = e.target as HTMLInputElement;

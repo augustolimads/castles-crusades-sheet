@@ -1,7 +1,6 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
-  const { ac } = $character;
 </script>
 
 <div
@@ -12,11 +11,11 @@
     <input
       id="ACHeadValue"
       class="border-b text-center input"
-      value={ac.head}
+      value={$character.ac.head}
       type="number"
       oninput={(event) => {
         handleInputChange();
-        ac.head = Number((event.target as HTMLInputElement).value);
+        $character.ac.head = Number((event.target as HTMLInputElement).value);
       }}
     />
     <label for="ACHeadValue">Head</label>
@@ -25,11 +24,11 @@
     <input
       id="ACMainValue"
       class="text-4xl text-center input flex flex-1"
-      value={ac.main}
+      value={$character.ac.main}
       type="number"
       oninput={(event) => {
         handleInputChange();
-        ac.main = Number((event.target as HTMLInputElement).value);
+        $character.ac.main = Number((event.target as HTMLInputElement).value);
       }}
     />
     <label for="ACMainValue">AC</label>

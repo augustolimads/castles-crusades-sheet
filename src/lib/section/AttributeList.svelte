@@ -2,9 +2,7 @@
   import Attribute from '../component/Attribute.svelte';
   import { character } from '../state/character.svelte';
 
-  const { attr } = $character;
-
-  type TAttrKey = keyof typeof attr;
+  type TAttrKey = keyof typeof $character.attr;
 
   function updateAttr(id: TAttrKey, newValue: string) {
     if (
@@ -15,7 +13,7 @@
       id === 'wis' ||
       id === 'cha'
     ) {
-      attr[id].value = Number(newValue);
+      $character.attr[id].value = Number(newValue);
     }
   }
 
@@ -28,7 +26,7 @@
       id === 'wis' ||
       id === 'cha'
     ) {
-      attr[id].isPrimary = newValue;
+      $character.attr[id].isPrimary = newValue;
     }
   }
 </script>
@@ -39,42 +37,42 @@
   <Attribute
     id="str"
     name="Strength"
-    score={attr.str}
+    score={$character.attr.str}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="dex"
     name="Dexterity"
-    score={attr.dex}
+    score={$character.attr.dex}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="con"
     name="Constitution"
-    score={attr.con}
+    score={$character.attr.con}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="int"
     name="Intelligence"
-    score={attr.int}
+    score={$character.attr.int}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="wis"
     name="Wisdom"
-    score={attr.wis}
+    score={$character.attr.wis}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="cha"
     name="Charisma"
-    score={attr.cha}
+    score={$character.attr.cha}
     {updateAttr}
     {togglePrimary}
   />
