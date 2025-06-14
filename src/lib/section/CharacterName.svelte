@@ -121,7 +121,7 @@
     </div>
 
     <div class="flex gap-2 flex-1">
-      <a href="/" class="btn-xs">New</a>
+      <a href={import.meta.env.BASE_URL} class="btn-xs">New</a>
       <button class="btn-xs" onclick={loadAllCharacters}>Load</button>
       <button class="btn-xs" onclick={saveCharacter}>Save</button>
     </div>
