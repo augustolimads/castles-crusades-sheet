@@ -8,12 +8,11 @@
   import Portrait from './lib/section/Portrait.svelte';
   import StatList from './lib/section/StatList.svelte';
   import Footer from './lib/section/Footer.svelte';
-  import { character, getSearchParamsId } from './lib/state/character.svelte';
+  import { character } from './lib/state/character.svelte';
   import Debugger from './lib/component/Debugger.svelte';
   import { handleBeforeUnload } from './lib/state/appChanges.svelte';
 
   $effect(() => {
-    getSearchParamsId()
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);

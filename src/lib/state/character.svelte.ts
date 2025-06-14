@@ -1,4 +1,4 @@
-import { loadCharacterStorage } from "../storage/characterStorage.svelte"
+import { v4 } from "uuid"
 
 interface IWeapon {
     id: string
@@ -126,10 +126,17 @@ export function setCharacter(data: any) {
     character.data = data
 }
 
-export function getSearchParamsId() {
-    const url = new URL(window.location.href);
-    const charParams = url.searchParams.get('char');
-    if (charParams) {
-        character.data = loadCharacterStorage(charParams);
+export function newCharacterId() {
+    character.data.id = v4();
+    const searchParams = new URLSearchParams(window.location.search);
+    if (character.data.id) {
+        searchParams.set('char', character.data.id);
+    } else {
+        searchParams.delete('char');
     }
+    window.history.replaceState(
+        {},
+        '',
+        `${window.location.pathname}?${searchParams}`
+    );
 }
