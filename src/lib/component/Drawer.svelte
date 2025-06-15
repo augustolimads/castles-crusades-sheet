@@ -11,6 +11,7 @@
   aria-modal="true"
 >
   <div
+    id="drawer-overlay"
     class="fixed inset-0 bg-gray-950/75 transition-opacity"
     aria-hidden="true"
   ></div>
@@ -18,13 +19,13 @@
   <div class="fixed inset-0 overflow-hidden">
     <div class="absolute inset-0 overflow-hidden">
       <div
-        class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16 transform transition-transform duration-300 ease-in-out"
+        class="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pr-10 sm:pr-16 transform transition-transform duration-300 ease-in-out"
         class:translate-x-0={open}
-        class:translate-x-full={!open}
+        class:-translate-x-full={!open}
       >
         <div class="pointer-events-auto relative w-screen max-w-md">
           <div
-            class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4"
+            class="absolute top-0 right-0 -ml-8 flex pt-4 pl-2 sm:-mr-10 sm:pl-4"
           >
             <button
               type="button"
@@ -52,7 +53,7 @@
           </div>
 
           <div
-            class="flex h-full flex-col overflow-y-auto bg-gray-950/98 border border-r-0 border-white py-6 shadow-xl rounded-l-2xl text-white"
+            class="flex h-full flex-col overflow-y-auto bg-gray-950/98 border border-l-0 border-white py-6 shadow-xl rounded-r-2xl text-white"
           >
             <div class="px-4 sm:px-6">
               <h2 class="text-base font-semibold" id="drawer-title">

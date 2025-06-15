@@ -13,6 +13,10 @@
     @apply border border-white rounded-2xl bg-gray-950/70 px-3 py-1 text-white text-center;
 }
 
+.card-xs {
+    @apply border border-white rounded-xl bg-gray-950/70 px-2 py-0.5 text-white text-center;
+}
+
 .input {
     @apply hover:bg-sky-300/20 focus:bg-sky-300/20 font-extrabold;
 }

@@ -57,11 +57,11 @@
 </script>
 
 <div {id}>
-  <div class="card flex flex-col relative">
-    <label for={id + 'Score'} class="text-xs">{name}</label>
+  <div class="card-xs flex flex-col relative">
+    <label for={id + 'Score'} class="text-xs text-center">{name}</label>
     <input
       id={id + 'Score'}
-      class="text-4xl py-3 text-center my-2 input"
+      class="text-4xl pb-3.5 text-center my-1 input"
       placeholder="10"
       bind:value={score.value}
       oninput={(e: Event) => {
@@ -76,7 +76,7 @@
     <button
       class={[
         'cursor-pointer badge w-10',
-        { 'bg-emerald-500!': score.isPrimary },
+        { 'bg-rose-500!': score.isPrimary },
       ]}
       onclick={() => {
         handleInputChange();

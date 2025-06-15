@@ -1,4 +1,6 @@
 <script>
+  import { X } from "@lucide/svelte";
+
     let {id, isHovered} = $props()
 </script>
 

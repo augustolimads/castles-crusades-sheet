@@ -1,11 +1,11 @@
 <script>
   import CharListItem from './CharListItem.svelte';
 
-  let { characters } = $props();
+  let { characters, handleOpenDrawer } = $props();
 </script>
 
-<div>
+<div class="flex flex-col gap-4 h-[45rem] overflow-y-auto">
   {#each characters as character (character.id)}
-    <CharListItem {character} />
+    <CharListItem {character} {handleOpenDrawer} />
   {/each}
 </div>

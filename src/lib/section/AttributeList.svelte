@@ -55,7 +55,7 @@
 </script>
 
 <div
-  class="col-start-1 row-start-1 row-span-12 flex flex-col gap-7 pb-3"
+  class="flex flex-col gap-10 justify-between"
 >
   <Attribute
     id="str"

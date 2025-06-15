@@ -10,6 +10,7 @@
   import Footer from './lib/section/Footer.svelte';
   import { character } from './lib/state/character.svelte';
   import { handleBeforeUnload } from './lib/state/appChanges.svelte';
+  import Menu from './lib/section/Menu.svelte';
 
   $effect(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -22,11 +23,15 @@
 <main>
   <div class="bg-cover" style={`background-image: url(${$character.bg})`}>
     <div id="Container" class="w-full max-w-[1200px] m-auto px-4">
-      <div
-        id="Grid"
-        class="grid grid-cols-10 character-grid-rows gap-x-3 pt-4"
-      >
-        <AttributeList />
+      <div id="Grid" class="grid grid-cols-10 character-grid-rows gap-x-3 pt-4">
+        <div class="col-start-1 row-start-1 row-span-1">
+          <Menu />
+        </div>
+        <div
+          class="col-start-1 row-start-3 pb-1 flex flex-col justify-between pt-3"
+        >
+          <AttributeList />
+        </div>
         <CharacterName />
         <Info />
         <StatList />
