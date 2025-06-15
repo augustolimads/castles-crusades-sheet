@@ -21,7 +21,7 @@
 
 <div
   id="StatList"
-  class="col-start-2 col-span-3 row-start-3 my-4 flex flex-col gap-4"
+  class="flex flex-col gap-4"
 >
   <div class="grid grid-cols-2 gap-4">
     <Ac />

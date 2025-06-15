@@ -16,8 +16,6 @@
     }
   }
 
-  type TTrackingKey = keyof typeof $character.tracking;
-
   function updateValue(id: string, value: number) {
     if (id === 'water' || id === 'food' || id === 'arrows' || id === 'bolts') {
       character.update((c) => {
@@ -48,7 +46,7 @@
 </script>
 
 <div
-  class="mt-4 mb-4 card col-start-9 col-span-2 row-start-8 row-span-6 flex flex-col gap-2"
+  class="card flex flex-col gap-2"
 >
   <Title name="Languages" />
   <TextArea

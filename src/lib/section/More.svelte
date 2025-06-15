@@ -28,7 +28,7 @@
 
 <div
   id="More"
-  class="card overflow-hidden col-start-5 col-span-4 row-start-3 row-span-11 my-4"
+  class="card overflow-hidden h-full"
 >
   <Tabs {tabs} {selectedId} {handleSelected} />
   {#if selectedId === 'inventory'}

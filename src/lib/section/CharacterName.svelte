@@ -70,14 +70,10 @@
     );
   }
   $effect(loadCharacter);
-</script> 
+</script>
 
-<div
-  class="row-start-1 col-start-2 col-span-4 row-span-2 self-center -mr-3.5"
->
-  <dir
-    class="flex items-center gap-1 justify-between"
-  >
+<div>
+  <dir class="flex items-center gap-1 justify-between">
     <div class="flex-1 pl-1">
       <svg width="188" height="23" xmlns="http://www.w3.org/2000/svg">
         <text

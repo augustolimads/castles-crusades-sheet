@@ -47,39 +47,35 @@
   }
 </script>
 
-<div
-  class="card mb-4 overflow-hidden col-start-2 col-span-3 row-start-7 row-span-7"
->
-  <div class="flex flex-col gap-2 h-full">
-    <Title name="Armors" />
-    <div class="grid grid-cols-2 gap-x-1">
+<div class="card overflow-hidden flex flex-col gap-2 h-full">
+  <Title name="Armors" />
+  <div class="grid grid-cols-2 gap-x-1">
+    <TextInput
+      id="helm"
+      name="helm"
+      value={$character.armor.helm}
+      updateInput={updateArmors}
+    />
+    <TextInput
+      id="shield"
+      name="shield"
+      value={$character.armor.shield}
+      updateInput={updateArmors}
+    />
+    <div class="col-span-2">
       <TextInput
-        id="helm"
-        name="helm"
-        value={$character.armor.helm}
+        id="main"
+        name="main"
+        value={$character.armor.main}
         updateInput={updateArmors}
       />
-      <TextInput
-        id="shield"
-        name="shield"
-        value={$character.armor.shield}
-        updateInput={updateArmors}
-      />
-      <div class="col-span-2">
-        <TextInput
-          id="main"
-          name="main"
-          value={$character.armor.main}
-          updateInput={updateArmors}
-        />
-      </div>
     </div>
-    <hr />
-    <Title name="Weapons" action={newWeapon} />
-    <div class="overflow-y-auto h-[256px] pt-1 flex flex-col gap-2">
-      {#each $character.weapons as data (data.id)}
-        <Weapon {newWeapon} {deleteWeapon} {data} />
-      {/each}
-    </div>
+  </div>
+  <hr />
+  <Title name="Weapons" action={newWeapon} />
+  <div class="overflow-y-auto h-[256px] pt-1 flex flex-col gap-2">
+    {#each $character.weapons as data (data.id)}
+      <Weapon {newWeapon} {deleteWeapon} {data} />
+    {/each}
   </div>
 </div>

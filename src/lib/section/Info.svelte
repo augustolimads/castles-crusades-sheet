@@ -42,7 +42,7 @@
 
 <div
   id="Info"
-  class="card py-3! col-start-6 col-span-5 row-start-1 row-span-2 grid grid-cols-3 gap-x-2"
+  class="card py-3! grid grid-cols-3 gap-x-2"
 >
   <TextInput id="charClass" name="Class" value={$character.info.charClass} {updateInput} />
   <TextInput id="race" name="Race" value={$character.info.race} {updateInput} />

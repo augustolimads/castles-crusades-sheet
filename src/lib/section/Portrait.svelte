@@ -12,7 +12,7 @@
   }
 </script>
 
-<div class="mt-4 col-start-9 col-span-2 row-start-3 row-span-4">
+<div id="portrait">
   <div class="border rounded-2xl overflow-hidden relative">
     <img
       src={$character.portrait}
