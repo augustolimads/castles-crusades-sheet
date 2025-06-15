@@ -10,7 +10,6 @@
   import Footer from './lib/section/Footer.svelte';
   import { character } from './lib/state/character.svelte';
   import { handleBeforeUnload } from './lib/state/appChanges.svelte';
-  import Debugger from './lib/component/Debugger.svelte';
 
   $effect(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -25,7 +24,7 @@
     <div id="Container" class="w-full max-w-[1200px] m-auto px-4">
       <div
         id="Grid"
-        class="grid grid-cols-10 grid-rows-12 h-screen gap-x-4 pt-4"
+        class="grid grid-cols-10 character-grid-rows gap-x-3 pt-4"
       >
         <AttributeList />
         <CharacterName />

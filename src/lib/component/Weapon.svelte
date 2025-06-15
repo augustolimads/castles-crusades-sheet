@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { GripVertical } from '@lucide/svelte';
+  import { CircleX, DeleteIcon, GripVertical, LucideDelete, X } from '@lucide/svelte';
   import { onMount } from 'svelte';
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
@@ -48,15 +48,15 @@
   role="button"
   tabindex="0"
   class="flex gap-2"
-  onmouseover={handleMouseOver}
+  onmouseenter={handleMouseOver}
   onfocus={() => void 0}
-  onmouseout={handleMouseOut}
+  onmouseleave={handleMouseOut}
   onblur={() => void 0}
   draggable
 >
-  <button class="w-8 cursor-grab">
+  <button class="w-12 cursor-pointer" onclick={() => deleteWeapon(data.id)}>
     {#if isHovered}
-      <GripVertical size={15} />
+      <X size={12} />
     {/if}
   </button>
   <input

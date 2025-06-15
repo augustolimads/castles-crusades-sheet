@@ -97,12 +97,12 @@
 </script>
 
 <div
-  class="row-start-1 col-start-2 col-span-4 row-span-2 self-center -mr-4 relative"
+  class="row-start-1 col-start-2 col-span-4 row-span-2 self-center -mr-4"
 >
   <dir
-    class="absolute -top-7 left-0 -right-10 flex items-center gap-2 justify-between"
+    class="flex items-center gap-1 justify-between"
   >
-    <div class="flex-1">
+    <div class="flex-1 pl-1">
       <svg width="188" height="23" xmlns="http://www.w3.org/2000/svg">
         <text
           x="0"
@@ -120,7 +120,7 @@
       </svg>
     </div>
 
-    <div class="flex gap-2 flex-1">
+    <div class="flex justify-end gap-0.5 flex-1">
       <a href={import.meta.env.BASE_URL} class="btn-xs">New</a>
       <button class="btn-xs" onclick={loadAllCharacters}>Load</button>
       <button class="btn-xs" onclick={saveCharacter}>Save</button>

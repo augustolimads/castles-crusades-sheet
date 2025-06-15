@@ -48,7 +48,7 @@
 </script>
 
 <div
-  class="card mt-12 mb-4 overflow-hidden col-start-2 col-span-3 row-start-6 row-span-7"
+  class="card mb-4 overflow-hidden col-start-2 col-span-3 row-start-7 row-span-7"
 >
   <div class="flex flex-col gap-2 h-full">
     <Title name="Armors" />

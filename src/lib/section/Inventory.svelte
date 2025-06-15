@@ -62,7 +62,7 @@
 <div id="Inventory" class="flex flex-col gap-4 h-full pb-12 justify-between">
   <div class="flex flex-col gap-2 flex-1">
     <Title name="Items" action={newItem} />
-    <div class="flex flex-col gap-2 overflow-y-auto h-[420px] pt-1">
+    <div class="flex flex-col gap-2 overflow-y-auto h-[22rem] pt-1">
       {#each $character.items as data (data.id)}
         <Item {data} {newItem} />
       {/each}

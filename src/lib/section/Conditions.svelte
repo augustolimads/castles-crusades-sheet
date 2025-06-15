@@ -48,7 +48,7 @@
 </script>
 
 <div
-  class="mt-8 mb-4 card col-start-9 col-span-2 row-start-7 row-span-6 flex flex-col gap-2"
+  class="mt-4 mb-4 card col-start-9 col-span-2 row-start-8 row-span-6 flex flex-col gap-2"
 >
   <Title name="Languages" />
   <TextArea
