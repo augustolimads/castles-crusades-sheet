@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Menu } from '@lucide/svelte';
-  import Drawer from '../component/Drawer.svelte';
   import CharList from '../component/CharList.svelte';
+  import Drawer from '../component/Drawer.svelte';
   import { formatViewAllCharacterStorage } from '../storage/characterStorage.svelte';
 
   let openDrawer = $state(false);
@@ -28,7 +28,7 @@
   }
 </script>
 
-<div class="text-white flex justify-center text-center w-full pt-4 lg:py-8">
+<div class="text-white flex justify-center text-center w-full pt-4 md:py-8">
   <button
     class="flex cursor-pointer px-2 py-1.5"
     onclick={() => handleOpenDrawer(true)}

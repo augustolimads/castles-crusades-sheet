@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { character } from '../state/character.svelte';
+  import { v4 } from 'uuid';
   import { handleInputChange } from '../state/appChanges.svelte';
+  import { character } from '../state/character.svelte';
   import {
     loadCharacterStorage,
     saveCharacterStorage,
   } from '../storage/characterStorage.svelte';
-  import { v4 } from 'uuid';
 
   function updateTitle() {
     document.title = $character.name
@@ -92,7 +92,7 @@
       </svg>
     </div>
 
-    <div class="flex justify-end gap-0.5 flex-1 pr-2 lg:pr-0">
+    <div class="flex justify-end gap-0.5 flex-1 pr-2 md:pr-0">
       <button class="btn-xs" onclick={saveCharacter}>Save</button>
     </div>
   </dir>

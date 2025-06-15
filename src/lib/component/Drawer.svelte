@@ -25,7 +25,7 @@
       >
         <div class="pointer-events-auto relative w-screen max-w-md">
           <div
-            class="absolute top-0 right-0 lg:-ml-8 flex pt-4 pl-2 -mr-8 sm:-mr-10 sm:pl-4"
+            class="absolute top-0 right-0 md:-ml-8 flex pt-4 pl-2 -mr-8 sm:-mr-10 sm:pl-4"
           >
             <button
               type="button"

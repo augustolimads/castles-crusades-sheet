@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Inventory from './Inventory.svelte';
   import Tabs from '../component/Tabs.svelte';
-  import Spells from './Spells.svelte';
-  import Notes from './Notes.svelte';
   import Combat from './Combat.svelte';
+  import Inventory from './Inventory.svelte';
+  import Notes from './Notes.svelte';
+  import Spells from './Spells.svelte';
 
   let tabs = [
     {

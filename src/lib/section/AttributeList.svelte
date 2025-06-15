@@ -55,7 +55,7 @@
 </script>
 
 <div
-  class="grid grid-cols-3 gap-y-5 gap-x-2 lg:flex lg:flex-col lg:gap-10 lg:justify-between"
+  class="grid grid-cols-3 gap-y-5 gap-x-2 md:flex md:flex-col md:gap-10 md:justify-between"
 >
   <Attribute
     id="str"
