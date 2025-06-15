@@ -28,7 +28,7 @@
   }
 </script>
 
-<div class="text-white flex justify-center text-center w-full py-8">
+<div class="text-white flex justify-center text-center w-full pt-4 lg:py-8">
   <button
     class="flex cursor-pointer px-2 py-1.5"
     onclick={() => handleOpenDrawer(true)}

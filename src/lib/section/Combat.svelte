@@ -47,7 +47,7 @@
   }
 </script>
 
-<div class="card overflow-hidden flex flex-col gap-2 h-full">
+<div class="overflow-hidden flex flex-col gap-2">
   <Title name="Armors" />
   <div class="grid grid-cols-2 gap-x-1">
     <TextInput

@@ -92,7 +92,7 @@
       </svg>
     </div>
 
-    <div class="flex justify-end gap-0.5 flex-1">
+    <div class="flex justify-end gap-0.5 flex-1 pr-2 lg:pr-0">
       <button class="btn-xs" onclick={saveCharacter}>Save</button>
     </div>
   </dir>

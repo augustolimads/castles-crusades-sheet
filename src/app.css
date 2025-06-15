@@ -38,5 +38,11 @@
 }
 
 .character-grid-rows {
-    grid-template-rows: repeat(12, 4rem)
+    grid-template-rows: repeat(20, 4rem)
+}
+
+@media (min-width: 1024px) {
+    .character-grid-rows {
+        grid-template-rows: repeat(12, 4rem)
+    }
 }

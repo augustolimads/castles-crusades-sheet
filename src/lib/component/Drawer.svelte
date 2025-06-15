@@ -25,7 +25,7 @@
       >
         <div class="pointer-events-auto relative w-screen max-w-md">
           <div
-            class="absolute top-0 right-0 -ml-8 flex pt-4 pl-2 sm:-mr-10 sm:pl-4"
+            class="absolute top-0 right-0 lg:-ml-8 flex pt-4 pl-2 -mr-8 sm:-mr-10 sm:pl-4"
           >
             <button
               type="button"
@@ -53,14 +53,14 @@
           </div>
 
           <div
-            class="flex h-full flex-col overflow-y-auto bg-gray-950/98 border border-l-0 border-white py-6 shadow-xl rounded-r-2xl text-white"
+            class="flex h-full flex-col bg-gray-950/98 border border-l-0 border-white py-6 shadow-xl rounded-r-2xl text-white"
           >
             <div class="px-4 sm:px-6">
               <h2 class="text-base font-semibold" id="drawer-title">
                 {title}
               </h2>
             </div>
-            <div class="relative mt-6 flex-1 px-4 sm:px-6">
+            <div class="relative mt-6 flex-1 px-4 sm:px-6 overflow-y-auto">
               {@render children()}
             </div>
           </div>
