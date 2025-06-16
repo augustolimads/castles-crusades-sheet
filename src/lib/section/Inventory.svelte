@@ -29,12 +29,13 @@
   function updateEncumbrance(id: string, value: number | string) {
     if (id === 'total' || (id === 'rating' && typeof value === 'number')) {
       character.update((c) => {
+        const newRating = (id === 'rating') ? (Number(value) * 3) : (c.encumbrance.rating * 3);
         return {
           ...c,
           encumbrance: {
             ...c.encumbrance,
-            [id]: value,
-            enc3x: c.encumbrance.rating * 3,
+            [id]: Number(value),
+            enc3x: newRating,
           },
         };
       });
@@ -63,6 +64,12 @@
   <div class="flex flex-col gap-2 flex-1">
     <Title name="Items" action={newItem} />
     <div class="flex flex-col gap-2 overflow-y-auto h-[22rem] pt-1">
+      <div class="flex gap-8 text-left pl-8 pr-7 text-xs">
+        <span>Qtt</span>
+        <span class="flex-1">Name</span>
+        <span>EV</span>
+      </div>
+
       {#each $character.items as data (data.id)}
         <Item {data} {newItem} />
       {/each}

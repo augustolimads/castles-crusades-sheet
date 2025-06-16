@@ -81,7 +81,7 @@
     id="level"
     class="input w-8"
     onkeydown={handlePress}
-    placeholder="Level"
+    placeholder="Lv"
     type="number"
     bind:value={data.level}
     oninput={(event) => {
@@ -93,7 +93,7 @@
     id="slots"
     class="input w-8"
     onkeydown={handlePress}
-    placeholder="Slots"
+    placeholder="Slot"
     type="number"
     bind:value={data.slots}
     oninput={(event) => {
@@ -111,17 +111,6 @@
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'name', target.value);
-    }}
-  />
-  <input
-    id="spellDesc"
-    class="input w-full"
-    onkeydown={handlePress}
-    placeholder="Description"
-    bind:value={data.description}
-    oninput={(event) => {
-      const target = event.target as HTMLInputElement;
-      updateSpell(data.id, 'description', target.value);
     }}
   />
 </div>

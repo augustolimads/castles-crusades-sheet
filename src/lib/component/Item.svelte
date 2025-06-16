@@ -49,10 +49,12 @@
     handleInputChange();
     character.update((c) => {
       const item = $character.items.find((item) => item.id === id);
+      const numberValue = Number(value);
+      const resultValue = (inputKey === 'qtd' || inputKey === 'ev') ? numberValue : value;
       return  {
         ...c,
         items: c.items.map((item) =>
-          item.id === id ? { ...item, [inputKey]: value } : item
+          item.id === id ? { ...item, [inputKey]: resultValue } : item
         ),
       };
     })
@@ -105,19 +107,9 @@
     }}
   />
   <input
-    id="description"
-    class="input w-full"
-    onkeydown={handlePress}
-    placeholder="Description"
-    bind:value={data.description}
-    oninput={(e) => {
-      const target = e.target as HTMLInputElement;
-      updateItem(data.id, 'description', target.value);
-    }}
-  />
-  <input
     id="ev"
     class="input w-10"
+    type="number"
     onkeydown={handlePress}
     placeholder="EV"
     bind:value={data.ev}

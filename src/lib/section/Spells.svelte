@@ -148,6 +148,11 @@
   <hr />
   <Title name="Spells" action={newSpell} />
   <div class="overflow-y-auto h-[500px] flex flex-col gap-2 pt-1">
+    <div class="flex gap-7 text-left pl-10 text-xs">
+      <span>Lv</span>
+      <span>Slot</span>
+      <span class="flex-1">Name</span>
+    </div>
     {#each $character.spells.known as data (data.id)}
       <Spell {newSpell} {deleteSpell} {data} />
     {/each}

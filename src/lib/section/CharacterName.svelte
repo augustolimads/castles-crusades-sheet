@@ -45,6 +45,7 @@
     if (charParamsId) {
       const newData = loadCharacterStorage(charParamsId);
       character.set(newData);
+      updateTitle();
     }
   }
 

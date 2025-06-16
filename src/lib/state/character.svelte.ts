@@ -65,7 +65,7 @@ export const character = writable({
     },
     stats: {
         init: '+0',
-        speed: '60',
+        speed: '30',
         bth: '+0',
     },
     info: {
