@@ -54,7 +54,7 @@
 </script>
 
 <div {id}>
-  <div class="card-xs flex flex-col relative">
+  <div class={["card-xs flex flex-col relative", {"border-yellow-600!": score.isPrimary}]}>
     <label for={id + 'Score'} class="text-xs text-center">{name}</label>
     <input
       id={id + 'Score'}
@@ -71,7 +71,7 @@
       min="1"
       max="99"
     />
-    <button class="badge w-10">{attrMod}</button>
+    <button class={["badge w-10", {"border-yellow-600!": score.isPrimary}]}>{attrMod}</button>
     <button
       title="Toggle Primary Attribute"
       aria-label="Toggle Primary Attribute"
