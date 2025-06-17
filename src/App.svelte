@@ -11,8 +11,9 @@
   import { character } from './lib/state/character.svelte';
   import { handleBeforeUnload } from './lib/state/appChanges.svelte';
   import Menu from './lib/section/Menu.svelte';
+  import { onMount } from 'svelte';
 
-  $effect(() => {
+  onMount(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);

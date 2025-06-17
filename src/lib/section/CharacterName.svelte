@@ -6,6 +6,7 @@
     loadCharacterStorage,
     saveCharacterStorage,
   } from '../storage/characterStorage.svelte';
+  import { onMount } from 'svelte';
 
   function updateTitle() {
     document.title = $character.name
@@ -70,7 +71,7 @@
       `${window.location.pathname}?${searchParams}`
     );
   }
-  $effect(loadCharacter);
+  onMount(loadCharacter);
 </script>
 
 <div>
