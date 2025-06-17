@@ -13,11 +13,10 @@
   }
 
   let { id, name, score, updateAttr, togglePrimary }: Props = $props();
-
   let attrMod = $state('0');
 
-  function handleAttributeMod() {
-    const scoreValue = Number(score.value);
+  function handleAttributeMod(value: number) {
+    const scoreValue = Number(value);
     if (scoreValue === 1) {
       attrMod = '-4';
       return;
@@ -52,8 +51,6 @@
     }
     attrMod = '0';
   }
-
-  $effect(handleAttributeMod);
 </script>
 
 <div {id}>
@@ -68,6 +65,7 @@
         handleInputChange();
         const target = e.target as HTMLInputElement;
         updateAttr(id, target.value);
+        handleAttributeMod(Number(target.value))
       }}
       type="number"
       min="1"

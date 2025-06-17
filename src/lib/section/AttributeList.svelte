@@ -37,7 +37,6 @@
       id === 'wis' ||
       id === 'cha'
     ) {
-      console.log('togglePrimary', id, newValue);
       character.update((c) => {
         return {
           ...c,
@@ -45,7 +44,7 @@
             ...c.attr,
             [id]: {
               ...c.attr[id],
-              isPrimary: newValue,
+              isPrimary: Boolean(newValue),
             },
           },
         };
