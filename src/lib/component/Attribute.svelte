@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { handleInputChange } from "../state/appChanges.svelte";
+  import { handleInputChange } from '../state/appChanges.svelte';
 
   interface Props {
     id: string;
@@ -65,21 +65,25 @@
         handleInputChange();
         const target = e.target as HTMLInputElement;
         updateAttr(id, target.value);
-        handleAttributeMod(Number(target.value))
+        handleAttributeMod(Number(target.value));
       }}
       type="number"
       min="1"
       max="99"
     />
+    <button class="badge w-10">{attrMod}</button>
     <button
+      title="Toggle Primary Attribute"
+      aria-label="Toggle Primary Attribute"
       class={[
-        'cursor-pointer badge w-10',
-        { 'bg-rose-500!': score.isPrimary },
+        'absolute -left-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex justify-center align-center cursor-pointer bg-white',
+        { 'bg-yellow-600': score.isPrimary },
       ]}
       onclick={() => {
         handleInputChange();
         togglePrimary(id, !score.isPrimary);
-      }}>{attrMod}</button
+      }}
     >
+    </button>
   </div>
 </div>

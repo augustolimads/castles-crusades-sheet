@@ -6,7 +6,7 @@
     loadCharacterStorage,
     saveCharacterStorage,
   } from '../storage/characterStorage.svelte';
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
 
   function updateTitle() {
     document.title = $character.name
@@ -71,10 +71,14 @@
       `${window.location.pathname}?${searchParams}`
     );
   }
+
+  let intervalId: number;
+
   onMount(() => {
     loadCharacter();
     if ($character.name) {
-      addEventListener('beforeunload', saveCharacter);
+      intervalId = setInterval(saveCharacter, 5 * 60 * 1000)
+      saveCharacter()
     }
     return () => {
       if ($character.name) {
@@ -82,6 +86,11 @@
       }
     };
   });
+
+  onDestroy(() => {
+    saveCharacter()
+    clearInterval(intervalId)
+  })
 </script>
 
 <div>
@@ -113,6 +122,7 @@
     class="input w-full card border-r-none! rounded-r-none! text-3xl py-2"
     placeholder="Character Name"
     oninput={setCharacterName}
+    onchange={saveCharacter}
     bind:value={$character.name}
   />
 </div>

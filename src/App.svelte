@@ -11,13 +11,14 @@
   import { character } from './lib/state/character.svelte';
   import { handleBeforeUnload } from './lib/state/appChanges.svelte';
   import Menu from './lib/section/Menu.svelte';
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
 
   onMount(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
+  });
+
+  onDestroy(() => {
+    window.removeEventListener('beforeunload', handleBeforeUnload);
   });
 </script>
 
