@@ -71,7 +71,17 @@
       `${window.location.pathname}?${searchParams}`
     );
   }
-  onMount(loadCharacter);
+  onMount(() => {
+    loadCharacter();
+    if ($character.name) {
+      addEventListener('beforeunload', saveCharacter);
+    }
+    return () => {
+      if ($character.name) {
+        window.removeEventListener('beforeunload', saveCharacter);
+      }
+    };
+  });
 </script>
 
 <div>
