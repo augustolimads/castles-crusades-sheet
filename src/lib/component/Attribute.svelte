@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
 
   interface Props {
@@ -14,6 +15,7 @@
 
   let { id, name, score, updateAttr, togglePrimary }: Props = $props();
   let attrMod = $state('0');
+  let attrCheckDesc =  $state('');
 
   function handleAttributeMod(value: number) {
     const scoreValue = Number(value);
@@ -51,6 +53,29 @@
     }
     attrMod = '0';
   }
+
+  function handleAttributeChecks(name:string) {
+    switch(name) {
+      case 'Strength':
+        return attrCheckDesc = 'Paralysis & Constriction'
+      case 'Dexterity':
+        return attrCheckDesc = 'Breath weapon & Traps'
+      case 'Constitution':
+        return attrCheckDesc = 'Disease, Energy drain & Poison'
+      case 'Intelligence':
+        return attrCheckDesc = 'Arcane magic & Illusion'
+      case 'Wisdom':
+        return attrCheckDesc = 'Death attack, charm & fear'
+      case 'Charisma':
+        return attrCheckDesc = 'Confusion, divine magic, gaze attack & polymorph'
+      default:
+        return '';
+    }
+  }
+
+  onMount(() => {
+    handleAttributeChecks(name);
+  });
 </script>
 
 <div {id}>
@@ -71,7 +96,9 @@
       min="1"
       max="99"
     />
-    <button class={["badge w-10", {"border-yellow-600!": score.isPrimary}]}>{attrMod}</button>
+    <span 
+      title={attrCheckDesc}
+    class={["badge w-10", {"border-yellow-600!": score.isPrimary}]}>{attrMod}</span>
     <button
       title="Toggle Primary Attribute"
       aria-label="Toggle Primary Attribute"
