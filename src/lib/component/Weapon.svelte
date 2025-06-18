@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
+  import { txt } from '../state/lang.svelte';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();
@@ -63,7 +64,7 @@
     id="name"
     class="input w-full"
     onkeydown={handlePress}
-    placeholder="name"
+    placeholder={$txt('columnName')}
     bind:this={inputRef}
     bind:value={data.name}
     oninput={(e) => {
@@ -75,7 +76,7 @@
     id="bth"
     class="input w-10"
     onkeydown={handlePress}
-    placeholder="BTH"
+    placeholder={$txt('bth')}
     bind:value={data.bth}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
@@ -86,7 +87,7 @@
     id="dmg"
     class="input w-16"
     onkeydown={handlePress}
-    placeholder="dmg"
+    placeholder={$txt('damage')}
     bind:value={data.dmg}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;

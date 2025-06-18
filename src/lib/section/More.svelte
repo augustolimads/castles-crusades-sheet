@@ -4,26 +4,27 @@
   import Inventory from './Inventory.svelte';
   import Notes from './Notes.svelte';
   import Spells from './Spells.svelte';
+  import { txt } from '../state/lang.svelte';
 
   let tabs = [
     {
       id: 'inventory',
-      name: 'Inventory',
+      name: $txt('inventory'),
     },
     {
       id: 'spells',
-      name: 'Spells',
+      name: $txt('spells'),
     },
     {
       id: 'notes',
-      name: 'Notes',
+      name: $txt('notes'),
     },
   ];
 
   let mobileTabs = [
     {
       id: 'combat',
-      name: 'Combat',
+      name: $txt('combat'),
     },
     ...tabs,
   ];

@@ -2,7 +2,7 @@
   import TextArea from '../component/TextArea.svelte';
   import Title from '../component/Title.svelte';
   import ValueInput from '../component/ValueInput.svelte';
-
+  import {txt} from '../state/lang.svelte'
   import { character } from '../state/character.svelte';
 
   function updateLanguage(id = 'languages', value: string) {
@@ -48,46 +48,46 @@
 <div
   class="card flex flex-col gap-2"
 >
-  <Title name="Languages" />
+  <Title name={$txt('languages')} />
   <TextArea
     id="languages"
-    name="Languages"
+    name={$txt('languages')}
     value={$character.info.languages}
     updateInput={updateLanguage}
   />
   <hr />
-  <Title name="Tracking" />
+  <Title name={$txt('tracking')} />
   <ValueInput
     id="water"
     label="Water"
-    placeholder="Water"
+    placeholder={$txt('water')}
     value={$character.tracking.water}
     {updateValue}
   />
   <ValueInput
     id="food"
     label="Food"
-    placeholder="Food"
+    placeholder={$txt('food')}
     value={$character.tracking.food}
     {updateValue}
   />
   <ValueInput
     id="arrows"
     label="Arrows"
-    placeholder="Arrows"
+    placeholder={$txt('arrows')}
     value={$character.tracking.arrows}
     {updateValue}
   />
   <ValueInput
     id="bolts"
     label="Bolts"
-    placeholder="Bolts"
+    placeholder={$txt('bolts')}
     value={$character.tracking.bolts}
     {updateValue}
   />
   <TextArea
     id="conditions"
-    name="Conditions"
+    name={$txt('conditions')}
     value={$character.tracking.conditions}
     updateInput={updateConditions}
   />

@@ -1,6 +1,7 @@
 <script lang="ts">
   import Attribute from '../component/Attribute.svelte';
   import { character } from '../state/character.svelte';
+  import {txt} from "../state/lang.svelte"
 
   type TAttrKey = keyof typeof $character.attr;
 
@@ -58,42 +59,48 @@
 >
   <Attribute
     id="str"
-    name="Strength"
+    name={$txt('str')}
+    desc={$txt('strDesc')}
     score={$character.attr.str}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="dex"
-    name="Dexterity"
+    name={$txt('dex')}
+    desc={$txt('dexDesc')}
     score={$character.attr.dex}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="con"
-    name="Constitution"
+    name={$txt('con')}
+    desc={$txt('conDesc')}
     score={$character.attr.con}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="int"
-    name="Intelligence"
+    name={$txt('int')}
+    desc={$txt('intDesc')}
     score={$character.attr.int}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="wis"
-    name="Wisdom"
+    name={$txt('wis')}
+    desc={$txt('wisDesc')}
     score={$character.attr.wis}
     {updateAttr}
     {togglePrimary}
   />
   <Attribute
     id="cha"
-    name="Charisma"
+    name={$txt('cha')}
+    desc={$txt('chaDesc')}
     score={$character.attr.cha}
     {updateAttr}
     {togglePrimary}

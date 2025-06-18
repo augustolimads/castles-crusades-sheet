@@ -1,6 +1,7 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
+  import { txt } from '../state/lang.svelte';
 </script>
 
 <div id="HP">
@@ -21,7 +22,7 @@
           $character.hp.max = Number((event.target as HTMLInputElement).value);
         }}
       />
-      <span class="text-xs">Max. HP</span>
+      <span class="text-xs">{$txt('hpMax')}</span>
     </div>
     <input
       id="CurrentHPValue"
@@ -34,7 +35,7 @@
         $character.hp.current = Number((event.target as HTMLInputElement).value);
       }}
     />
-    <label for="CurrentHPValue" class="text-xs">Current HP</label>
+    <label for="CurrentHPValue" class="text-xs">{$txt('hpCurrent')}</label>
   </div>
   <div
     id="TempHP"
@@ -51,6 +52,6 @@
         $character.hp.temp = Number((event.target as HTMLInputElement).value);
       }}
     />
-    <label for="TempHPValue" class="text-xs">Temp HP</label>
+    <label for="TempHPValue" class="text-xs">{$txt('hpTemp')}</label>
   </div>
 </div>

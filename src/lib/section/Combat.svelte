@@ -5,6 +5,7 @@
   import { character } from '../state/character.svelte';
   import { v4 } from 'uuid';
   import { handleInputChange } from '../state/appChanges.svelte';
+  import {txt} from '../state/lang.svelte'
 
   function updateArmors(id: string, newValue: string | number) {
     handleInputChange();
@@ -48,24 +49,24 @@
 </script>
 
 <div class="overflow-hidden flex flex-col gap-2">
-  <Title name="Armors" />
+  <Title name={$txt('armors')} />
   <div class="grid grid-cols-2 gap-x-1">
     <TextInput
       id="helm"
-      name="helm"
+      name={$txt('helm')}
       value={$character.armor.helm}
       updateInput={updateArmors}
     />
     <TextInput
       id="shield"
-      name="shield"
+      name={$txt('shield')}
       value={$character.armor.shield}
       updateInput={updateArmors}
     />
     <div class="col-span-2">
       <TextInput
         id="main"
-        name="main"
+        name={$txt('armor')}
         value={$character.armor.main}
         updateInput={updateArmors}
       />
@@ -75,9 +76,11 @@
   <Title name="Weapons" action={newWeapon} />
   <div class="overflow-y-auto h-[256px] pt-1 flex flex-col gap-2">
     <div class="flex gap-10 text-left pl-8 pr-7 text-xs">
-      <span class="flex-1">Name</span>
-      <span>BTH</span>
-      <span>dmg</span>
+      <span class="flex-1">
+        {$txt('columnName')}
+      </span>
+      <span>{$txt('bth')}</span>
+      <span>{$txt('damage')}</span>
     </div>
     {#each $character.weapons as data (data.id)}
       <Weapon {newWeapon} {deleteWeapon} {data} />

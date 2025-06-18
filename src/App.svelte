@@ -12,6 +12,7 @@
   import { handleBeforeUnload } from './lib/state/appChanges.svelte';
   import Menu from './lib/section/Menu.svelte';
   import { onDestroy, onMount } from 'svelte';
+  import RaceClasseInfo from './lib/section/RaceClasseInfo.svelte';
 
   onMount(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -76,5 +77,6 @@
       <Conditions />
     </div>
   </div>
+  <RaceClasseInfo />
   <Footer />
 </main>

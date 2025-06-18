@@ -3,6 +3,7 @@
   import CharList from '../component/CharList.svelte';
   import Drawer from '../component/Drawer.svelte';
   import { formatViewAllCharacterStorage } from '../storage/characterStorage.svelte';
+  import { locale, txt } from '../state/lang.svelte';
 
   let openDrawer = $state(false);
 
@@ -37,13 +38,19 @@
   </button>
   <Drawer
     open={openDrawer}
-    title="Castles & Crusades character sheet"
+    title={$txt("title")}
     {handleOpenDrawer}
   >
     <div class="flex flex-col gap-2">
-      <a href={import.meta.env.BASE_URL} class="btn-xs">New Character Sheet</a>
+      <a href={import.meta.env.BASE_URL} class="btn-xs">{$txt('newCharacterBtn')}</a>
       <hr />
       <CharList characters={characterList} {handleOpenDrawer} />
+    </div>
+    <div id="footer">
+      <select bind:value={$locale} class="bg-gray-800! input">
+        <option value="en">English</option>
+        <option value="pt">Português</option>
+      </select>
     </div>
   </Drawer>
 </div>

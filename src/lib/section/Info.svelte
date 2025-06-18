@@ -2,6 +2,7 @@
   import TextInput from '../component/TextInput.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
+  import {txt} from "../state/lang.svelte"
 
   type TInfoKey = keyof typeof $character.info;
 
@@ -44,17 +45,17 @@
   id="Info"
   class="grid grid-cols-3 gap-x-2"
 >
-  <TextInput id="charClass" name="Class" value={$character.info.charClass} {updateInput} />
-  <TextInput id="race" name="Race" value={$character.info.race} {updateInput} />
+  <TextInput id="charClass" name={$txt('classInput')} value={$character.info.charClass} {updateInput} />
+  <TextInput id="race" name={$txt('raceInput')} value={$character.info.race} {updateInput} />
   <TextInput
     id="disposition"
-    name="Disposition"
+    name={$txt('dispositionInput')}
     value={$character.info.disposition}
     {updateInput}
   />
   <TextInput
     id="level"
-    name="Level"
+    name={$txt('levelInput')}
     isNumber
     value={$character.info.level}
     {updateInput}
@@ -62,7 +63,7 @@
   <TextInput id="xp" name="XP" isNumber value={$character.info.xp} {updateInput} />
   <TextInput
     id="nextLevel"
-    name="Next Level"
+    name="{$txt('nextLevelInput')}"
     isNumber
     value={$character.info.nextLevel}
     {updateInput}

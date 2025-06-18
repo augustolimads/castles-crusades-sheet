@@ -1,10 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
-
+  import { txt } from '../state/lang.svelte';
+  import { writable } from 'svelte/store';
   interface Props {
     id: string;
     name: string;
+    desc: string;
     updateAttr: (id: any, newValue: string) => void;
     togglePrimary: (id: any, newValue: boolean) => void;
     score: {
@@ -13,9 +15,9 @@
     };
   }
 
-  let { id, name, score, updateAttr, togglePrimary }: Props = $props();
+  let { id, name, score, desc, updateAttr, togglePrimary }: Props = $props();
   let attrMod = $state('0');
-  let attrCheckDesc =  $state('');
+  let attrCheckDesc = writable('');
 
   function handleAttributeMod(value: number) {
     const scoreValue = Number(value);
@@ -54,33 +56,18 @@
     attrMod = '0';
   }
 
-  function handleAttributeChecks(name:string) {
-    switch(name) {
-      case 'Strength':
-        return attrCheckDesc = 'Paralysis & Constriction'
-      case 'Dexterity':
-        return attrCheckDesc = 'Breath weapon & Traps'
-      case 'Constitution':
-        return attrCheckDesc = 'Disease, Energy drain & Poison'
-      case 'Intelligence':
-        return attrCheckDesc = 'Arcane magic & Illusion'
-      case 'Wisdom':
-        return attrCheckDesc = 'Death attack, charm & fear'
-      case 'Charisma':
-        return attrCheckDesc = 'Confusion, divine magic, gaze attack & polymorph'
-      default:
-        return '';
-    }
-  }
-
   onMount(() => {
-    handleAttributeChecks(name);
     handleAttributeMod(score.value);
   });
 </script>
 
 <div {id}>
-  <div class={["card-xs flex flex-col relative", {"border-yellow-600!": score.isPrimary}]}>
+  <div
+    class={[
+      'card-xs flex flex-col relative',
+      { 'border-yellow-600!': score.isPrimary },
+    ]}
+  >
     <label for={id + 'Score'} class="text-xs text-center">{name}</label>
     <input
       id={id + 'Score'}
@@ -97,9 +84,11 @@
       min="1"
       max="99"
     />
-    <span 
-      title={attrCheckDesc}
-    class={["badge w-10", {"border-yellow-600!": score.isPrimary}]}>{attrMod}</span>
+    <span
+      title={desc}
+      class={['badge w-10', { 'border-yellow-600!': score.isPrimary }]}
+      >{attrMod}</span
+    >
     <button
       title="Toggle Primary Attribute"
       aria-label="Toggle Primary Attribute"

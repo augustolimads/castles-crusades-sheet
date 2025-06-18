@@ -1,6 +1,7 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
+  import { txt } from '../state/lang.svelte';
 </script>
 
 <div
@@ -18,7 +19,7 @@
         $character.ac.head = Number((event.target as HTMLInputElement).value);
       }}
     />
-    <label for="ACHeadValue">Head</label>
+    <label for="ACHeadValue">{$txt('acHead')}</label>
   </div>
   <div id="ACMain" class="flex flex-col flex-1">
     <input
@@ -31,6 +32,6 @@
         $character.ac.main = Number((event.target as HTMLInputElement).value);
       }}
     />
-    <label for="ACMainValue">AC</label>
+    <label for="ACMainValue">{$txt('acMain')}</label>
   </div>
 </div>

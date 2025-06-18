@@ -41,6 +41,18 @@
     grid-template-rows: repeat(20, 4rem)
 }
 
+.race-class-info {
+    @apply inline-flex flex-col text-left w-full;
+
+    h3 {
+        @apply mt-2 font-bold;
+    }
+
+    ul {
+        @apply list-disc list-inside;
+    }
+}
+
 @media (min-width: 768px) {
     .character-grid-rows {
         grid-template-rows: repeat(18, 4rem)

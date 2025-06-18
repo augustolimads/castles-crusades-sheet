@@ -3,6 +3,7 @@
   import Ac from './Ac.svelte';
   import Hp from './HP.svelte';
   import { character } from '../state/character.svelte';
+  import { txt } from '../state/lang.svelte';
 
   type TStatKey = keyof typeof $character.stats;
 
@@ -28,8 +29,8 @@
     <Hp />
   </div>
   <div class="grid grid-cols-3 gap-4">
-    <Stat id="init" name="Init." value={$character.stats.init} {updateStat} />
-    <Stat id="speed" name="Speed" value={$character.stats.speed} {updateStat} />
-    <Stat id="bth" name="BTH" value={$character.stats.bth} {updateStat} />
+    <Stat id="init" name={$txt("init")} value={$character.stats.init} {updateStat} />
+    <Stat id="speed" name={$txt('speed')} value={$character.stats.speed} {updateStat} />
+    <Stat id="bth" name={$txt('bth')} value={$character.stats.bth} {updateStat} />
   </div>
 </div>
