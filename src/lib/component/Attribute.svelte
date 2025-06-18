@@ -75,6 +75,7 @@
 
   onMount(() => {
     handleAttributeChecks(name);
+    handleAttributeMod(score.value);
   });
 </script>
 
