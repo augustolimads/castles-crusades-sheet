@@ -3,9 +3,12 @@
   <p>Every 4 levels: Gain 1 attack against 1 HD monsters.</p>
   <p>10th level: Gain 1 extra attack per round.</p>
   <hr />
+  <p>Prime: STR</p>
+  <p>HD: d10</p>
   <p>Weapons: any</p>
   <p>Armours: any</p>
   <p>Starting gold: 3d8x10</p>
+  <p>Lv2: 2001</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov

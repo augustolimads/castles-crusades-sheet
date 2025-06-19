@@ -1,7 +1,10 @@
 <div class="race-class-info">
   <hr />
+  <p>Prime: INT</p>
+  <p>HD: d4</p>
   <p>Weapons: Club, dagger, dart, staff</p>
-  <p>Armours: any</p>
+  <p>Armours: none</p>
   <p>Starting gold: 1d10x10</p>
-  <hr />
+  <p>Spells per day (Lv0: 4, Lv1: 2)</p>
+  <p>Lv2: 2601</p>
 </div>

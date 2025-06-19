@@ -8,9 +8,12 @@
   <p>Divine Health: Immune to disease</p>
   <p>Lay on Hands: heal 2 hit points per level once per day</p>
   <hr />
+  <p>Prime: CHA</p>
+  <p>HD: d10</p>
   <p>Weapons: any</p>
   <p>Armours: any</p>
   <p>Starting gold: 6d4x10</p>
+  <p>Lv2: 2701</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov e, -4 AC, +2 Damage</p>

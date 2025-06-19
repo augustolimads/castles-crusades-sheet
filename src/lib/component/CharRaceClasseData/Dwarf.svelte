@@ -14,4 +14,5 @@
     <p>Speed: 20ft</p>
     <p>Attr: +1 CON, -1 DEX</p>
     <p>Languages: Common, Dwarven, Gnome, Goblinoid, Halfling, Elven, Ogrish, Giant, Troll</p>
+    <p>Typical Classes: Fighter, Rogue, Barbarian, Cleric, Bard</p>
 </div>

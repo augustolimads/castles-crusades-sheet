@@ -10,6 +10,8 @@
   <p>Pick pockets(DEX): remove contents of pouch or pocket, perform sleight-of-hand</p>
   <p>Find/disable trap(INT): find, disable or set trap</p>
   <hr />
+  <p>Prime: DEX</p>
+  <p>HD: d6</p>
   <p>
     Weapons: Blowpipe, broadsword, cat-o-nine-tails, cestus, club, dagger, dart,
     light hammer, hand axe, hand crossbow, javelin, knife, light crossbow,
@@ -18,5 +20,6 @@
   </p>
   <p>Armours: Leather, leather coat, and padded</p>
   <p>Starting gold: 3d4x10</p>
+  <p>Lv2: 1251</p>
   <hr />
 </div>

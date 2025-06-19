@@ -12,9 +12,12 @@
   </p>
   <p>Primeval instincts: immediate action gains +4 to any physical checks</p>
   <hr />
+  <p>Prime: CON</p>
+  <p>HD: d12</p>
   <p>Weapons: any</p>
   <p>Armours: any</p>
   <p>Starting gold: 2d4x10</p>
+  <p>Lv2: 2101</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov e, -4 AC, +2 Damage</p>

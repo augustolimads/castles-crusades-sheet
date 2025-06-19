@@ -5,6 +5,8 @@
   </p>
   <p>Legend Lore(CHA): check specific fact or event</p>
   <hr />
+  <p>Prime: CHA</p>
+  <p>HD: d10</p>
   <p>
     Weapons: Broadsword, bows, club, dagger, dart, hand axe, hammers, javelin,
     longsword, rapier, scimitar, short sword, sling, spear, staff
@@ -14,6 +16,7 @@
     laminar leather, leather, leather coat, padded, ring mail, studded leather
   </p>
   <p>Starting gold: 3d4x10</p>
+  <p>Lv2: 1501</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov e, -4 AC, +2 Damage</p>

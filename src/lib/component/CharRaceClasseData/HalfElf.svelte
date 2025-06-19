@@ -8,4 +8,5 @@
     <hr/>
     <p>Attr: +1 DEX, -1 CON</p>
     <p>Languages: Common, Elf, and three of the following: Dwarf, Gnome, Goblin, Halfling, and Orc</p>
+    <p>Typical classes: any</p>
 </div>

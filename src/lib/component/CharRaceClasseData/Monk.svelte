@@ -7,6 +7,8 @@
   <p>Stun Attack: Stun once per round and per level per day for 1d4 rounds</p>
   <p>Hand to Hand Combat: unarmed attack & AC, +2 bonus overbearing/grapple.</p>
   <hr />
+  <p>Prime: CON</p>
+  <p>HD: d12</p>
   <p>
     Weapons: Aclis, blowpipe, bola, bows, brass knuckles, cat-o-nine-tails,
     cestus, cleaver, club, dagger, dart, dirk, falchion, hafted hook, hand axe,
@@ -16,6 +18,7 @@
   </p>
   <p>Armours: none</p>
   <p>Starting gold: 2d4x10</p>
+  <p>Lv2: 1751</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov e, -4 AC, +2 Damage</p>

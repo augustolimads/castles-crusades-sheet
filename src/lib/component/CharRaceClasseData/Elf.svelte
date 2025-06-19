@@ -9,4 +9,5 @@
     <hr/>
     <p>Attr: +1 DEX, -1 CON</p>
     <p>Languages: Common, Elf, Dwarf, Gnome, Goblin, Halfling, and Orc</p>
+    <p>Typical Classes: Fighter, Ranger, Rogue, Wizard, Druid, Knight, Bard</p>
 </div>

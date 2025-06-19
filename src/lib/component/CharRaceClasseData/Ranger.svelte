@@ -8,6 +8,8 @@
   <p>Survival(WIS): find shelter, food and water in wilderness areas for themselves and others, determine direction, start a fire</p>
   <p>Track(WIS): track creatures or hide tracks in wilderness, determine number and type of tracked creatures</p>
   <hr />
+  <p>Prime: STR</p>
+  <p>HD: d10</p>
   <p>Weapons: any</p>
   <p>
     Armours: Breastplates, chainmail hauberk & shirt, cuir bouille, greek
@@ -15,6 +17,7 @@
     studded leather
   </p>
   <p>Starting gold: 3d8x10</p>
+  <p>Lv2: 2251</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov

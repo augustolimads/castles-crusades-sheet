@@ -10,4 +10,5 @@
     <p>Speed: 20ft</p>
     <p>Attr: +1 INT, -1 STR</p>
     <p>Languages: Common, Dwarf, Elf, Gnome, Goblin, Kobold</p>
+    <p>Typical Classes: Rogue, Illusionist, Druid, Bard</p>
 </div>

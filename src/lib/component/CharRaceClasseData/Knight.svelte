@@ -8,9 +8,12 @@
     Inspire: Giving companions bonus to hit equal to charisma bonus of knight.
   </p>
   <hr />
+  <p>Prime: CHA</p>
+  <p>HD: d10</p>
   <p>Weapons: Any except Code of Conduct limitations</p>
   <p>Armours: any</p>
   <p>Starting gold: 6d4x10</p>
+  <p>Lv2: 2251</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov e, -4 AC, +2 Damage</p>

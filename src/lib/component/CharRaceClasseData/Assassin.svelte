@@ -10,9 +10,12 @@
   <p>Sneak attack: +2 to hit and +4 damage</p>
   <p>Traps(INT): check to find, disable or set trap</p>
   <hr />
+  <p>Prime: DEX</p>
+  <p>HD: d6</p>
   <p>Weapons: any</p>
   <p>Armours: Leather, leather coat, and padded</p>
   <p>Starting gold: 3d4x10</p>
+  <p>Lv2: 1751</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov e, -4 AC, +2 Damage</p>
