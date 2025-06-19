@@ -7,4 +7,9 @@
   <p>Duskvision: under starlight, moonlight</p>
   <p>Resistant: +1 to all CON saving throws</p>
   <p>Class Modifier:+ 2 Conceal, +2 Hide, +2 Move Silent</p>
+  <hr/>
+  <p>Size: small</p>
+  <p>Speed: 20ft</p>
+  <p>Attr: +1 DEX, -1 STR</p>
+  <p>Languages: Halfling, Common, Dwarven, Gnome, Elvish, Sylvan, Goblinoid</p>
 </div>

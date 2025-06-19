@@ -5,4 +5,7 @@
     <p>Enhanced senses: +2 checks involving listening</p>
     <p>Spell Resistance: +4 vs sleep, charm</p>
     <p>Class Modifier: +2 Listen, +2 Move Silent, +2 Find Traps</p>
+    <hr/>
+    <p>Attr: +1 DEX, -1 CON</p>
+    <p>Languages: Common, Elf, and three of the following: Dwarf, Gnome, Goblin, Halfling, and Orc</p>
 </div>

@@ -9,4 +9,9 @@
     <p>Resitant to poison: saving throw +2</p>
     <p>Stonecraft(WIS): +2 spotting sliding walls, stone traps (+4 when examining actively, until 10ft)</p>
     <p>Class modifier: +2 Find Traps In Structures Only</p>
+    <hr/>
+    <p>Size: small</p>
+    <p>Speed: 20ft</p>
+    <p>Attr: +1 CON, -1 DEX</p>
+    <p>Languages: Common, Dwarven, Gnome, Goblinoid, Halfling, Elven, Ogrish, Giant, Troll</p>
 </div>

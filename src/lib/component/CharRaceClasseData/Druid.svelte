@@ -4,5 +4,5 @@
   <hr />
   <p>Weapons: Bows, club, dagger, dart, hand axe, hammers, scythe, sling, sickle, spears, sword (any), staff</p>
   <p>Armours: Cuir bouille, laminar leather, padded, leather, leather coat, hide</p>
-  <hr />
+  <p>Starting gold: 2d10x10</p>
 </div>

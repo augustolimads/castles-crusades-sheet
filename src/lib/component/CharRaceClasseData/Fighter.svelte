@@ -5,6 +5,7 @@
   <hr />
   <p>Weapons: any</p>
   <p>Armours: any</p>
+  <p>Starting gold: 3d8x10</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov

@@ -5,4 +5,9 @@
     <p>Enhanced hearing: +3 checks involving listening</p>
     <p>Spells: cast 1 spell/day: dancing lights, ghost sound or prestidigitation</p>
     <p>Class Modifier: +3 Listen</p>
+    <hr/>
+    <p>Size: small</p>
+    <p>Speed: 20ft</p>
+    <p>Attr: +1 INT, -1 STR</p>
+    <p>Languages: Common, Dwarf, Elf, Gnome, Goblin, Kobold</p>
 </div>
