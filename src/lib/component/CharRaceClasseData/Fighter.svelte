@@ -1,7 +1,11 @@
 <div class="race-class-info">
-  <p>1st level: Choose 1 weapon to specialize in.</p>
+  <p>Weapon specialization: Choose 1 weapon to specialize in. +1 BTH and damage</p>
   <p>Every 4 levels: Gain 1 attack against 1 HD monsters.</p>
   <p>10th level: Gain 1 extra attack per round.</p>
+  <hr />
+  <p>Weapons: any</p>
+  <p>Armours: any</p>
+  <hr />
   <h3>COMBAT MANEUVERS</h3>
   <p>Charge: x.2 or x4 mov
     e, -4 AC, +2 Damage</p>

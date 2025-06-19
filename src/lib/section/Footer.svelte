@@ -12,7 +12,7 @@
   }
 </script>
 
-<div class="bg-zinc-900 text-white px-4 py-5">
+<div class="bg-zinc-900 text-white px-4 py-5 mt-8">
   <div
     class="m-auto max-w-[1200px] flex justify-between items-center flex-col md:flex-row gap-2"
   >

@@ -44,6 +44,10 @@
 .race-class-info {
     @apply inline-flex flex-col text-left w-full;
 
+    hr {
+        @apply my-2;
+    }
+
     h3 {
         @apply mt-2 font-bold;
     }
