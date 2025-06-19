@@ -24,7 +24,7 @@
 </script>
 
 <main
-  class="bg-cover min-h-screen"
+  class="bg-contain bg-origin-border bg-repeat-y min-h-screen"
   style={`background-image: url(${$character.bg})`}
 >
   <div
