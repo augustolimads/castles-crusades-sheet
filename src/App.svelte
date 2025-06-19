@@ -24,8 +24,8 @@
 </script>
 
 <main
-  class="bg-contain bg-origin-border bg-repeat-y min-h-screen"
-  style={`background-image: url(${$character.bg})`}
+  class="bg-origin-border bg-repeat-y min-h-screen"
+  style={`background-image: url(${$character.bg}); background-size: 100vw auto;`}
 >
   <div
     id="Grid"
