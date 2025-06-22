@@ -27,15 +27,13 @@
   }
 
   function updateEncumbrance(id: string, value: number | string) {
-    if (id === 'total' || (id === 'rating' && typeof value === 'number')) {
+    if (id === 'total' && typeof value === 'number') {
       character.update((c) => {
-        const newRating = (id === 'rating') ? (Number(value) * 3) : (c.encumbrance.rating * 3);
         return {
           ...c,
           encumbrance: {
             ...c.encumbrance,
             [id]: Number(value),
-            enc3x: newRating,
           },
         };
       });
@@ -77,7 +75,7 @@
   </div>
   <hr />
   <div class="grid grid-cols-2 gap-4">
-    <div>
+    <div id="treasure">
       <Title name="Treasure" />
       <div class="flex flex-col gap-2">
         <ValueInput
@@ -110,7 +108,7 @@
         />
       </div>
     </div>
-    <div>
+    <div id="encumbrance">
       <Title name="Encumbrance" />
       <div class="grid grid-cols-3 gap-4 mb-4">
         <TextInput
@@ -124,8 +122,9 @@
           id="rating"
           name="Rating"
           isNumber
+          disabled
           value={$character.encumbrance.rating}
-          updateInput={updateEncumbrance}
+          updateInput={() => {}}
         />
         <TextInput
           id="enc3x"

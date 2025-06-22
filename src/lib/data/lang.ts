@@ -145,7 +145,7 @@ export const translations = {
     water: "Água",
     food: "Comida",
     arrows: "Flechas",
-    bolts: "Virotes",
+    torches: "Tochas",
     conditions: "Condições",
     combat:  "Combate",
   }

@@ -1,9 +1,26 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Attribute from '../component/Attribute.svelte';
   import { character } from '../state/character.svelte';
-  import {txt} from "../state/lang.svelte"
+  import { txt } from '../state/lang.svelte';
 
   type TAttrKey = keyof typeof $character.attr;
+
+  function updateEncumbraceRating() {
+    character.update((c) => {
+      const strPrimarySum3 = c.attr.str.isPrimary ? 3 : 0;
+      const conPrimarySum3 = c.attr.con.isPrimary ? 3 : 0;
+      const newRating = c.attr.str.value + strPrimarySum3 + conPrimarySum3;
+      return {
+        ...c,
+        encumbrance: {
+          ...c.encumbrance,
+          rating: newRating,
+          enc3x: newRating * 3,
+        },
+      };
+    });
+  }
 
   function updateAttr(id: TAttrKey, newValue: string) {
     if (
@@ -25,7 +42,9 @@
             },
           },
         };
-      })
+      });
+
+      updateEncumbraceRating();
     }
   }
 
@@ -49,9 +68,14 @@
             },
           },
         };
-      })
+      });
+      updateEncumbraceRating();
     }
   }
+
+  onMount(() => {
+    updateEncumbraceRating();
+  });
 </script>
 
 <div
