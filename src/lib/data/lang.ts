@@ -70,7 +70,7 @@ export const translations = {
     water: "Water",
     food: "Food",
     arrows: "Arrows",
-    bolts: "Bolts",
+    torches: "Torches",
     conditions: "Conditions",
     combat:  "Combat",
   },

@@ -99,7 +99,7 @@ export const character = writable({
         water: 0,
         food: 0,
         arrows: 0,
-        bolts: 0,
+        torches: 0,
         conditions: ''
     },
     spells: {

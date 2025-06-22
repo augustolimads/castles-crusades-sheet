@@ -79,10 +79,10 @@
     {updateValue}
   />
   <ValueInput
-    id="bolts"
-    label="Bolts"
-    placeholder={$txt('bolts')}
-    value={$character.tracking.bolts}
+    id="torches"
+    label="Torches"
+    placeholder={$txt('torches')}
+    value={$character.tracking.torches}
     {updateValue}
   />
   <TextArea
