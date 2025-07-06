@@ -12,6 +12,7 @@
   <hr />
   <p>Prime: DEX</p>
   <p>HD: d6</p>
+  <p>Lv1 Atk: +0</p>
   <p>Weapons: any</p>
   <p>Armours: Leather, leather coat, and padded</p>
   <p>Starting gold: 3d4x10</p>

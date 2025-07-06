@@ -5,6 +5,7 @@
   <hr />
   <p>Prime: STR</p>
   <p>HD: d10</p>
+  <p>Lv1 Atk: +1</p>
   <p>Weapons: any</p>
   <p>Armours: any</p>
   <p>Starting gold: 3d8x10</p>

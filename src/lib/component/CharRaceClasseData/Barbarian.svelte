@@ -14,6 +14,7 @@
   <hr />
   <p>Prime: CON</p>
   <p>HD: d12</p>
+  <p>Lv1 Atk: +0</p>
   <p>Weapons: any</p>
   <p>Armours: any</p>
   <p>Starting gold: 2d4x10</p>

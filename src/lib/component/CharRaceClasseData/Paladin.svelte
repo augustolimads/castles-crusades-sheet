@@ -10,6 +10,7 @@
   <hr />
   <p>Prime: CHA</p>
   <p>HD: d10</p>
+  <p>Lv1 Atk: +0</p>
   <p>Weapons: any</p>
   <p>Armours: any</p>
   <p>Starting gold: 6d4x10</p>

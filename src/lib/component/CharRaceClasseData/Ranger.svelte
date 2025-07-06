@@ -3,13 +3,26 @@
   <p>Conceal(DEX): themselves in wilderness areas</p>
   <p>Delay/neutralize poison(WIS): create natural remedies for poison</p>
   <p>Move silently: in wilderness areas</p>
-  <p>Scale(DEX): natural surfaces and inclines. Climb dangerous inclines with successful check</p>
-  <p>Traps(DEX): detect, build and disable simple wilderness traps. +2 bonus to checks when actively searching</p>
-  <p>Survival(WIS): find shelter, food and water in wilderness areas for themselves and others, determine direction, start a fire</p>
-  <p>Track(WIS): track creatures or hide tracks in wilderness, determine number and type of tracked creatures</p>
+  <p>
+    Scale(DEX): natural surfaces and inclines. Climb dangerous inclines with
+    successful check
+  </p>
+  <p>
+    Traps(DEX): detect, build and disable simple wilderness traps. +2 bonus to
+    checks when actively searching
+  </p>
+  <p>
+    Survival(WIS): find shelter, food and water in wilderness areas for
+    themselves and others, determine direction, start a fire
+  </p>
+  <p>
+    Track(WIS): track creatures or hide tracks in wilderness, determine number
+    and type of tracked creatures
+  </p>
   <hr />
   <p>Prime: STR</p>
   <p>HD: d10</p>
+  <p>Lv1 Atk: +0</p>
   <p>Weapons: any</p>
   <p>
     Armours: Breastplates, chainmail hauberk & shirt, cuir bouille, greek
@@ -20,8 +33,7 @@
   <p>Lv2: 2251</p>
   <hr />
   <h3>COMBAT MANEUVERS</h3>
-  <p>Charge: x.2 or x4 mov
-    e, -4 AC, +2 Damage</p>
+  <p>Charge: x.2 or x4 mov e, -4 AC, +2 Damage</p>
   <p>Dodge: + 2 AC vrs 3 opponents, no other action.</p>
   <h4>Disengage from Combat:</h4>
   <ul>

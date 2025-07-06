@@ -7,6 +7,7 @@
   <hr />
   <p>Prime: CHA</p>
   <p>HD: d10</p>
+  <p>Lv1 Atk: +0</p>
   <p>
     Weapons: Broadsword, bows, club, dagger, dart, hand axe, hammers, javelin,
     longsword, rapier, scimitar, short sword, sling, spear, staff

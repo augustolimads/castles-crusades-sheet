@@ -9,6 +9,7 @@
   <hr />
   <p>Prime: CON</p>
   <p>HD: d12</p>
+  <p>Lv1 Atk: +0</p>
   <p>
     Weapons: Aclis, blowpipe, bola, bows, brass knuckles, cat-o-nine-tails,
     cestus, cleaver, club, dagger, dart, dirk, falchion, hafted hook, hand axe,

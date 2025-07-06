@@ -7,11 +7,15 @@
   <p>Listen(WIS): hear noise up to 30 feet</p>
   <p>Move silently(DEX): move silently indoors and outdoors</p>
   <p>Open locks(DEX): open mechanical lock</p>
-  <p>Pick pockets(DEX): remove contents of pouch or pocket, perform sleight-of-hand</p>
+  <p>
+    Pick pockets(DEX): remove contents of pouch or pocket, perform
+    sleight-of-hand
+  </p>
   <p>Find/disable trap(INT): find, disable or set trap</p>
   <hr />
   <p>Prime: DEX</p>
   <p>HD: d6</p>
+  <p>Lv1 Atk: +0</p>
   <p>
     Weapons: Blowpipe, broadsword, cat-o-nine-tails, cestus, club, dagger, dart,
     light hammer, hand axe, hand crossbow, javelin, knife, light crossbow,
