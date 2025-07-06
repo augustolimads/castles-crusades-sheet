@@ -2,4 +2,4 @@
 
 
 
-![the character sheet current screen](https://i.imgur.com/GGwcDMp.png)
+![the character sheet current screen](https://i.imgur.com/8MY1SuL.gif)
