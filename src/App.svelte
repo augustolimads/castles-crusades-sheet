@@ -24,7 +24,7 @@
 </script>
 
 <main
-  class="bg-origin-border bg-repeat-y min-h-screen"
+  class="bg-origin-border bg-repeat-y min-h-screen bg-fixed"
   style={`background-image: url(${$character.bg}); background-size: 100vw auto;`}
 >
   <div
