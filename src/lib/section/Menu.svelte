@@ -5,6 +5,7 @@
   import { formatViewAllCharacterStorage } from '../storage/characterStorage.svelte';
   import { locale, txt } from '../state/lang.svelte';
   import { onMount } from 'svelte';
+  import { setLocale } from '../storage/langStorage.svelte';
 
   let openDrawer = $state(false);
 
@@ -36,14 +37,23 @@
     const url = new URL(window.location.href);
     url.searchParams.set('lang', String($locale));
     window.history.pushState({}, '', url.toString());
+
+    setLocale($locale);
   }
 
   onMount(() => {
     const url = new URL(window.location.href);
-    const lang = url.searchParams.get('lang') as 'en' | 'pt';
-    if (lang) {
-      $locale = lang;
+    const urlLang = url.searchParams.get('lang') as 'en' | 'pt';
+    const storageLang = localStorage.getItem('lang') as 'en' | 'pt';
+    if (urlLang) {
+      $locale = urlLang;
+      return
+    } 
+    if (storageLang) {
+      $locale = storageLang;
+      return
     }
+    $locale = 'en';
   });
 </script>
 
