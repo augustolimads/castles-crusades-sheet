@@ -73,7 +73,7 @@
       id={id + 'Score'}
       class="text-4xl pb-3.5 text-center my-1 input"
       placeholder="10"
-      bind:value={score.value}
+      value={score.value}
       oninput={(e: Event) => {
         handleInputChange();
         const target = e.target as HTMLInputElement;

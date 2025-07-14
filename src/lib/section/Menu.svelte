@@ -4,6 +4,7 @@
   import Drawer from '../component/Drawer.svelte';
   import { formatViewAllCharacterStorage } from '../storage/characterStorage.svelte';
   import { locale, txt } from '../state/lang.svelte';
+  import { onMount } from 'svelte';
 
   let openDrawer = $state(false);
 
@@ -27,6 +28,23 @@
     openDrawer = isOpen;
     if (isOpen) loadAllCharacters();
   }
+
+  // locale change search params
+  function handleLocaleChange(event: Event) {
+    const select = event.target as HTMLSelectElement;
+    $locale = select.value as 'en' | 'pt';
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', String($locale));
+    window.history.pushState({}, '', url.toString());
+  }
+
+  onMount(() => {
+    const url = new URL(window.location.href);
+    const lang = url.searchParams.get('lang') as 'en' | 'pt';
+    if (lang) {
+      $locale = lang;
+    }
+  });
 </script>
 
 <div class="text-white flex justify-center text-center w-full pt-4 md:py-8">
@@ -47,7 +65,7 @@
       <CharList characters={characterList} {handleOpenDrawer} />
     </div>
     <div id="footer">
-      <select bind:value={$locale} class="bg-gray-800! input">
+      <select bind:value={$locale} class="bg-gray-800! input" onchange={handleLocaleChange}>
         <option value="en">English</option>
         <option value="pt">Português</option>
       </select>

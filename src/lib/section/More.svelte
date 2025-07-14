@@ -6,7 +6,7 @@
   import Spells from './Spells.svelte';
   import { txt } from '../state/lang.svelte';
 
-  let tabs = [
+  let tabs = $derived([
     {
       id: 'inventory',
       name: $txt('inventory'),
@@ -19,15 +19,15 @@
       id: 'notes',
       name: $txt('notes'),
     },
-  ];
+  ]);
 
-  let mobileTabs = [
+  let mobileTabs = $derived([
     {
       id: 'combat',
       name: $txt('combat'),
     },
     ...tabs,
-  ];
+  ]);
 
   let selectedId: string | null = $state('inventory');
 

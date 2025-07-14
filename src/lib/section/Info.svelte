@@ -40,35 +40,43 @@
     }
   }
 
-  const raceSuggestions = [
-    'Dwarf',
-    'Elf',
-    'Halfling',
-    'Human',
-    'Gnome',
-    'Half-Elf',
-    'Half-Orc',
-  ];
+  let raceSuggestions = $derived([
+    $txt('dwarf'),
+    $txt('elf'),
+    $txt('gnome'),
+    $txt('halfling'),
+    $txt('human'),
+    $txt('halfElf'),
+    $txt('halfOrc'),
+  ]);
 
-  const classSuggestions = [
-    'Barbarian',
-    'Bard',
-    'Cleric',
-    'Druid',
-    'Fighter',
-    'Monk',
-    'Paladin',
-    'Ranger',
-    'Rogue',
-    'Wizard',
-  ];
+  let classSuggestions = $derived([
+    $txt('assassin'),
+    $txt('barbarian'),
+    $txt('bard'),
+    $txt('cleric'),
+    $txt('druid'),
+    $txt('fighter'),
+    $txt('illusionist'),
+    $txt('knight'),
+    $txt('monk'),
+    $txt('paladin'),
+    $txt('ranger'),
+    $txt('rogue'),
+    $txt('wizard'),
+  ]);
 
-  const dispositionSuggestions = [
-    'Lawful Good', 'Lawful Neutral', 'Lawful Evil', 
-    'Neutral Good', 'Neutral', 'Neutral Evil', 
-    'Chaotic Good', 'Chaotic Neutral', 'Chaotic Evil', 
-    'Good Lawful', 'Good Neutral', 'Good Chaotic', 
-    'Evil Lawful', 'Evil Neutral', 'Evil Chaotic'];
+  let dispositionSuggestions = $derived([
+    $txt('lawfulGood'),
+    $txt('neutralGood'),
+    $txt('chaoticGood'),
+    $txt('lawfulNeutral'),
+    $txt('trueNeutral'),
+    $txt('chaoticNeutral'),
+    $txt('lawfulEvil'),
+    $txt('neutralEvil'),
+    $txt('chaoticEvil'),
+  ]);
 </script>
 
 <div id="Info" class="grid grid-cols-3 gap-x-2">

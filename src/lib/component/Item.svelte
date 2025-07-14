@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
+  import { txt } from '../state/lang.svelte';
 
   let inputRef: HTMLInputElement;
   let { data, newItem } = $props();
@@ -85,8 +86,8 @@
     id="qtd"
     class="input w-8"
     onkeydown={handlePress}
-    placeholder="Qtd"
-    bind:value={data.qtd}
+    placeholder={$txt('quantity')}
+    value={data.qtd}
     type="number"
     min="1"
     oninput={(e) => {
@@ -98,8 +99,8 @@
     id="name"
     class="input w-full"
     onkeydown={handlePress}
-    placeholder="Name"
-    bind:value={data.name}
+    placeholder={$txt('name')}
+    value={data.name}
     bind:this={inputRef}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
@@ -111,8 +112,8 @@
     class="input w-10"
     type="number"
     onkeydown={handlePress}
-    placeholder="EV"
-    bind:value={data.ev}
+    placeholder={$txt('ev')}
+    value={data.ev}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateItem(data.id, 'ev', target.value);

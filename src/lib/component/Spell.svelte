@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
+  import { txt } from '../state/lang.svelte';
 
   let inputRef: HTMLInputElement;
   let { newSpell, deleteSpell, data } = $props();
@@ -81,9 +82,9 @@
     id="level"
     class="input w-8"
     onkeydown={handlePress}
-    placeholder="Lv"
+    placeholder={$txt('level')}
     type="number"
-    bind:value={data.level}
+    value={data.level}
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'level', target.value);
@@ -93,9 +94,9 @@
     id="slots"
     class="input w-8"
     onkeydown={handlePress}
-    placeholder="Slot"
+    placeholder={$txt('slot')}
     type="number"
-    bind:value={data.slots}
+    value={data.slots}
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'slots', target.value);
@@ -105,9 +106,9 @@
     id="name"
     class="input w-full"
     onkeydown={handlePress}
-    placeholder="Name"
+    placeholder={$txt('name')}
     bind:this={inputRef}
-    bind:value={data.name}
+    value={data.name}
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'name', target.value);

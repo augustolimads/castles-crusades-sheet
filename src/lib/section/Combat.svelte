@@ -73,7 +73,7 @@
     </div>
   </div>
   <hr />
-  <Title name="Weapons" action={newWeapon} />
+  <Title name={$txt('weapons')} action={newWeapon} />
   <div class="overflow-y-auto h-[256px] pt-1 flex flex-col gap-2">
     <div class="flex gap-10 text-left pl-8 pr-7 text-xs">
       <span class="flex-1">

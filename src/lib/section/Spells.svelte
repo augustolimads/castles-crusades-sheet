@@ -3,6 +3,7 @@
   import Spell from '../component/Spell.svelte';
   import TextInput from '../component/TextInput.svelte';
   import Title from '../component/Title.svelte';
+  import { txt } from '../state/lang.svelte';
 
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
@@ -83,75 +84,75 @@
     />
     <TextInput
       id="lv1"
-      name="1st"
+      name={$txt('1st')}
       value={$character.spells.level.lv1}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv2"
-      name="2nd"
+      name={$txt('2nd')}
       value={$character.spells.level.lv2}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv3"
-      name="3nd"
+      name={$txt('3rd')}
       value={$character.spells.level.lv3}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv4"
-      name="4nd"
+      name={$txt('4th')}
       value={$character.spells.level.lv4}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv5"
-      name="5nd"
+      name={$txt('5th')}
       value={$character.spells.level.lv5}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv6"
-      name="6nd"
+      name={$txt('6th')}
       value={$character.spells.level.lv6}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv7"
-      name="7nd"
+      name={$txt('7th')}
       value={$character.spells.level.lv7}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv8"
-      name="8nd"
+      name={$txt('8th')}
       value={$character.spells.level.lv8}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv9"
-      name="9nd"
+      name={$txt('9th')}
       value={$character.spells.level.lv9}
       isNumber
       {updateInput}
     />
   </div>
   <hr />
-  <Title name="Spells" action={newSpell} />
+  <Title name={$txt('spells')} action={newSpell} />
   <div class="overflow-y-auto h-[500px] flex flex-col gap-2 pt-1">
     <div class="flex gap-7 text-left pl-10 text-xs">
-      <span>Lv</span>
-      <span>Slot</span>
-      <span class="flex-1">Name</span>
+      <span>{$txt('level')}</span>
+      <span>{$txt('slot')}</span>
+      <span class="flex-1">{$txt('name')}</span>
     </div>
     {#each $character.spells.known as data (data.id)}
       <Spell {newSpell} {deleteSpell} {data} />

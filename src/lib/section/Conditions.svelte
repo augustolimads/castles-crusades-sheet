@@ -59,28 +59,28 @@
   <Title name={$txt('tracking')} />
   <ValueInput
     id="water"
-    label="Water"
+    label={$txt('water')}
     placeholder={$txt('water')}
     value={$character.tracking.water}
     {updateValue}
   />
   <ValueInput
     id="food"
-    label="Food"
+    label={$txt('food')}
     placeholder={$txt('food')}
     value={$character.tracking.food}
     {updateValue}
   />
   <ValueInput
     id="arrows"
-    label="Arrows"
+    label={$txt('arrows')}
     placeholder={$txt('arrows')}
     value={$character.tracking.arrows}
     {updateValue}
   />
   <ValueInput
     id="torches"
-    label="Torches"
+    label={$txt('torches')}
     placeholder={$txt('torches')}
     value={$character.tracking.torches}
     {updateValue}

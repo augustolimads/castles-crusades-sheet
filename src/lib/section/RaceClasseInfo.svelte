@@ -19,61 +19,58 @@
   import Rogue from '../component/CharRaceClasseData/Rogue.svelte';
   import Wizard from '../component/CharRaceClasseData/Wizard.svelte';
   import { character } from '../state/character.svelte';
+  import {txt} from '../state/lang.svelte';
 
-  function getRaceInfo() {
-    return $character.info.race.toLowerCase().trim()
-  }
-  function getClassInfo() {
-    return $character.info.charClass.toLowerCase().trim();
-  }
+  const getRaceInfo = $derived($character.info.race.toLowerCase().trim())
+  const getClassInfo = $derived($character.info.charClass.toLowerCase().trim())
 </script>
 
 <div class="mt-4 flex m-auto max-w-[1200px] justify-between gap-4">
   <div id="raceInfo" class="card flex-1 py-3!">
-    <h2 class="font-bold text-2xl text-left">{getRaceInfo()}</h2>
-    {#if getRaceInfo() === 'dwarf'}
+    <h2 class="font-bold text-2xl text-left">{getRaceInfo}</h2>
+    {#if getRaceInfo === $txt('dwarf').toLowerCase().trim()}
       <Dwarf />
-    {:else if getRaceInfo() === 'elf'}
-      <Elf />
-    {:else if getRaceInfo() === 'gnome'}
+    {:else if getRaceInfo === $txt('elf').toLowerCase().trim()}
+      <Elf />.toLowerCase().trim()
+    {:else if getRaceInfo === $txt('gnome').toLowerCase().trim()}
       <Gnome />
-    {:else if getRaceInfo() === 'half-elf'}
+    {:else if getRaceInfo === $txt('halfElf').toLowerCase().trim()}
       <HalfElf />
-    {:else if getRaceInfo() === 'half-orc'}
+    {:else if getRaceInfo === $txt('halfOrc').toLowerCase().trim()}
       <HalfOrc />
-    {:else if getRaceInfo() === 'halfling'}
+    {:else if getRaceInfo === $txt('halfling').toLowerCase().trim()}
       <Halfling />
-    {:else if getRaceInfo() === 'human'}
+    {:else if getRaceInfo === $txt('human').toLowerCase().trim()}
       <Human />
     {:else}
       <div></div>
     {/if}
   </div>
   <div id="classeInfo" class="card flex-1 py-3!">
-    <h2 class="font-bold text-2xl text-left">{getClassInfo()}</h2>
-    {#if getClassInfo() === 'assassin'}
+    <h2 class="font-bold text-2xl text-left">{getClassInfo}</h2>
+    {#if getClassInfo === $txt('assassin').toLowerCase().trim()}
       <Assassin />
-    {:else if getClassInfo() === 'wizard'}
+    {:else if getClassInfo === $txt('wizard').toLowerCase().trim()}
       <Wizard />
-    {:else if getClassInfo() === 'rogue'}
+    {:else if getClassInfo === $txt('rogue').toLowerCase().trim()}
       <Rogue />
-    {:else if getClassInfo() === 'ranger'}
+    {:else if getClassInfo === $txt('ranger').toLowerCase().trim()}
       <Ranger />
-    {:else if getClassInfo() === 'paladin'}
+    {:else if getClassInfo === $txt('paladin').toLowerCase().trim()}
       <Paladin />
-    {:else if getClassInfo() === 'knight'}
+    {:else if getClassInfo === $txt('knight').toLowerCase().trim()}
       <Knight />
-    {:else if getClassInfo() === 'illusionist'}
+    {:else if getClassInfo === $txt('illusionist').toLowerCase().trim()}
       <Illusionist />
-    {:else if getClassInfo() === 'fighter'}
+    {:else if getClassInfo === $txt('fighter').toLowerCase().trim()}
       <Fighter />
-    {:else if getClassInfo() === 'druid'}
+    {:else if getClassInfo === $txt('druid').toLowerCase().trim()}
       <Druid />
-    {:else if getClassInfo() === 'cleric'}
+    {:else if getClassInfo === $txt('cleric').toLowerCase().trim()}
       <Cleric />
-    {:else if getClassInfo() === 'bard'}
+    {:else if getClassInfo === $txt('bard').toLowerCase().trim()}
       <Bard />
-    {:else if getClassInfo() === 'barbarian'}
+    {:else if getClassInfo === $txt('barbarian').toLowerCase().trim()}
       <Barbarian />
     {:else}
       <div></div>

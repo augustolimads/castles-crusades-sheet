@@ -1,5 +1,4 @@
 import { writable } from "svelte/store"
-
 interface IWeapon {
     id: string
     name: string
@@ -75,7 +74,7 @@ export const character = writable({
         level: 1,
         xp: 0,
         nextLevel: 0,
-        languages: 'common',
+        languages: 'Common',
     },
     armor: {
         helm: '',

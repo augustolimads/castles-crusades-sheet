@@ -6,6 +6,7 @@
   import { character } from '../state/character.svelte';
   import { v4 } from 'uuid';
   import { handleInputChange } from '../state/appChanges.svelte';
+  import { txt } from '../state/lang.svelte';
 
   function updateTreasure(id: string, value: number) {
     if (
@@ -63,9 +64,9 @@
     <Title name="Items" action={newItem} />
     <div class="flex flex-col gap-2 overflow-y-auto h-[22rem] pt-1">
       <div class="flex gap-8 text-left pl-8 pr-7 text-xs">
-        <span>Qtt</span>
-        <span class="flex-1">Name</span>
-        <span>EV</span>
+        <span>{$txt('quantity')}</span>
+        <span class="flex-1">{$txt('name')}</span>
+        <span>{$txt('ev')}</span>
       </div>
 
       {#each $character.items as data (data.id)}
@@ -76,51 +77,51 @@
   <hr />
   <div class="grid grid-cols-2 gap-4">
     <div id="treasure">
-      <Title name="Treasure" />
+      <Title name={$txt('treasure')} />
       <div class="flex flex-col gap-2">
         <ValueInput
           id="platinum"
-          label="Platinum"
-          placeholder="Platinum"
+          label={$txt('platinum')}
+          placeholder={$txt('platinum')}
           value={$character.treasure.platinum}
           updateValue={updateTreasure}
         />
         <ValueInput
           id="gold"
-          label="Gold"
-          placeholder="Gold"
+          label={$txt('gold')}
+          placeholder={$txt('gold')}
           value={$character.treasure.gold}
           updateValue={updateTreasure}
         />
         <ValueInput
           id="silver"
-          label="Silver"
-          placeholder="Silver"
+          label={$txt('silver')}
+          placeholder="{$txt('silver')}}"
           value={$character.treasure.silver}
           updateValue={updateTreasure}
         />
         <ValueInput
           id="copper"
-          label="Copper"
-          placeholder="Copper"
+          label={$txt('copper')}
+          placeholder={$txt('copper')}
           value={$character.treasure.copper}
           updateValue={updateTreasure}
         />
       </div>
     </div>
     <div id="encumbrance">
-      <Title name="Encumbrance" />
+      <Title name={$txt('encumbrance')} />
       <div class="grid grid-cols-3 gap-4 mb-4">
         <TextInput
           id="total"
-          name="total"
+          name="Total"
           isNumber
           value={$character.encumbrance.total}
           updateInput={updateEncumbrance}
         />
         <TextInput
           id="rating"
-          name="Rating"
+          name={$txt('rating')}
           isNumber
           disabled
           value={$character.encumbrance.rating}
@@ -137,12 +138,10 @@
       </div>
       <div class="text-left text-xs flex flex-col gap-1">
         <p>
-          <span class="font-bold">Enburdened:</span> -10 ft (minimum 5ft), +2 CL
-          of all Dex checks
+          <span class="font-bold">{$txt('enburdened')}:</span> {$txt('enburdenedDesc')}
         </p>
         <p>
-          <span class="font-bold">Overburdened:</span> move is 5ft/round, fail Dex
-          checks, lose Dex on AC
+          <span class="font-bold">{$txt('overburdened')}:</span> {$txt('overburdenedDesc')}
         </p>
       </div>
     </div>
