@@ -52,7 +52,7 @@
       <Info />
     </div>
     <div
-      class="col-start-1 col-span-4 row-start-9 md:col-start-3 lg:col-start-2 md:col-span-3 md:row-start-3 md:my-4"
+      class="col-start-1 col-span-4 row-start-8 mt-4 md:col-start-3 lg:col-start-2 md:col-span-3 md:row-start-3 md:my-4"
     >
       <StatList />
     </div>
@@ -62,7 +62,7 @@
       <Combat />
     </div>
     <div
-      class="col-start-1 col-span-4 row-start-13 row-span-10 mb-4 md:col-start-6 lg:col-start-5 md:col-span-5 lg:col-span-4 md:row-start-3 md:row-span-16 md:mb-9 lg:mb-4 lg:row-span-11 md:my-4"
+      class="col-start-1 col-span-4 row-start-12 row-span-10 mb-4 md:col-start-6 lg:col-start-5 md:col-span-5 lg:col-span-4 md:row-start-3 md:row-span-16 md:mb-9 lg:mb-4 lg:row-span-11 md:my-4"
     >
       <More />
     </div>
@@ -72,7 +72,7 @@
       <Portrait />
     </div>
     <div
-      class="col-start-3 col-span-2 row-start-24 mb-4 md:my-4 lg:mb-4 md:col-start-3 md:col-span-3 md:row-start-12 lg:col-start-9 lg:col-span-2 lg:row-start-8 lg:row-span-6"
+      class="col-start-3 col-span-2 row-start-23 mb-4 md:my-4 lg:mb-4 md:col-start-3 md:col-span-3 md:row-start-12 lg:col-start-9 lg:col-span-2 lg:row-start-8 lg:row-span-6"
     >
       <Conditions />
     </div>
