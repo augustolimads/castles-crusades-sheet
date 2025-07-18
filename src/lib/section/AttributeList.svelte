@@ -38,7 +38,7 @@
             ...c.attr,
             [id]: {
               ...c.attr[id],
-              score: parseInt(newValue),
+              value: parseInt(newValue),
             },
           },
         };
