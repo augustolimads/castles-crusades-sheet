@@ -7,7 +7,7 @@
   import { handleInputChange } from '../state/appChanges.svelte';
   import {txt} from '../state/lang.svelte'
 
-  function updateArmors(id: string, newValue: string | number) {
+  function updateEquipments(id: string, newValue: string | number) {
     handleInputChange();
     if (
       id === 'helm' ||
@@ -57,20 +57,20 @@
       id="helm"
       name={$txt('helm')}
       value={$character.armor.helm}
-      updateInput={updateArmors}
+      updateInput={updateEquipments}
     />
     <TextInput
       id="shield"
       name={$txt('shield')}
       value={$character.armor.shield}
-      updateInput={updateArmors}
+      updateInput={updateEquipments}
     />
     <div class="col-span-2">
       <TextInput
         id="main"
         name={$txt('armor')}
         value={$character.armor.main}
-        updateInput={updateArmors}
+        updateInput={updateEquipments}
       />
     </div>
     <div class="col-span-2">
@@ -78,7 +78,7 @@
         id="magicalItem"
         name={$txt('magicalItem')}
         value={$character.armor.magicalItem}
-        updateInput={updateArmors}
+        updateInput={updateEquipments}
       />
     </div>
   </div>

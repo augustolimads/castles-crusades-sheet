@@ -1,8 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
-  import { txt } from '../state/lang.svelte';
-  import { writable } from 'svelte/store';
+  import { setAttributeMod } from '../logic/attribute';
   interface Props {
     id: string;
     name: string;
@@ -17,47 +16,9 @@
 
   let { id, name, score, desc, updateAttr, togglePrimary }: Props = $props();
   let attrMod = $state('0');
-  let attrCheckDesc = writable('');
-
-  function handleAttributeMod(value: number) {
-    const scoreValue = Number(value);
-    if (scoreValue === 1) {
-      attrMod = '-4';
-      return;
-    }
-    if (scoreValue >= 2 && scoreValue <= 3) {
-      attrMod = '-3';
-      return;
-    }
-    if (scoreValue >= 4 && scoreValue <= 5) {
-      attrMod = '-2';
-      return;
-    }
-    if (scoreValue >= 6 && scoreValue <= 8) {
-      attrMod = '-1';
-      return;
-    }
-    if (scoreValue >= 9 && scoreValue <= 12) {
-      attrMod = '0';
-      return;
-    }
-    if (scoreValue >= 13 && scoreValue <= 15) {
-      attrMod = '+1';
-      return;
-    }
-    if (scoreValue >= 16 && scoreValue <= 17) {
-      attrMod = '+2';
-      return;
-    }
-    if (scoreValue >= 18) {
-      attrMod = '+3';
-      return;
-    }
-    attrMod = '0';
-  }
 
   onMount(() => {
-    handleAttributeMod(score.value);
+    attrMod = setAttributeMod(score.value);
   });
 </script>
 
@@ -78,7 +39,7 @@
         handleInputChange();
         const target = e.target as HTMLInputElement;
         updateAttr(id, target.value);
-        handleAttributeMod(Number(target.value));
+        attrMod = setAttributeMod(Number(target.value));
       }}
       type="number"
       min="1"

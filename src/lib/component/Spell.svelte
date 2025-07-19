@@ -38,7 +38,6 @@
   ) {
     handleInputChange();
     character.update((c) => {
-      const newSpell = c.spells.known.find((spell) => spell.id === id);
       return {
         ...c,
         spells: {

@@ -1,6 +1,5 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
-  import { character } from '../state/character.svelte';
 
   interface Props {
     id: string;
