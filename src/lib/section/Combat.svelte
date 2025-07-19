@@ -12,7 +12,9 @@
     if (
       id === 'helm' ||
       id === 'main' ||
-      (id === 'shield' && typeof newValue === 'string')
+      id === 'shield' ||
+      id === 'magicalItem'
+      && typeof newValue === 'string'
     ) {
       $character.armor[id] = String(newValue);
     }
@@ -49,7 +51,7 @@
 </script>
 
 <div class="overflow-hidden flex flex-col gap-2">
-  <Title name={$txt('armors')} />
+  <Title name={$txt('equipments')} />
   <div class="grid grid-cols-2 gap-x-1">
     <TextInput
       id="helm"
@@ -68,6 +70,14 @@
         id="main"
         name={$txt('armor')}
         value={$character.armor.main}
+        updateInput={updateArmors}
+      />
+    </div>
+    <div class="col-span-2">
+      <TextInput
+        id="magicalItem"
+        name={$txt('magicalItem')}
+        value={$character.armor.magicalItem}
         updateInput={updateArmors}
       />
     </div>

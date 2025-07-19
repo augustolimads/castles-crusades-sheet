@@ -80,6 +80,7 @@ export const character = writable({
         helm: '',
         main: '',
         shield: '',
+        magicalItem: '',
     },
     weapons: [] as unknown as IWeapon[],
     items: [] as unknown as IItem[],
