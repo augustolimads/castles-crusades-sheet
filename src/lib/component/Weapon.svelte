@@ -4,6 +4,7 @@
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
   import { txt } from '../state/lang.svelte';
+  import { selectAllText } from '../utils/selectAllText';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();
@@ -67,6 +68,7 @@
     placeholder={$txt('columnName')}
     bind:this={inputRef}
     value={data.name}
+    onfocus={selectAllText}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'name', target.value);
@@ -78,6 +80,7 @@
     onkeydown={handlePress}
     placeholder={$txt('bth')}
     value={data.bth}
+    onfocus={selectAllText}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'bth', target.value);
@@ -89,6 +92,7 @@
     onkeydown={handlePress}
     placeholder={$txt('damage')}
     value={data.dmg}
+    onfocus={selectAllText}
     oninput={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'dmg', target.value);

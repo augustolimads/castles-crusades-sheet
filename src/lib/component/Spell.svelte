@@ -4,6 +4,7 @@
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
   import { txt } from '../state/lang.svelte';
+  import { selectAllText } from '../utils/selectAllText';
 
   let inputRef: HTMLInputElement;
   let { newSpell, deleteSpell, data } = $props();
@@ -80,6 +81,7 @@
   <input
     id="level"
     class="input w-8"
+    onfocus={selectAllText}
     onkeydown={handlePress}
     placeholder={$txt('level')}
     type="number"
@@ -92,6 +94,7 @@
   <input
     id="slots"
     class="input w-8"
+    onfocus={selectAllText}
     onkeydown={handlePress}
     placeholder={$txt('slot')}
     type="number"
@@ -104,6 +107,7 @@
   <input
     id="name"
     class="input w-full"
+    onfocus={selectAllText}
     onkeydown={handlePress}
     placeholder={$txt('name')}
     bind:this={inputRef}

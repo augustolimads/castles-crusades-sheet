@@ -8,6 +8,7 @@
   } from '../storage/characterStorage.svelte';
   import { onDestroy, onMount } from 'svelte';
   import {txt} from '../state/lang.svelte'
+  import { selectAllText } from '../utils/selectAllText';
 
   function updateTitle() {
     document.title = $character.name
@@ -122,6 +123,7 @@
     id="CharacterName"
     class="input w-full card border-r-none! rounded-r-none! text-3xl py-2"
     placeholder={$txt('namePlaceholder')}
+    onfocus={selectAllText}
     oninput={setCharacterName}
     onchange={saveCharacter}
     bind:value={$character.name}

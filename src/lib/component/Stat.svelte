@@ -1,5 +1,6 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
+  import { selectAllText } from '../utils/selectAllText';
 
   interface Props {
     id: string;
@@ -15,6 +16,7 @@
     id={id + 'Value'}
     class="input flex flex-1 text-center py-2"
     bind:value={value}
+    onfocus={selectAllText}
     oninput={(e) => {
       handleInputChange();
       updateStat(id, e.currentTarget.value);

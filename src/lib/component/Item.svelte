@@ -4,6 +4,7 @@
   import { character } from '../state/character.svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
   import { txt } from '../state/lang.svelte';
+  import { selectAllText } from '../utils/selectAllText';
 
   let inputRef: HTMLInputElement;
   let { data, newItem } = $props();
@@ -85,6 +86,7 @@
   <input
     id="qtd"
     class="input w-8"
+    onfocus={selectAllText}
     onkeydown={handlePress}
     placeholder={$txt('quantity')}
     value={data.qtd}
@@ -98,6 +100,7 @@
   <input
     id="name"
     class="input w-full"
+    onfocus={selectAllText}
     onkeydown={handlePress}
     placeholder={$txt('name')}
     value={data.name}
@@ -111,6 +114,7 @@
     id="ev"
     class="input w-10"
     type="number"
+    onfocus={selectAllText}
     onkeydown={handlePress}
     placeholder={$txt('ev')}
     value={data.ev}

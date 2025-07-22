@@ -1,5 +1,6 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
+  import { selectAllText } from '../utils/selectAllText';
 
   interface Props {
     id: string;
@@ -23,6 +24,7 @@
     type={isNumber ? 'number' : 'text'}
     bind:value
     {disabled}
+    onfocus={selectAllText}
     oninput={(e) => {
       handleInputChange();
       const value = isNumber

@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { handleInputChange } from '../state/appChanges.svelte';
   import { setAttributeMod } from '../logic/attribute';
+  import { selectAllText } from '../utils/selectAllText';
   interface Props {
     id: string;
     name: string;
@@ -35,6 +36,7 @@
       class="text-4xl pb-3.5 text-center my-1 input"
       placeholder="10"
       value={score.value}
+      onfocus={selectAllText}
       oninput={(e: Event) => {
         handleInputChange();
         const target = e.target as HTMLInputElement;

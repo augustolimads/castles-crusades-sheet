@@ -2,6 +2,7 @@
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
   import { txt } from '../state/lang.svelte';
+  import { selectAllText } from '../utils/selectAllText';
 </script>
 
 <div id="HP">
@@ -17,6 +18,7 @@
         placeholder="0"
         value={$character.hp.max}
         min="0"
+        onfocus={selectAllText}
         oninput={(event) => {
           handleInputChange();
           $character.hp.max = Number((event.target as HTMLInputElement).value);
@@ -30,6 +32,7 @@
       placeholder="0"
       value={$character.hp.current}
       type="number"
+      onfocus={selectAllText}
       oninput={(event) => {
         handleInputChange();
         $character.hp.current = Number((event.target as HTMLInputElement).value);
@@ -47,6 +50,7 @@
       type="number"
       placeholder="0"
       value={$character.hp.temp}
+      onfocus={selectAllText}
       oninput={(event) => {
         handleInputChange();
         $character.hp.temp = Number((event.target as HTMLInputElement).value);

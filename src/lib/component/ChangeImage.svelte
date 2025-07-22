@@ -1,5 +1,6 @@
 <script lang="ts">
   import { handleInputChange } from '../state/appChanges.svelte';
+  import { selectAllText } from '../utils/selectAllText';
 
   interface Props {
     id: string;
@@ -14,6 +15,7 @@
   type="text"
   class="px-1 cursor-pointer w-full text-sm text-white bg-zinc-900/80 border border-gray-300 rounded-md shadow-sm focus:ring-rose-500 focus:border-rose-500"
   bind:value={image}
+  onfocus={selectAllText}
   oninput={(e) => {
     handleInputChange();
     const target = e.target as HTMLInputElement;

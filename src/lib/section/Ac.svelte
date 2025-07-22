@@ -2,6 +2,7 @@
   import { handleInputChange } from '../state/appChanges.svelte';
   import { character } from '../state/character.svelte';
   import { txt } from '../state/lang.svelte';
+  import { selectAllText } from '../utils/selectAllText';
 </script>
 
 <div
@@ -14,6 +15,7 @@
       class="border-b text-center input"
       value={$character.ac.head}
       type="number"
+      onfocus={selectAllText}
       oninput={(event) => {
         handleInputChange();
         $character.ac.head = Number((event.target as HTMLInputElement).value);
@@ -27,6 +29,7 @@
       class="text-4xl text-center input flex flex-1"
       value={$character.ac.main}
       type="number"
+      onfocus={selectAllText}
       oninput={(event) => {
         handleInputChange();
         $character.ac.main = Number((event.target as HTMLInputElement).value);
