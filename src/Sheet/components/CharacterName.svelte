@@ -78,7 +78,7 @@
 
   async function goDiscord() {
     await fetch(
-      'https://discord.com/api/webhooks/1400297821374255135/4LDqGDFhwnhUmTAfT6NkJjrsb5B-AOJeWx96iqSjOdRi-Gr4v1MXA_lzEt1KH3rqb3kB',
+      'discord-webhook-test',
       {
         method: 'POST',
         headers: {
