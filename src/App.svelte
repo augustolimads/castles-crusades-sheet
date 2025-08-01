@@ -1,18 +1,18 @@
 <script lang="ts">
-  import AttributeList from './lib/section/AttributeList.svelte';
-  import Conditions from './lib/section/Conditions.svelte';
-  import CharacterName from './lib/section/CharacterName.svelte';
-  import Combat from './lib/section/Combat.svelte';
-  import Info from './lib/section/Info.svelte';
-  import More from './lib/section/More.svelte';
-  import Portrait from './lib/section/Portrait.svelte';
-  import StatList from './lib/section/StatList.svelte';
-  import Footer from './lib/section/Footer.svelte';
-  import { character } from './lib/state/character.svelte';
-  import { handleBeforeUnload } from './lib/state/appChanges.svelte';
-  import Menu from './lib/section/Menu.svelte';
   import { onDestroy, onMount } from 'svelte';
-  import RaceClasseInfo from './lib/section/RaceClasseInfo.svelte';
+  import { handleBeforeUnload } from './Global/state/appChanges.svelte';
+  import CharacterName from './Sheet/components/CharacterName.svelte';
+  import AttributeList from './Sheet/components/AttributeList.svelte';
+  import Info from './Sheet/components/Info.svelte';
+  import StatList from './Sheet/components/StatList.svelte';
+  import Combat from './Sheet/components/Combat.svelte';
+  import More from './Sheet/components/More.svelte';
+  import Portrait from './Sheet/components/Portrait.svelte';
+  import Conditions from './Sheet/components/Conditions.svelte';
+  import RaceClasseInfo from './Sheet/components/RaceClasseInfo.svelte';
+  import Footer from './Sheet/components/Footer.svelte';
+  import Menu from './Sheet/components/Menu.svelte';
+  import { character } from './Character/state/character.svelte';
 
   onMount(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
