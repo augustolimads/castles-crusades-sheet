@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character.svelte';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import Title from 'src/Global/components/Title.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import Spell from 'src/Spells/components/Spell.svelte';
   import { v4 } from 'uuid';
   import { txt } from 'src/Internationalization/state/lang.svelte';
+  import { spells } from 'src/Spells/state/spell.svelte';
 
   function updateInput(id: string, value: string | number) {
     if (
@@ -20,15 +20,12 @@
       id === 'lv8' ||
       (id === 'lv9' && typeof value === 'number')
     ) {
-      character.update((c) => {
+      spells.update((s) => {
         return {
-          ...c,
-          spells: {
-            ...c.spells,
-            level: {
-              ...c.spells.level,
-              [id]: value,
-            },
+          ...s,
+          level: {
+            ...s.level,
+            [id]: value,
           },
         };
       });
@@ -44,29 +41,23 @@
       slots: 0,
       description: '',
     };
-    character.update((c) => {
+    spells.update((s) => {
       return {
-        ...c,
-        spells: {
-          ...c.spells,
-          known: [...c.spells.known, newCharacterData],
-        },
+        ...s,
+        known: [...s.known, newCharacterData],
       };
     });
   }
 
   function deleteSpell(id: string) {
     handleInputChange();
-    const newSpells = $character.spells.known.filter(
+    const newSpells = $spells.known.filter(
       (spell) => spell.id !== id
     );
-    character.update((c) => {
+    spells.update((s) => {
       return {
-        ...c,
-        spells: {
-          ...c.spells,
+          ...s,
           known: newSpells,
-        },
       };
     });
   }
@@ -77,70 +68,70 @@
     <TextInput
       id="lv0"
       name="0"
-      value={$character.spells.level.lv0}
+      value={$spells.level.lv0}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv1"
       name={$txt('1st')}
-      value={$character.spells.level.lv1}
+      value={$spells.level.lv1}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv2"
       name={$txt('2nd')}
-      value={$character.spells.level.lv2}
+      value={$spells.level.lv2}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv3"
       name={$txt('3rd')}
-      value={$character.spells.level.lv3}
+      value={$spells.level.lv3}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv4"
       name={$txt('4th')}
-      value={$character.spells.level.lv4}
+      value={$spells.level.lv4}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv5"
       name={$txt('5th')}
-      value={$character.spells.level.lv5}
+      value={$spells.level.lv5}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv6"
       name={$txt('6th')}
-      value={$character.spells.level.lv6}
+      value={$spells.level.lv6}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv7"
       name={$txt('7th')}
-      value={$character.spells.level.lv7}
+      value={$spells.level.lv7}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv8"
       name={$txt('8th')}
-      value={$character.spells.level.lv8}
+      value={$spells.level.lv8}
       isNumber
       {updateInput}
     />
     <TextInput
       id="lv9"
       name={$txt('9th')}
-      value={$character.spells.level.lv9}
+      value={$spells.level.lv9}
       isNumber
       {updateInput}
     />
@@ -153,7 +144,7 @@
       <span>{$txt('slot')}</span>
       <span class="flex-1">{$txt('name')}</span>
     </div>
-    {#each $character.spells.known as data (data.id)}
+    {#each $spells.known as data (data.id)}
       <Spell {newSpell} {deleteSpell} {data} />
     {/each}
   </div>

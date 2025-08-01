@@ -1,6 +1,6 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
-  import { character } from 'src/Character/state/character.svelte';
+  import { spells } from 'src/Spells/state/spell.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang.svelte';
@@ -38,21 +38,18 @@
     value: string | number
   ) {
     handleInputChange();
-    character.update((c) => {
+    spells.update((s) => {
       return {
-        ...c,
-        spells: {
-          ...c.spells,
-          known: c.spells.known.map((spell) => {
-            if (spell.id === id) {
-              return {
-                ...spell,
-                [inputKey]: value,
-              };
-            }
-            return spell;
-          }),
-        },
+        ...s,
+        known: [...s.known.map((spell) => {
+          if (spell.id === id) {
+            return {
+              ...spell,
+              [inputKey]: value,
+            };
+          }
+          return spell;
+        })],
       };
     });
   }

@@ -1,28 +1,5 @@
 import { writable } from "svelte/store"
 
-interface IWeapon {
-    id: string
-    name: string
-    bth: string
-    dmg: string
-}
-
-interface IItem {
-    id: string
-    qtd: number
-    name: string
-    description: string
-    ev: number
-}
-
-interface ISpell {
-    id: string
-    name: string
-    level: number
-    slots: number
-    description: string
-}
-
 export const character = writable({
     id: '',
     name: '',
@@ -83,8 +60,6 @@ export const character = writable({
         shield: '',
         magicalItem: '',
     },
-    weapons: [] as unknown as IWeapon[],
-    items: [] as unknown as IItem[],
     treasure: {
         platinum: 0,
         gold: 0,
@@ -102,21 +77,6 @@ export const character = writable({
         arrows: 0,
         torches: 0,
         conditions: ''
-    },
-    spells: {
-        level: {
-            lv0: 0,
-            lv1: 0,
-            lv2: 0,
-            lv3: 0,
-            lv4: 0,
-            lv5: 0,
-            lv6: 0,
-            lv7: 0,
-            lv8: 0,
-            lv9: 0
-        },
-        known: [] as unknown as ISpell[],
     },
     notes: ''
 })

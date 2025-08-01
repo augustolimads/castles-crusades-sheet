@@ -1,5 +1,6 @@
 ## TODO
-- [] create modules
+- [✅] create modules
+- [✅] refactor character state (split internal arrays)
 - [] create limit to arrays. (characters, weapons, items, spells)
 - [] save character data without save button
 - [] swap edition mode and roll mode

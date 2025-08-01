@@ -1,6 +1,6 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
-  import { character } from 'src/Character/state/character.svelte';
+  import { inventory } from 'src/Inventory/state/inventory.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang.svelte';
@@ -30,12 +30,12 @@
 
   function updateWeapon(id: string, keyInput: string, value: string | number) {
     handleInputChange();
-    character.update((c) => {
+    inventory.update((i) => {
       return {
-        ...c,
-        weapons: c.weapons.map((weapon) =>
-          weapon.id === id ? { ...weapon, [keyInput]: value } : weapon
-        ),
+        ...i,
+        weapons: [...i.weapons.map((weapon) =>
+            weapon.id === id ? { ...weapon, [keyInput]: value } : weapon
+          ),]
       };
     });
   }

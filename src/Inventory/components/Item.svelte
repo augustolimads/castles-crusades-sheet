@@ -1,6 +1,6 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
-  import { character } from 'src/Character/state/character.svelte';
+  import { inventory } from 'src/Inventory/state/inventory.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang.svelte';
@@ -21,10 +21,10 @@
 
   function deleteItem(id: string) {
     handleInputChange();
-    const newItems = $character.items.filter((item) => item.id !== id);
-    character.update((c) => {
+    const newItems = $inventory.items.filter((item) => item.id !== id);
+    inventory.update((i) => {
       return {
-        ...c,
+        ...i,
         items: newItems,
       };
     });
@@ -49,15 +49,14 @@
     value: string | number
   ) {
     handleInputChange();
-    character.update((c) => {
-      const item = $character.items.find((item) => item.id === id);
+    inventory.update((i) => {
       const numberValue = Number(value);
       const resultValue = (inputKey === 'qtd' || inputKey === 'ev') ? numberValue : value;
       return  {
-        ...c,
-        items: c.items.map((item) =>
+        ...i,
+        items: [...i.items.map((item) =>
           item.id === id ? { ...item, [inputKey]: resultValue } : item
-        ),
+        )],
       };
     })
   }

@@ -9,6 +9,8 @@
   import { txt } from 'src/Internationalization/state/lang.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import { selectAllText } from 'src/Global/utils/selectAllText';
+  import { spells } from 'src/Spells/state/spell.svelte';
+  import { inventory } from 'src/Inventory/state/inventory.svelte';
 
   function updateTitle() {
     document.title = $character.name
@@ -26,7 +28,12 @@
     if (!charParamsId) {
       newCharacterId();
     }
-    saveCharacterStorage($character);
+    saveCharacterStorage({
+      ...$character,
+      spells: { ...$spells },
+      weapons: [...$inventory.weapons],
+      items: [...$inventory.items],
+    });
     handleInputChange(false);
   }
 
@@ -47,7 +54,16 @@
     const charParamsId = url.searchParams.get('char');
     if (charParamsId) {
       const newData = loadCharacterStorage(charParamsId);
-      character.set(newData);
+      spells.set({
+        ...newData.spells
+      })
+      inventory.set({
+        items: [...newData.items],
+        weapons: [...newData.weapons],
+      });
+      character.set({
+        ...newData,
+      });
       updateTitle();
     }
   }
@@ -77,44 +93,40 @@
   let intervalId: number;
 
   async function goDiscord() {
-    await fetch(
-      'discord-webhook-test',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          content: null,
-          embeds: [
-            {
-              title: "Que tal esse teste de webhook?",
-              description:
-                "Discohook is a free tool that allows you to personalise your server to make your server stand out from the crowd. The main way it does this is using [webhooks](https://support.discord.com/hc/en-us/articles/228383668), which allows services like Discohook to send any messages with embeds to your server.\n\nTo get started with sending messages, you need a webhook URL, you can get one via the \"Integrations\" tab in your server's settings. If you're having issues creating a webhook, [the bot](https://discohook.app/bot) can help you create one for you.\n\nKeep in mind that Discohook can't do automation yet, it only sends messages when you tell it to. If you are looking for an automatic feed or custom commands this isn't the right tool for you.",
-              color: 5814783,
-              author: {
-                name: 'Falkor',
-                icon_url:
-                  'https://i.pinimg.com/736x/20/1e/e0/201ee00c63d8b42e203594bb915efaa9.jpg',
-              },
-              footer: {
-                text: 'Teste',
-              },
-              image: {
-                url: 'https://i.pinimg.com/736x/20/1e/e0/201ee00c63d8b42e203594bb915efaa9.jpg',
-              },
-              thumbnail: {
-                url: 'https://i.pinimg.com/736x/20/1e/e0/201ee00c63d8b42e203594bb915efaa9.jpg',
-              },
+    await fetch('discord-webhook-test', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content: null,
+        embeds: [
+          {
+            title: 'Que tal esse teste de webhook?',
+            description:
+              "Discohook is a free tool that allows you to personalise your server to make your server stand out from the crowd. The main way it does this is using [webhooks](https://support.discord.com/hc/en-us/articles/228383668), which allows services like Discohook to send any messages with embeds to your server.\n\nTo get started with sending messages, you need a webhook URL, you can get one via the \"Integrations\" tab in your server's settings. If you're having issues creating a webhook, [the bot](https://discohook.app/bot) can help you create one for you.\n\nKeep in mind that Discohook can't do automation yet, it only sends messages when you tell it to. If you are looking for an automatic feed or custom commands this isn't the right tool for you.",
+            color: 5814783,
+            author: {
+              name: 'Falkor',
+              icon_url:
+                'https://i.pinimg.com/736x/20/1e/e0/201ee00c63d8b42e203594bb915efaa9.jpg',
             },
-          ],
-          username: $character.name,
-          avatar_url:
-            $character.portrait,
-          attachments: [],
-        }),
-      }
-    );
+            footer: {
+              text: 'Teste',
+            },
+            image: {
+              url: 'https://i.pinimg.com/736x/20/1e/e0/201ee00c63d8b42e203594bb915efaa9.jpg',
+            },
+            thumbnail: {
+              url: 'https://i.pinimg.com/736x/20/1e/e0/201ee00c63d8b42e203594bb915efaa9.jpg',
+            },
+          },
+        ],
+        username: $character.name,
+        avatar_url: $character.portrait,
+        attachments: [],
+      }),
+    });
   }
 
   onMount(() => {

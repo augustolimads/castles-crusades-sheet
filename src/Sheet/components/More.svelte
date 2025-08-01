@@ -1,9 +1,9 @@
 <script lang="ts">
   import Tabs from 'src/Global/components/Tabs.svelte';
   import Combat from './Combat.svelte';
-  import Inventory from './Inventory.svelte';
+  import Inventory from 'src/Inventory/components/Inventory.svelte';
   import Notes from './Notes.svelte';
-  import Spells from './Spells.svelte';
+  import Spells from 'src/Spells/components/Spells.svelte';
   import { txt } from 'src/Internationalization/state/lang.svelte';
 
   let tabs = $derived([

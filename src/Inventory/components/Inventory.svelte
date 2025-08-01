@@ -7,6 +7,7 @@
   import Item from 'src/Inventory/components/Item.svelte';
   import ValueInput from 'src/Global/components/ValueInput.svelte';
   import TextInput from 'src/Global/components/TextInput.svelte';
+  import { inventory } from 'src/Inventory/state/inventory.svelte';
 
   function updateTreasure(id: string, value: number) {
     if (
@@ -49,10 +50,10 @@
       description: '',
       ev: 0,
     };
-    character.update((c) => {
+    inventory.update((i) => {
       return {
-        ...c,
-        items: [...c.items, newItem],
+        ...i,
+        items: [...i.items, newItem],
       };
     });
     handleInputChange();
@@ -69,7 +70,7 @@
         <span>{$txt('ev')}</span>
       </div>
 
-      {#each $character.items as data (data.id)}
+      {#each $inventory.items as data (data.id)}
         <Item {data} {newItem} />
       {/each}
     </div>
@@ -138,10 +139,12 @@
       </div>
       <div class="text-left text-xs flex flex-col gap-1">
         <p>
-          <span class="font-bold">{$txt('enburdened')}:</span> {$txt('enburdenedDesc')}
+          <span class="font-bold">{$txt('enburdened')}:</span>
+          {$txt('enburdenedDesc')}
         </p>
         <p>
-          <span class="font-bold">{$txt('overburdened')}:</span> {$txt('overburdenedDesc')}
+          <span class="font-bold">{$txt('overburdened')}:</span>
+          {$txt('overburdenedDesc')}
         </p>
       </div>
     </div>

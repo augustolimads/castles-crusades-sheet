@@ -6,6 +6,7 @@
   import Title from 'src/Global/components/Title.svelte';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import Weapon from 'src/Inventory/components/Weapon.svelte';
+  import { inventory } from 'src/Inventory/state/inventory.svelte';
 
   function updateEquipments(id: string, newValue: string | number) {
     handleInputChange();
@@ -22,11 +23,11 @@
 
   function newWeapon() {
     handleInputChange();
-    character.update((c) => {
+    inventory.update((i) => {
       return {
-        ...c,
+        ...i,
         weapons: [
-          ...(c.weapons || []),
+          ...(i.weapons || []),
           {
             id: v4(),
             name: '',
@@ -40,7 +41,7 @@
 
   function deleteWeapon(id: string) {
     handleInputChange();
-    const newWeapons = $character.weapons.filter((w) => w.id !== id);
+    const newWeapons = $inventory.weapons.filter((w) => w.id !== id);
     character.update((c) => {
       return {
         ...c,
@@ -92,7 +93,7 @@
       <span>{$txt('bth')}</span>
       <span>{$txt('damage')}</span>
     </div>
-    {#each $character.weapons as data (data.id)}
+    {#each $inventory.weapons as data (data.id)}
       <Weapon {newWeapon} {deleteWeapon} {data} />
     {/each}
   </div>

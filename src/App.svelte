@@ -2,7 +2,7 @@
   import { onDestroy, onMount } from 'svelte';
   import { handleBeforeUnload } from './Global/state/appChanges.svelte';
   import CharacterName from './Sheet/components/CharacterName.svelte';
-  import AttributeList from './Sheet/components/AttributeList.svelte';
+  import AttributeList from './Attributes/components/AttributeList.svelte';
   import Info from './Sheet/components/Info.svelte';
   import StatList from './Sheet/components/StatList.svelte';
   import Combat from './Sheet/components/Combat.svelte';
