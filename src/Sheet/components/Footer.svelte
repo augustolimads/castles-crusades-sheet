@@ -2,7 +2,7 @@
   import { character } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
   import ChangeImage from './ChangeImage.svelte';
-  import packageJson from '../../../package.json'
+  import packageJson from '../../../package.json';
 
   function changeBg(value: string) {
     character.update((c) => {
@@ -31,12 +31,14 @@
     <small>
       {$txt('smallTermOfUse00')}<br />{$txt('smallTermOfUse01')}
     </small>
-    <p class="mt-5 text-xs px-1">
-      {$txt('madeWithLove')} <a
+    <p>
+      <a
         href="https://github.com/augustolimads/castles-crusades-sheet"
-        >Augusto</a
+        class="mt-5 text-xs px-1"
       >
-      © {currentYear} - Version {packageJson.version}
+        {$txt('madeWithLove')}
+        Augusto © {currentYear} - Version {packageJson.version}
+      </a>
     </p>
   </div>
 </footer>
