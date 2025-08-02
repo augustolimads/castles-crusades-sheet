@@ -1,4 +1,9 @@
-import { writable } from "svelte/store"
+import { get, writable } from "svelte/store"
+import { v4 } from 'uuid';
+import { formatViewAllCharacterStorage, loadCharacterStorage, saveCharacterStorage } from "src/Character/storage/characterStorage.svelte";
+import { spells } from 'src/Spells/state/spell';
+import { inventory } from 'src/Inventory/state/inventory';
+import { handleInputChange } from 'src/Global/state/appChanges';
 
 export interface ICharacter {
     id: string;
@@ -93,6 +98,84 @@ export const character = writable({
 
 export const characterList = writable<ICharacter[]>([])
 
-export function setCharacter(data: any) {
-    character.set(data)
+export function loadAllCharacters() {
+    characterList.set(formatViewAllCharacterStorage());
+}
+
+export function saveCharacter() {
+    if (!get(character).name) {
+        alert('Please enter a character name before saving.');
+        return;
+    }
+    const url = new URL(window.location.href);
+    const charParamsId = url.searchParams.get('char');
+    if (!charParamsId) {
+        newCharacterId();
+    }
+    saveCharacterStorage({
+        ...get(character),
+        spells: { ...get(spells) },
+        weapons: [...get(inventory).weapons],
+        items: [...get(inventory).items],
+    });
+    handleInputChange(false);
+}
+
+export function setCharacterName(event: Event) {
+    handleInputChange();
+    const input = event.target as HTMLInputElement;
+    character.update((c) => {
+        return {
+            ...c,
+            name: input.value,
+        };
+    });
+    updateTitle();
+}
+
+export function loadCharacter() {
+    const url = new URL(window.location.href);
+    const charParamsId = url.searchParams.get('char');
+    if (charParamsId) {
+        const newData = loadCharacterStorage(charParamsId);
+        spells.set({
+            ...newData.spells
+        })
+        inventory.set({
+            items: [...newData.items],
+            weapons: [...newData.weapons],
+        });
+        character.set({
+            ...newData,
+        });
+        updateTitle();
+    }
+}
+
+function newCharacterId() {
+    character.update((c) => {
+        return {
+            ...c,
+            id: v4(),
+        };
+    });
+
+    const searchParams = new URLSearchParams(window.location.search);
+
+    if (get(character).id) {
+        searchParams.set('char', get(character).id);
+    } else {
+        searchParams.delete('char');
+    }
+    window.history.replaceState(
+        {},
+        '',
+        `${window.location.pathname}?${searchParams}`
+    );
+}
+
+function updateTitle() {
+    document.title = get(character).name
+        ? `C&C: ${get(character).name}`
+        : 'Castles & Crusades';
 }

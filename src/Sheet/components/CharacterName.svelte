@@ -1,8 +1,12 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
   import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { loadCharacter, saveCharacter, setCharacterName } from 'src/Character/logic/character';
-  import { character } from 'src/Character/state/character';
+  import {
+    character,
+    loadCharacter,
+    saveCharacter,
+    setCharacterName,
+  } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
 
   let intervalId: number;
@@ -94,7 +98,5 @@
     placeholder={$txt('namePlaceholder')}
     onfocus={selectAllText}
     oninput={setCharacterName}
-    onchange={saveCharacter}
-    bind:value={$character.name}
   />
 </div>
