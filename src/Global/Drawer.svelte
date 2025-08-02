@@ -4,8 +4,7 @@
 
 <div
   class={'relative z-10 ' +
-    (open ? 'opacity-100' : 'opacity-0') +
-    ' pointer-events-none'}
+    (open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none')}
   aria-labelledby="drawer-title"
   role="dialog"
   aria-modal="true"
