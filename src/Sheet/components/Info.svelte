@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges';
@@ -38,6 +38,7 @@
         };
       });
     }
+    saveCharacter()
   }
 
   let raceSuggestions = $derived([

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
-  import ChangeImage from './ChangeImage.svelte';
+  import ChangeImage from 'src/Global/components/ChangeImage.svelte';
   import packageJson from '../../../package.json';
 
   function changeBg(value: string) {
@@ -11,6 +11,7 @@
         bg: value,
       };
     });
+    saveCharacter()
   }
 
   const currentYear = new Date().getFullYear();

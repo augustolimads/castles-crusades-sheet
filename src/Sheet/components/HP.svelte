@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { handleInputChange } from 'src/Global/state/appChanges';
@@ -22,6 +22,7 @@
         oninput={(event) => {
           handleInputChange();
           $character.hp.max = Number((event.target as HTMLInputElement).value);
+          saveCharacter()
         }}
       />
       <span class="text-xs">{$txt('hpMax')}</span>
@@ -36,6 +37,7 @@
       oninput={(event) => {
         handleInputChange();
         $character.hp.current = Number((event.target as HTMLInputElement).value);
+        saveCharacter()
       }}
     />
     <label for="CurrentHPValue" class="text-xs">{$txt('hpCurrent')}</label>
@@ -54,6 +56,7 @@
       oninput={(event) => {
         handleInputChange();
         $character.hp.temp = Number((event.target as HTMLInputElement).value);
+        saveCharacter()
       }}
     />
     <label for="TempHPValue" class="text-xs">{$txt('hpTemp')}</label>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { handleInputChange } from 'src/Global/state/appChanges';
 
   function updateNotes(e: Event) {
@@ -10,6 +10,7 @@
         notes: (e.target as HTMLInputElement).value,
       };
     })
+    saveCharacter()
   }
 </script>
 

@@ -5,6 +5,7 @@
   import { txt } from 'src/Internationalization/state/lang';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { spells } from '../state/spell';
+  import { saveCharacter } from 'src/Character/state/character';
 
   let inputRef: HTMLInputElement;
   let { newSpell, deleteSpell, data } = $props();
@@ -30,6 +31,7 @@
     ) {
       deleteSpell(data.id);
     }
+    saveCharacter()
   }
 
   function updateSpell(
@@ -52,6 +54,7 @@
         })],
       };
     });
+    saveCharacter()
   }
 
   onMount(() => {
@@ -86,6 +89,7 @@
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'level', target.value);
+      saveCharacter()
     }}
   />
   <input
@@ -99,6 +103,7 @@
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'slots', target.value);
+      saveCharacter()
     }}
   />
   <input
@@ -112,6 +117,7 @@
     oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'name', target.value);
+      saveCharacter()
     }}
   />
 </div>

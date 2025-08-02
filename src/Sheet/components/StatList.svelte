@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
   import Ac from './Ac.svelte';
   import Hp from './HP.svelte';
@@ -17,6 +17,7 @@
         },
       };
     });
+    saveCharacter()
   }
 </script>
 

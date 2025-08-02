@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
   import Title from 'src/Global/components/Title.svelte';
   import TextArea from 'src/Global/components/TextArea.svelte';
@@ -10,14 +10,18 @@
       character.update((c) => {
         return {
           ...c,
-          languages: value,
+          info: {
+            ...c.info,
+            languages: value,
+          }
         };
       });
+      saveCharacter()
     }
   }
 
   function updateValue(id: string, value: number) {
-    if (id === 'water' || id === 'food' || id === 'arrows' || id === 'bolts') {
+    if (id === 'water' || id === 'food' || id === 'arrows' || id === 'torches') {
       character.update((c) => {
         return {
           ...c,
@@ -27,6 +31,7 @@
           },
         };
       });
+      saveCharacter()
     }
   }
 
@@ -41,6 +46,7 @@
           },
         };
       });
+      saveCharacter()
     }
   }
 </script>
@@ -50,8 +56,8 @@
   <TextArea
     id="languages"
     name={$txt('languages')}
-    value={$character.info.languages}
     updateInput={updateLanguage}
+    value={$character.info.languages}
   />
   <hr />
   <Title name={$txt('tracking')} />

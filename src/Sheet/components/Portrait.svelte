@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
-  import ChangeImage from './ChangeImage.svelte';
+  import ChangeImage from 'src/Global/components/ChangeImage.svelte';
 
   function setPortrait(newPortrait: string) {
     character.update((c) => {
@@ -10,6 +10,7 @@
         portrait: newPortrait,
       };
     })
+    saveCharacter()
   }
 </script>
 

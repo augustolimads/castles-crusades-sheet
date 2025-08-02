@@ -6,6 +6,7 @@
   import { txt } from 'src/Internationalization/state/lang';
   import { spells } from '../state/spell';
   import { handleInputChange } from 'src/Global/state/appChanges';
+  import { saveCharacter } from 'src/Character/state/character';
 
   function updateInput(id: string, value: string | number) {
     if (
@@ -29,6 +30,7 @@
           },
         };
       });
+      saveCharacter()
     }
   }
 
@@ -47,6 +49,7 @@
         known: [...s.known, newCharacterData],
       };
     });
+    saveCharacter()
   }
 
   function deleteSpell(id: string) {
@@ -60,6 +63,7 @@
           known: newSpells,
       };
     });
+    saveCharacter()
   }
 </script>
 

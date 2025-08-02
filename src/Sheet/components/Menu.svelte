@@ -4,9 +4,8 @@
   import Drawer from 'src/Global/Drawer.svelte';
   import CharList from 'src/Character/components/CharList.svelte';
   import { locale, txt } from 'src/Internationalization/state/lang';
-  import { loadAllCharacters } from 'src/Character/logic/character';
   import { setLocale } from 'src/Internationalization/storage/langStorage';
-  import { characterList } from 'src/Character/state/character';
+  import { characterList, loadAllCharacters } from 'src/Character/state/character';
 
   let openDrawer = $state(false);
 

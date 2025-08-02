@@ -2,5 +2,9 @@
 
 ## [0.2.0] - 2025-08-02
 
+### Changed
+
+- Possibility of save character without press button save
+
 ### Added
 - Add a changelog and todo

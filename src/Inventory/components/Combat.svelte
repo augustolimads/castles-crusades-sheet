@@ -6,7 +6,7 @@
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { inventory } from '../state/inventory';
   import { txt } from 'src/Internationalization/state/lang';
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
 
   function updateEquipments(id: string, newValue: string | number) {
     handleInputChange();
@@ -18,6 +18,7 @@
       && typeof newValue === 'string'
     ) {
       $character.armor[id] = String(newValue);
+      saveCharacter()
     }
   }
 
@@ -37,6 +38,7 @@
         ],
       };
     });
+    saveCharacter()
   }
 
   function deleteWeapon(id: string) {
@@ -48,6 +50,7 @@
         weapons: newWeapons,
       };
     });
+    saveCharacter()
   }
 </script>
 

@@ -98,5 +98,6 @@
     placeholder={$txt('namePlaceholder')}
     onfocus={selectAllText}
     oninput={setCharacterName}
+    bind:value={$character.name}
   />
 </div>

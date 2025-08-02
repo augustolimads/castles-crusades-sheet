@@ -3,6 +3,7 @@
   import { setAttributeMod } from '../logic/attribute';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { handleInputChange } from 'src/Global/state/appChanges';
+  import { saveCharacter } from 'src/Character/state/character';
   
   interface Props {
     id: string;
@@ -43,6 +44,7 @@
         const target = e.target as HTMLInputElement;
         updateAttr(id, target.value);
         attrMod = setAttributeMod(Number(target.value));
+        saveCharacter()
       }}
       type="number"
       min="1"
@@ -63,6 +65,7 @@
       onclick={() => {
         handleInputChange();
         togglePrimary(id, !score.isPrimary);
+        saveCharacter()
       }}
     >
     </button>

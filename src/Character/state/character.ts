@@ -103,22 +103,15 @@ export function loadAllCharacters() {
 }
 
 export function saveCharacter() {
-    if (!get(character).name) {
-        alert('Please enter a character name before saving.');
-        return;
+    if (get(character).id) {
+        saveCharacterStorage({
+            ...get(character),
+            spells: { ...get(spells) },
+            weapons: [...get(inventory).weapons],
+            items: [...get(inventory).items],
+        });
+        handleInputChange(false);
     }
-    const url = new URL(window.location.href);
-    const charParamsId = url.searchParams.get('char');
-    if (!charParamsId) {
-        newCharacterId();
-    }
-    saveCharacterStorage({
-        ...get(character),
-        spells: { ...get(spells) },
-        weapons: [...get(inventory).weapons],
-        items: [...get(inventory).items],
-    });
-    handleInputChange(false);
 }
 
 export function setCharacterName(event: Event) {
@@ -131,6 +124,13 @@ export function setCharacterName(event: Event) {
         };
     });
     updateTitle();
+
+    const url = new URL(window.location.href);
+    const charParamsId = url.searchParams.get('char');
+    if (!charParamsId) {
+        newCharacterId();
+    }
+    saveCharacter()
 }
 
 export function loadCharacter() {
@@ -138,15 +138,15 @@ export function loadCharacter() {
     const charParamsId = url.searchParams.get('char');
     if (charParamsId) {
         const newData = loadCharacterStorage(charParamsId);
+        character.set({
+            ...newData,
+        });
         spells.set({
             ...newData.spells
         })
         inventory.set({
             items: [...newData.items],
             weapons: [...newData.weapons],
-        });
-        character.set({
-            ...newData,
         });
         updateTitle();
     }

@@ -5,6 +5,7 @@
   import { onMount } from 'svelte';
   import { inventory } from '../state/inventory';
   import { txt } from 'src/Internationalization/state/lang';
+  import { saveCharacter } from 'src/Character/state/character';
 
   let inputRef: HTMLInputElement;
   let { data, newItem } = $props();
@@ -28,6 +29,7 @@
         items: newItems,
       };
     });
+    saveCharacter()
   }
 
   function handlePress(event: any) {
@@ -41,6 +43,7 @@
     ) {
       deleteItem(data.id);
     }
+    saveCharacter()
   }
 
   function updateItem(
@@ -59,6 +62,7 @@
         )],
       };
     })
+    saveCharacter()
   }
 
   onMount(() => {

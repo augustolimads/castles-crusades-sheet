@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang';
@@ -19,6 +19,7 @@
       oninput={(event) => {
         handleInputChange();
         $character.ac.head = Number((event.target as HTMLInputElement).value);
+        saveCharacter()
       }}
     />
     <label for="ACHeadValue">{$txt('acHead')}</label>
@@ -33,6 +34,7 @@
       oninput={(event) => {
         handleInputChange();
         $character.ac.main = Number((event.target as HTMLInputElement).value);
+        saveCharacter()
       }}
     />
     <label for="ACMainValue">{$txt('acMain')}</label>

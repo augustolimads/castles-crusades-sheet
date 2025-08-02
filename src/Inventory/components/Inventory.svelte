@@ -4,7 +4,7 @@
   import Item from 'src/Inventory/components/Item.svelte';
   import ValueInput from 'src/Global/components/ValueInput.svelte';
   import TextInput from 'src/Global/components/TextInput.svelte';
-  import { character } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { inventory } from '../state/inventory';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { txt } from 'src/Internationalization/state/lang';
@@ -25,6 +25,7 @@
           },
         };
       });
+      saveCharacter()
     }
   }
 
@@ -39,6 +40,7 @@
           },
         };
       });
+      saveCharacter()
     }
   }
 
@@ -56,6 +58,7 @@
         items: [...i.items, newItem],
       };
     });
+    saveCharacter()
     handleInputChange();
   }
 </script>

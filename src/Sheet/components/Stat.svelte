@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { saveCharacter } from 'src/Character/state/character';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
 
@@ -20,6 +21,7 @@
     oninput={(e) => {
       handleInputChange();
       updateStat(id, e.currentTarget.value);
+      saveCharacter()
     }}
   />
   <label for={id + 'Value'} class="badge px-2 text-xs">{name}</label>

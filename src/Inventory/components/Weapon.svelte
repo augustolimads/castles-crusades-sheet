@@ -5,6 +5,7 @@
   import { onMount } from 'svelte';
   import { inventory } from '../state/inventory';
   import { txt } from 'src/Internationalization/state/lang';
+  import { saveCharacter } from 'src/Character/state/character';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();
@@ -26,6 +27,7 @@
     if (event.target.value === '' && event.code === 'Backspace') {
       deleteWeapon(data.id);
     }
+    saveCharacter()
   }
 
   function updateWeapon(id: string, keyInput: string, value: string | number) {
@@ -38,6 +40,7 @@
           ),]
       };
     });
+    saveCharacter()
   }
 
   onMount(() => {
