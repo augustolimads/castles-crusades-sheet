@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character.svelte';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
+  import { character } from 'src/Character/state/character';
+  import { txt } from 'src/Internationalization/state/lang';
   import ChangeImage from './ChangeImage.svelte';
 
   function setPortrait(newPortrait: string) {

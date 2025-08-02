@@ -1,94 +1,9 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
-  import { v4 } from 'uuid';
-  import { character } from 'src/Character/state/character.svelte';
-  import {
-    loadCharacterStorage,
-    saveCharacterStorage,
-  } from 'src/Character/storage/characterStorage.svelte';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { spells } from 'src/Spells/state/spell.svelte';
-  import { inventory } from 'src/Inventory/state/inventory.svelte';
-
-  function updateTitle() {
-    document.title = $character.name
-      ? `C&C: ${$character.name}`
-      : 'Castles & Crusades';
-  }
-
-  function saveCharacter() {
-    if (!$character.name) {
-      alert('Please enter a character name before saving.');
-      return;
-    }
-    const url = new URL(window.location.href);
-    const charParamsId = url.searchParams.get('char');
-    if (!charParamsId) {
-      newCharacterId();
-    }
-    saveCharacterStorage({
-      ...$character,
-      spells: { ...$spells },
-      weapons: [...$inventory.weapons],
-      items: [...$inventory.items],
-    });
-    handleInputChange(false);
-  }
-
-  function setCharacterName(event: Event) {
-    handleInputChange();
-    const input = event.target as HTMLInputElement;
-    character.update((c) => {
-      return {
-        ...c,
-        name: input.value,
-      };
-    });
-    updateTitle();
-  }
-
-  function loadCharacter() {
-    const url = new URL(window.location.href);
-    const charParamsId = url.searchParams.get('char');
-    if (charParamsId) {
-      const newData = loadCharacterStorage(charParamsId);
-      spells.set({
-        ...newData.spells
-      })
-      inventory.set({
-        items: [...newData.items],
-        weapons: [...newData.weapons],
-      });
-      character.set({
-        ...newData,
-      });
-      updateTitle();
-    }
-  }
-
-  function newCharacterId() {
-    character.update((c) => {
-      return {
-        ...c,
-        id: v4(),
-      };
-    });
-
-    const searchParams = new URLSearchParams(window.location.search);
-
-    if ($character.id) {
-      searchParams.set('char', $character.id);
-    } else {
-      searchParams.delete('char');
-    }
-    window.history.replaceState(
-      {},
-      '',
-      `${window.location.pathname}?${searchParams}`
-    );
-  }
+  import { loadCharacter, saveCharacter, setCharacterName } from 'src/Character/logic/character';
+  import { character } from 'src/Character/state/character';
+  import { txt } from 'src/Internationalization/state/lang';
 
   let intervalId: number;
 

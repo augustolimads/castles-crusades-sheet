@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import { setAttributeMod } from '../logic/attribute';
   import { selectAllText } from 'src/Global/utils/selectAllText';
+  import { handleInputChange } from 'src/Global/state/appChanges';
   
   interface Props {
     id: string;

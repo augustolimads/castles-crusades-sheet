@@ -1,11 +1,11 @@
 <script lang="ts">
   import TextInput from 'src/Global/components/TextInput.svelte';
   import Title from 'src/Global/components/Title.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import Spell from 'src/Spells/components/Spell.svelte';
   import { v4 } from 'uuid';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
-  import { spells } from 'src/Spells/state/spell.svelte';
+  import { txt } from 'src/Internationalization/state/lang';
+  import { spells } from '../state/spell';
+  import { handleInputChange } from 'src/Global/state/appChanges';
 
   function updateInput(id: string, value: string | number) {
     if (

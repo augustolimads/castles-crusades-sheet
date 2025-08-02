@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
+  import { character } from 'src/Character/state/character';
+  import { handleInputChange } from 'src/Global/state/appChanges';
 
   function updateNotes(e: Event) {
     handleInputChange();

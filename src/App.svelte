@@ -1,18 +1,18 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
-  import { handleBeforeUnload } from './Global/state/appChanges.svelte';
+  import { handleBeforeUnload } from './Global/state/appChanges';
   import CharacterName from './Sheet/components/CharacterName.svelte';
   import AttributeList from './Attributes/components/AttributeList.svelte';
   import Info from './Sheet/components/Info.svelte';
   import StatList from './Sheet/components/StatList.svelte';
-  import Combat from './Sheet/components/Combat.svelte';
+  import Combat from './Inventory/components/Combat.svelte';
   import More from './Sheet/components/More.svelte';
   import Portrait from './Sheet/components/Portrait.svelte';
   import Conditions from './Sheet/components/Conditions.svelte';
   import RaceClasseInfo from './Sheet/components/RaceClasseInfo.svelte';
   import Footer from './Sheet/components/Footer.svelte';
   import Menu from './Sheet/components/Menu.svelte';
-  import { character } from './Character/state/character.svelte';
+  import { character } from './Character/state/character';
 
   onMount(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);

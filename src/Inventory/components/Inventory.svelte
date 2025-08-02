@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character.svelte';
   import { v4 } from 'uuid';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import Title from 'src/Global/components/Title.svelte';
   import Item from 'src/Inventory/components/Item.svelte';
   import ValueInput from 'src/Global/components/ValueInput.svelte';
   import TextInput from 'src/Global/components/TextInput.svelte';
-  import { inventory } from 'src/Inventory/state/inventory.svelte';
+  import { character } from 'src/Character/state/character';
+  import { inventory } from '../state/inventory';
+  import { handleInputChange } from 'src/Global/state/appChanges';
+  import { txt } from 'src/Internationalization/state/lang';
 
   function updateTreasure(id: string, value: number) {
     if (

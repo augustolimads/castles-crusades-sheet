@@ -1,29 +1,14 @@
 <script lang="ts">
   import { Menu } from '@lucide/svelte';
-  import { formatViewAllCharacterStorage } from 'src/Character/storage/characterStorage.svelte';
-  import { locale, txt } from 'src/Internationalization/state/lang.svelte';
   import { onMount } from 'svelte';
-  import { setLocale } from 'src/Internationalization/storage/langStorage.svelte';
   import Drawer from 'src/Global/Drawer.svelte';
   import CharList from 'src/Character/components/CharList.svelte';
+  import { locale, txt } from 'src/Internationalization/state/lang';
+  import { loadAllCharacters } from 'src/Character/logic/character';
+  import { setLocale } from 'src/Internationalization/storage/langStorage';
+  import { characterList } from 'src/Character/state/character';
 
   let openDrawer = $state(false);
-
-  interface Character {
-    id: string;
-    name: string;
-    race: string;
-    charClass: string;
-    level: number;
-    bg: string;
-    portrait: string;
-  }
-
-  let characterList = $state<Character[]>([]);
-
-  function loadAllCharacters() {
-    characterList = formatViewAllCharacterStorage();
-  }
 
   function handleOpenDrawer(isOpen: boolean) {
     openDrawer = isOpen;

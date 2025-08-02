@@ -18,8 +18,8 @@
   import Halfling from 'src/Character/data/charRaces/Halfling.svelte';
   import HalfOrc from 'src/Character/data/charRaces/HalfOrc.svelte';
   import Human from 'src/Character/data/charRaces/Human.svelte';
-  import { character } from 'src/Character/state/character.svelte';
-  import {txt} from 'src/Internationalization/state/lang.svelte'
+  import { character } from 'src/Character/state/character';
+  import { txt } from 'src/Internationalization/state/lang';
 
   const getRaceInfo = $derived($character.info.race.toLowerCase().trim());
   const getClassInfo = $derived($character.info.charClass.toLowerCase().trim());

@@ -1,10 +1,10 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
-  import { inventory } from 'src/Inventory/state/inventory.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
+  import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
   import { onMount } from 'svelte';
+  import { inventory } from '../state/inventory';
+  import { txt } from 'src/Internationalization/state/lang';
 
   let inputRef: HTMLInputElement;
   let { data, newItem } = $props();

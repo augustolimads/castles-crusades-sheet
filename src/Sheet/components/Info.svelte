@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character.svelte';
+  import { character } from 'src/Character/state/character';
+  import { txt } from 'src/Internationalization/state/lang';
   import TextInput from 'src/Global/components/TextInput.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
+  import { handleInputChange } from 'src/Global/state/appChanges';
 
   type TInfoKey = keyof typeof $character.info;
 

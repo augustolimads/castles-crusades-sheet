@@ -1,5 +1,15 @@
 import { writable } from "svelte/store"
 
+export interface ICharacter {
+    id: string;
+    name: string;
+    race: string;
+    charClass: string;
+    level: number;
+    bg: string;
+    portrait: string;
+}
+
 export const character = writable({
     id: '',
     name: '',
@@ -80,6 +90,8 @@ export const character = writable({
     },
     notes: ''
 })
+
+export const characterList = writable<ICharacter[]>([])
 
 export function setCharacter(data: any) {
     character.set(data)

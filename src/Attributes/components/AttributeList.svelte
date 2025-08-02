@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { character } from 'src/Character/state/character.svelte';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
   import Attribute from 'src/Attributes/components/Attribute.svelte';
+  import { character } from 'src/Character/state/character';
+  import { txt } from 'src/Internationalization/state/lang';
 
   type TAttrKey = keyof typeof $character.attr;
 

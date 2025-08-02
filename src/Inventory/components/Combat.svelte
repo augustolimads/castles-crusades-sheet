@@ -1,12 +1,12 @@
 <script lang="ts">
   import { v4 } from 'uuid';
-  import { character } from 'src/Character/state/character.svelte';
-  import {txt} from 'src/Internationalization/state/lang.svelte'
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import Title from 'src/Global/components/Title.svelte';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import Weapon from 'src/Inventory/components/Weapon.svelte';
-  import { inventory } from 'src/Inventory/state/inventory.svelte';
+  import { handleInputChange } from 'src/Global/state/appChanges';
+  import { inventory } from '../state/inventory';
+  import { txt } from 'src/Internationalization/state/lang';
+  import { character } from 'src/Character/state/character';
 
   function updateEquipments(id: string, newValue: string | number) {
     handleInputChange();

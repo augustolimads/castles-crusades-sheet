@@ -1,5 +1,5 @@
 <script>
-  import { character } from 'src/Character/state/character.svelte';
+  import { character } from "src/Character/state/character";
 </script>
 
 <div class="position-fixed bottom-0">

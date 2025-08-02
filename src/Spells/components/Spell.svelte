@@ -1,10 +1,10 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
-  import { spells } from 'src/Spells/state/spell.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
   import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
   import { onMount } from 'svelte';
+  import { txt } from 'src/Internationalization/state/lang';
+  import { handleInputChange } from 'src/Global/state/appChanges';
+  import { spells } from '../state/spell';
 
   let inputRef: HTMLInputElement;
   let { newSpell, deleteSpell, data } = $props();

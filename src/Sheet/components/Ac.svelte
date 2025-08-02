@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { character } from 'src/Character/state/character.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges.svelte';
+  import { character } from 'src/Character/state/character';
+  import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { txt } from 'src/Internationalization/state/lang.svelte';
+  import { txt } from 'src/Internationalization/state/lang';
 </script>
 
 <div

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { handleInputChange } from '../state/appChanges.svelte';
+  import { handleInputChange } from '../state/appChanges';
   import { selectAllText } from '../utils/selectAllText';
 
   interface Props {
