@@ -4,7 +4,7 @@
 - [✅] save character data without save button
 - [✅] swap edition mode and roll mode
 - [✅] add 3d dices to rolls
-- [] connect discord webhook to rolls (with portrait and character name)
+- [] connect discord webhook to log rolls (with portrait and character name)
 - [] add copy and paste items
 - [] create limit to arrays. (characters, weapons, items, spells)
 

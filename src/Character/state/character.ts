@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 import { formatViewAllCharacterStorage, loadCharacterStorage, saveCharacterStorage } from "src/Character/storage/characterStorage.svelte";
 import { spells } from 'src/Spells/state/spell';
 import { inventory } from 'src/Inventory/state/inventory';
-import { handleInputChange } from 'src/Global/state/appChanges';
+import { appChanges, handleInputChange } from 'src/Global/state/appChanges';
 
 export interface ICharacter {
     id: string;
@@ -131,6 +131,7 @@ export function setCharacterName(event: Event) {
         newCharacterId();
     }
     saveCharacter()
+    appChanges.set({ hasUnsavedChanges: false })
 }
 
 export function loadCharacter() {
