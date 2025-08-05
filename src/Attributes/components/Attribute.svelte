@@ -4,7 +4,7 @@
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { saveCharacter } from 'src/Character/state/character';
-  import { rollDice, setRollDice } from 'src/Sheet/state/rollDice';
+  import { rollDice, setRollDice } from 'src/Dices/state/rollDice';
 
   interface Props {
     id: string;

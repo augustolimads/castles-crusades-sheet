@@ -13,7 +13,7 @@
   import Footer from './Sheet/components/Footer.svelte';
   import Menu from './Sheet/components/Menu.svelte';
   import { character } from './Character/state/character';
-  import DiceBox from './Sheet/components/DiceBox.svelte';
+  import DiceBox from './Dices/components/DiceBox.svelte';
   
   onMount(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);

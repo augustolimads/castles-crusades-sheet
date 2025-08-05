@@ -2,7 +2,7 @@
   import { saveCharacter } from 'src/Character/state/character';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { setRollDice } from '../state/rollDice';
+  import { setRollDice } from '../../Dices/state/rollDice';
 
   interface Props {
     id: string;

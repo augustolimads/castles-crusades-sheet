@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0] - 2025-08-05
+
+### Added
+
+- Add dice calc interface
+
 ## [0.3.0] - 2025-08-05
 
 ### Added

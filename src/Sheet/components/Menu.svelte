@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Menu } from '@lucide/svelte';
   import { onMount } from 'svelte';
-  import Drawer from 'src/Global/Drawer.svelte';
+  import Drawer from 'src/Global/components/Drawer.svelte';
   import CharList from 'src/Character/components/CharList.svelte';
   import { locale, txt } from 'src/Internationalization/state/lang';
   import { setLocale } from 'src/Internationalization/storage/langStorage';

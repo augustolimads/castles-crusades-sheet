@@ -7,6 +7,7 @@
   import { inventory, setDeleteWeapons, weapons } from '../state/inventory';
   import { txt } from 'src/Internationalization/state/lang';
   import { character, saveCharacter } from 'src/Character/state/character';
+  import TextArea from 'src/Global/components/TextArea.svelte';
 
   function updateEquipments(id: string, newValue: string | number) {
     handleInputChange();

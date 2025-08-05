@@ -18,7 +18,7 @@
 <div class="flex flex-col text-left">
   <input
     {id}
-    class="input"
+    class="input w-full"
     placeholder={name}
     list={'list' + id}
     type={isNumber ? 'number' : 'text'}

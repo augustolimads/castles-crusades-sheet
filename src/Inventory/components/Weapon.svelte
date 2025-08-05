@@ -6,7 +6,7 @@
   import { inventory, weapons } from '../state/inventory';
   import { txt } from 'src/Internationalization/state/lang';
   import { saveCharacter } from 'src/Character/state/character';
-  import { setRollDice } from 'src/Sheet/state/rollDice';
+  import { setRollDice } from 'src/Dices/state/rollDice';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();

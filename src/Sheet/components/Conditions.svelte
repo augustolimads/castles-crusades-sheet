@@ -4,6 +4,7 @@
   import Title from 'src/Global/components/Title.svelte';
   import TextArea from 'src/Global/components/TextArea.svelte';
   import ValueInput from 'src/Global/components/ValueInput.svelte';
+  import DiceSelector from 'src/Dices/components/DiceSelector.svelte';
 
   function updateLanguage(id = 'languages', value: string) {
     if (id === 'languages') {
@@ -13,15 +14,20 @@
           info: {
             ...c.info,
             languages: value,
-          }
+          },
         };
       });
-      saveCharacter()
+      saveCharacter();
     }
   }
 
   function updateValue(id: string, value: number) {
-    if (id === 'water' || id === 'food' || id === 'arrows' || id === 'torches') {
+    if (
+      id === 'water' ||
+      id === 'food' ||
+      id === 'arrows' ||
+      id === 'torches'
+    ) {
       character.update((c) => {
         return {
           ...c,
@@ -31,27 +37,12 @@
           },
         };
       });
-      saveCharacter()
-    }
-  }
-
-  function updateConditions(id: string, value: string) {
-    if (id === 'conditions') {
-      character.update((c) => {
-        return {
-          ...c,
-          tracking: {
-            ...c.tracking,
-            [id]: value,
-          },
-        };
-      });
-      saveCharacter()
+      saveCharacter();
     }
   }
 </script>
 
-<div class="card flex flex-col gap-2">
+<div class="card flex flex-col gap-2 h-full">
   <Title name={$txt('languages')} />
   <TextArea
     id="languages"
@@ -60,7 +51,6 @@
     value={$character.info.languages}
   />
   <hr />
-  <Title name={$txt('tracking')} />
   <ValueInput
     id="water"
     label={$txt('water')}
@@ -89,10 +79,6 @@
     value={$character.tracking.torches}
     {updateValue}
   />
-  <TextArea
-    id="conditions"
-    name={$txt('conditions')}
-    value={$character.tracking.conditions}
-    updateInput={updateConditions}
-  />
+  <hr class="mb-2" />
+  <DiceSelector />
 </div>
