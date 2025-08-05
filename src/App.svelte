@@ -13,7 +13,8 @@
   import Footer from './Sheet/components/Footer.svelte';
   import Menu from './Sheet/components/Menu.svelte';
   import { character } from './Character/state/character';
-
+  import DiceBox from './Sheet/components/DiceBox.svelte';
+  
   onMount(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
   });
@@ -24,9 +25,10 @@
 </script>
 
 <main
-  class="bg-origin-border bg-repeat-y min-h-screen bg-fixed"
+  class="relative bg-origin-border bg-repeat-y min-h-screen bg-fixed"
   style={`background-image: url(${$character.bg}); background-size: 100vw auto;`}
 >
+  <DiceBox />
   <div
     id="Grid"
     class="max-w-[1200px] w-full m-auto px-2 md:px-4 grid grid-cols-4 md:grid-cols-10 character-grid-rows gap-x-2 md:gap-x-3 pt-2 md:pt-4"

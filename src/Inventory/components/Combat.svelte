@@ -4,7 +4,7 @@
   import TextInput from 'src/Global/components/TextInput.svelte';
   import Weapon from 'src/Inventory/components/Weapon.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges';
-  import { inventory } from '../state/inventory';
+  import { inventory, setDeleteWeapons, weapons } from '../state/inventory';
   import { txt } from 'src/Internationalization/state/lang';
   import { character, saveCharacter } from 'src/Character/state/character';
 
@@ -14,11 +14,10 @@
       id === 'helm' ||
       id === 'main' ||
       id === 'shield' ||
-      id === 'magicalItem'
-      && typeof newValue === 'string'
+      (id === 'magicalItem' && typeof newValue === 'string')
     ) {
       $character.armor[id] = String(newValue);
-      saveCharacter()
+      saveCharacter();
     }
   }
 
@@ -38,19 +37,23 @@
         ],
       };
     });
-    saveCharacter()
+    saveCharacter();
   }
 
   function deleteWeapon(id: string) {
     handleInputChange();
     const newWeapons = $inventory.weapons.filter((w) => w.id !== id);
-    character.update((c) => {
+    inventory.update((i) => {
       return {
-        ...c,
+        ...i,
         weapons: newWeapons,
       };
     });
-    saveCharacter()
+    saveCharacter();
+  }
+
+  function modeToggleDeleteWeapon() {
+    setDeleteWeapons(!$weapons.isDeleteMode);
   }
 </script>
 
@@ -87,7 +90,17 @@
     </div>
   </div>
   <hr />
-  <Title name={$txt('weapons')} action={newWeapon} />
+  <Title
+    name={$txt('weapons')}
+    primary={{
+      title: 'new Weapon',
+      action: newWeapon,
+    }}
+    secondary={{
+      title: $weapons.isDeleteMode ? 'roll' : 'delete',
+      action: modeToggleDeleteWeapon,
+    }}
+  />
   <div class="overflow-y-auto h-[256px] pt-1 flex flex-col gap-2">
     <div class="flex gap-10 text-left pl-8 pr-7 text-xs">
       <span class="flex-1">

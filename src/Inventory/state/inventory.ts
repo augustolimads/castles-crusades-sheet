@@ -19,3 +19,11 @@ export const inventory = writable({
     weapons: [] as unknown as IWeapon[],
     items: [] as unknown as IItem[]
 })
+
+export const weapons = writable({
+    isDeleteMode: false
+})
+
+export function setDeleteWeapons(value: boolean) {
+    weapons.set({ isDeleteMode: value })
+}

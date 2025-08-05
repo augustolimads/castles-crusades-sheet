@@ -1,3 +1,4 @@
+import { character } from "src/Character/state/character";
 import { get, writable } from "svelte/store";
 
 export const appChanges = writable({
@@ -5,7 +6,9 @@ export const appChanges = writable({
 })
 
 export function handleInputChange(newValue?: boolean) {
-    appChanges.set({ hasUnsavedChanges: newValue ?? true })
+    if(!get(character).name) {
+        appChanges.set({ hasUnsavedChanges: newValue ?? true })
+    }
 }
 
 export function handleBeforeUnload(event: BeforeUnloadEvent) {

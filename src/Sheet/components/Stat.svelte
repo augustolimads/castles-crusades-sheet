@@ -2,6 +2,7 @@
   import { saveCharacter } from 'src/Character/state/character';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
+  import { setRollDice } from '../state/rollDice';
 
   interface Props {
     id: string;
@@ -10,19 +11,27 @@
     updateStat: (id: any, newValue: string) => void;
   }
   let { id, name, value, updateStat }: Props = $props();
+
+  function handleClick() {
+    setRollDice('1d20' + value);
+  }
 </script>
 
 <div {id} class="card flex flex-col mb-1 relative px-2! pb-3!">
   <input
     id={id + 'Value'}
     class="input flex flex-1 text-center py-2"
-    bind:value={value}
+    bind:value
     onfocus={selectAllText}
     oninput={(e) => {
       handleInputChange();
       updateStat(id, e.currentTarget.value);
-      saveCharacter()
+      saveCharacter();
     }}
   />
-  <label for={id + 'Value'} class="badge px-2 text-xs">{name}</label>
+  {#if id === 'speed'}
+    <label for={id + 'Value'} class="badge px-2 text-xs">{name}</label>
+  {:else}
+    <button onclick={handleClick} class="badge px-2 text-xs cursor-pointer">{name}</button>
+  {/if}
 </div>

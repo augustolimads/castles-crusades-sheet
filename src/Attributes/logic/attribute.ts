@@ -13,7 +13,7 @@ export function setAttributeMod(value: number) {
         return '-1';
     }
     if (scoreValue >= 9 && scoreValue <= 12) {
-        return '0';
+        return '+0';
     }
     if (scoreValue >= 13 && scoreValue <= 15) {
         return '+1';

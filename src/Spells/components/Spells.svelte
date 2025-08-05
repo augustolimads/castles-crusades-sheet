@@ -30,7 +30,7 @@
           },
         };
       });
-      saveCharacter()
+      saveCharacter();
     }
   }
 
@@ -49,21 +49,19 @@
         known: [...s.known, newCharacterData],
       };
     });
-    saveCharacter()
+    saveCharacter();
   }
 
   function deleteSpell(id: string) {
     handleInputChange();
-    const newSpells = $spells.known.filter(
-      (spell) => spell.id !== id
-    );
+    const newSpells = $spells.known.filter((spell) => spell.id !== id);
     spells.update((s) => {
       return {
-          ...s,
-          known: newSpells,
+        ...s,
+        known: newSpells,
       };
     });
-    saveCharacter()
+    saveCharacter();
   }
 </script>
 
@@ -141,7 +139,13 @@
     />
   </div>
   <hr />
-  <Title name={$txt('spells')} action={newSpell} />
+  <Title
+    name={$txt('spells')}
+    primary={{
+      title: 'new Spells',
+      action: newSpell,
+    }}
+  />
   <div class="overflow-y-auto h-[500px] flex flex-col gap-2 pt-1">
     <div class="flex gap-7 text-left pl-10 text-xs">
       <span>{$txt('level')}</span>

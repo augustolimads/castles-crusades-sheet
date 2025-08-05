@@ -25,7 +25,7 @@
           },
         };
       });
-      saveCharacter()
+      saveCharacter();
     }
   }
 
@@ -40,7 +40,7 @@
           },
         };
       });
-      saveCharacter()
+      saveCharacter();
     }
   }
 
@@ -58,14 +58,20 @@
         items: [...i.items, newItem],
       };
     });
-    saveCharacter()
+    saveCharacter();
     handleInputChange();
   }
 </script>
 
 <div id="Inventory" class="flex flex-col gap-4 h-full pb-12 justify-between">
   <div class="flex flex-col gap-2 flex-1">
-    <Title name="Items" action={newItem} />
+    <Title
+      name="Items"
+      primary={{
+        title: 'new Item',
+        action: newItem,
+      }}
+    />
     <div class="flex flex-col gap-2 overflow-y-auto h-[22rem] pt-1">
       <div class="flex gap-8 text-left pl-8 pr-7 text-xs">
         <span>{$txt('quantity')}</span>

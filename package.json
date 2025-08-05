@@ -2,7 +2,7 @@
   "name": "castles-crusades-sheet",
   "homepage": "https://augustolimads.github.io/castles-crusades-sheet/",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,6 +22,7 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
+    "@3d-dice/dice-box-threejs": "^0.0.12",
     "@lucide/svelte": "^0.513.0",
     "@tailwindcss/vite": "^4.1.8",
     "gh-pages": "^6.3.0",

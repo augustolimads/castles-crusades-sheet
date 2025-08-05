@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { X } from '@lucide/svelte';
+  import { DicesIcon, X } from '@lucide/svelte';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { onMount } from 'svelte';
-  import { inventory } from '../state/inventory';
+  import { inventory, weapons } from '../state/inventory';
   import { txt } from 'src/Internationalization/state/lang';
   import { saveCharacter } from 'src/Character/state/character';
+  import { setRollDice } from 'src/Sheet/state/rollDice';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();
@@ -27,7 +28,7 @@
     if (event.target.value === '' && event.code === 'Backspace') {
       deleteWeapon(data.id);
     }
-    saveCharacter()
+    saveCharacter();
   }
 
   function updateWeapon(id: string, keyInput: string, value: string | number) {
@@ -35,12 +36,18 @@
     inventory.update((i) => {
       return {
         ...i,
-        weapons: [...i.weapons.map((weapon) =>
+        weapons: [
+          ...i.weapons.map((weapon) =>
             weapon.id === id ? { ...weapon, [keyInput]: value } : weapon
-          ),]
+          ),
+        ],
       };
     });
-    saveCharacter()
+    saveCharacter();
+  }
+
+  function handleClick() {
+    setRollDice(`1d20+${data.dmg}`);
   }
 
   onMount(() => {
@@ -59,11 +66,17 @@
   onblur={() => void 0}
   draggable
 >
-  <button class="w-12 cursor-pointer" onclick={() => deleteWeapon(data.id)}>
-    {#if isHovered}
-      <X size={12} />
-    {/if}
-  </button>
+  {#if $weapons.isDeleteMode}
+    <button class="w-12 cursor-pointer" onclick={() => deleteWeapon(data.id)}>
+      {#if isHovered}
+        <X size={12} />
+      {/if}
+    </button>
+  {:else}
+    <button class="w-12 cursor-pointer" onclick={handleClick}>
+      <DicesIcon size={14} />
+    </button>
+  {/if}
   <input
     id="name"
     class="input w-full"

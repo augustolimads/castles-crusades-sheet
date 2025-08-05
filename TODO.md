@@ -2,9 +2,8 @@
 - [✅] create modules
 - [✅] refactor character state (split internal arrays)
 - [✅] save character data without save button
-- [] swap edition mode and roll mode
-- [] add 3d dices to rolls
-- [] add an area to put player name
+- [✅] swap edition mode and roll mode
+- [✅] add 3d dices to rolls
 - [] connect discord webhook to rolls (with portrait and character name)
 - [] add copy and paste items
 - [] create limit to arrays. (characters, weapons, items, spells)

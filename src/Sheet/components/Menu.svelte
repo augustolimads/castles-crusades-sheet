@@ -56,7 +56,7 @@
     <div class="flex flex-col gap-2">
       <a href={import.meta.env.BASE_URL} class="btn-xs">{$txt('newCharacterBtn')}</a>
       <hr />
-      <CharList characters={characterList} {handleOpenDrawer} />
+      <CharList characters={$characterList} {handleOpenDrawer} />
     </div>
     <div id="footer">
       <select bind:value={$locale} class="bg-gray-800! input" onchange={handleLocaleChange}>

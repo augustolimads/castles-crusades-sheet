@@ -86,11 +86,6 @@
         </text>
       </svg>
     </div>
-
-    <div class="flex justify-end gap-0.5 flex-1 pr-2 md:pr-0">
-      <button class="btn-xs" onclick={goDiscord}>vai discord!</button>
-      <button class="btn-xs" onclick={saveCharacter}>{$txt('saveBtn')}</button>
-    </div>
   </dir>
   <input
     id="CharacterName"

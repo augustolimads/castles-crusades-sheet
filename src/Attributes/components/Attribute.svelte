@@ -4,7 +4,8 @@
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { saveCharacter } from 'src/Character/state/character';
-  
+  import { rollDice, setRollDice } from 'src/Sheet/state/rollDice';
+
   interface Props {
     id: string;
     name: string;
@@ -19,6 +20,10 @@
 
   let { id, name, score, desc, updateAttr, togglePrimary }: Props = $props();
   let attrMod = $state('0');
+
+  function handleClick() {
+    setRollDice('1d20' + attrMod);
+  }
 
   onMount(() => {
     attrMod = setAttributeMod(score.value);
@@ -44,16 +49,19 @@
         const target = e.target as HTMLInputElement;
         updateAttr(id, target.value);
         attrMod = setAttributeMod(Number(target.value));
-        saveCharacter()
+        saveCharacter();
       }}
       type="number"
       min="1"
       max="99"
     />
-    <span
+    <button
       title={desc}
-      class={['badge w-10', { 'border-yellow-600!': score.isPrimary }]}
-      >{attrMod}</span
+      class={[
+        'cursor-pointer badge w-10',
+        { 'border-yellow-600!': score.isPrimary },
+      ]}
+      onclick={handleClick}>{attrMod}</button
     >
     <button
       title="Toggle Primary Attribute"
@@ -65,7 +73,7 @@
       onclick={() => {
         handleInputChange();
         togglePrimary(id, !score.isPrimary);
-        saveCharacter()
+        saveCharacter();
       }}
     >
     </button>
