@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.1] - 2025-08-05
+
+### Fixed
+
+- post to discord webhook only with character name
+
 ## [0.5.0] - 2025-08-05
 
 ### Added

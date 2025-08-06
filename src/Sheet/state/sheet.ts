@@ -40,6 +40,7 @@ export function setIsWeaponRoll(value: boolean) {
 }
 
 export async function goDiscord(title: string, description: string) {
+    if(get(character).name === '') return
     const hasHttpPortrait = get(character).portrait.includes('http') ? get(character).portrait : ''
     await fetch(get(discord).webhook, {
         method: 'POST',
