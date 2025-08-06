@@ -5,6 +5,7 @@
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { saveCharacter } from 'src/Character/state/character';
   import { rollDice, setRollDice } from 'src/Dices/state/rollDice';
+  import { setDiscordTitle } from 'src/Sheet/state/sheet';
 
   interface Props {
     id: string;
@@ -23,6 +24,7 @@
 
   function handleClick() {
     setRollDice('1d20' + attrMod);
+    setDiscordTitle(name)
   }
 
   onMount(() => {

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0] - 2025-08-05
+
+### Added
+
+- integrate rolls on discord webhook
+
 ## [0.4.0] - 2025-08-05
 
 ### Added

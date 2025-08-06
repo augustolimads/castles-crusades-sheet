@@ -7,6 +7,7 @@
   import { txt } from 'src/Internationalization/state/lang';
   import { saveCharacter } from 'src/Character/state/character';
   import { setRollDice } from 'src/Dices/state/rollDice';
+  import { discord, setDiscordTitle, setIsWeaponRoll } from 'src/Sheet/state/sheet';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();
@@ -48,6 +49,12 @@
 
   function handleClick() {
     setRollDice(`1d20+${data.dmg}`);
+    discord.update((d) => ({
+      ...d,
+      title: data.name,
+      isWeaponRoll: true,
+      weaponAttackMod: data.bth,
+    }))
   }
 
   onMount(() => {

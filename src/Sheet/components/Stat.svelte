@@ -3,6 +3,7 @@
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { setRollDice } from '../../Dices/state/rollDice';
+  import { setDiscordTitle } from '../state/sheet';
 
   interface Props {
     id: string;
@@ -14,6 +15,7 @@
 
   function handleClick() {
     setRollDice('1d20' + value);
+    setDiscordTitle(name)
   }
 </script>
 

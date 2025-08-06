@@ -2,6 +2,7 @@
   import { Minus, Plus } from '@lucide/svelte';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import { setRollDice } from '../state/rollDice';
+  import { setDiscordTitle } from 'src/Sheet/state/sheet';
 
   type TDiceKey = 'd3' | 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20' | 'd100';
 
@@ -9,7 +10,7 @@
 
   let rollBonus = $state(0);
 
-  let diceSelected = $state({
+  const initialDiceSelected = {
     d3: 0,
     d4: 0,
     d6: 0,
@@ -18,7 +19,9 @@
     d12: 0,
     d20: 0,
     d100: 0,
-  });
+  }
+
+  let diceSelected = $state(initialDiceSelected);
 
   function incrementDice(id: TDiceKey) {
     diceSelected = {
@@ -45,15 +48,13 @@
     } else {
       rollBonus--;
     }
-    updateRollResult()
+    updateRollResult();
   }
 
   function updateRollResult() {
     let newResult = [];
 
     for (const key of Object.keys(diceSelected)) {
-      console.log('valor:', diceSelected[key as TDiceKey]);
-
       if (diceSelected[key as TDiceKey] > 0) {
         newResult.push(`${diceSelected[key as TDiceKey]}${key}`);
       }
@@ -71,10 +72,12 @@
   }
 
   function handleRoll() {
-    if(rollResult) {
-      setRollDice(String(rollResult))
-      rollResult = ''
-      rollBonus = 0
+    if (rollResult) {
+      setRollDice(String(rollResult));
+      rollResult = '';
+      rollBonus = 0;
+      setDiscordTitle('');
+      diceSelected = initialDiceSelected
     }
   }
 </script>
