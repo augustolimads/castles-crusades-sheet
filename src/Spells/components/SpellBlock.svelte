@@ -48,7 +48,6 @@
   <SpellTitle
     name={`${$txt('level')} ${lv}`}
     {lv}
-    bg
     primary={{
       title: 'new Spells',
       action: newSpell,

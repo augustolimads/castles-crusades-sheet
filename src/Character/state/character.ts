@@ -18,8 +18,8 @@ export interface ICharacter {
 export const character = writable({
     id: '',
     name: '',
-    portrait: 'https://i.imgur.com/35Rt7n0.png',
-    bg: 'https://i.imgur.com/vGsKDFx.jpeg',
+    portrait: 'https://i.pinimg.com/736x/29/f9/96/29f996b8d38b9e6d2b3e7cc70df54bcb.jpg',
+    bg: 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXozZXQ2aGVuZ3B4NGoyMTZzMTJhOWo5MWNqMjg5dXRrZXQ4aHdxeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3og0IV7MOCfnm85iRa/giphy.gif',
     attr: {
         str: {
             value: 10,

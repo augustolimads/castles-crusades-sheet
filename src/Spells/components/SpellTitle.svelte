@@ -14,12 +14,10 @@
     primary?: IAction;
     secondary?: IAction;
     lv: number;
-    bg?: boolean;
   }
 
-  let { name, primary, secondary, bg, lv }: Props = $props();
+  let { name, primary, secondary, lv }: Props = $props();
 
-  const titleBg = bg ? 'bg-gray-700 bg-opacity-100 pl-4 pr-2' : '';
   const id = `${lv}slots`
   let slots = $spells.level[`lv${lv}` as keyof typeof $spells.level]
 
@@ -35,7 +33,7 @@
   }
 </script>
 
-<div class={[' flex items-center justify-between', titleBg]}>
+<div class={[' flex items-center justify-between pl-4 pr-2 bg-amber-50/15']}>
   <h2 class="font-bold text-xl text-left pb-1">{name}</h2>
   <div class="flex gap-2">
     <div class="flex gap-1 w-15 items-center">

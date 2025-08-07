@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.3] - 2025-08-07
+
+### Changed
+
+- Changed the default portrait and background
+
+### Fixed
+
+- fixed spells title background
+
 ## [0.5.2] - 2025-08-07
 
 ### Fixed

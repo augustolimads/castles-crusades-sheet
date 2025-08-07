@@ -32,7 +32,7 @@
   }
 </script>
 
-<div class="flex flex-col gap-2 overflow-y-auto max-h-[680px]">
+<div class="flex flex-col gap-2 overflow-y-scroll max-h-[680px] pb-4">
   {#each spellsLevel as spellLevel (spellLevel) }
     <SpellBlock {spellLevel} />
   {/each}
