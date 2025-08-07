@@ -1,10 +1,14 @@
 # Changelog
 
-## [0.5.2] - 2025-08-06
+## [0.5.2] - 2025-08-07
 
 ### Fixed
 
 - fixed webhook discord bonus attack attack
+
+### Changed
+
+- improve spells interface
 
 ## [0.5.1] - 2025-08-05
 

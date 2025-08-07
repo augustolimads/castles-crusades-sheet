@@ -6,7 +6,7 @@
 - [✅] add 3d dices to rolls
 - [✅] connect discord webhook to log rolls (with portrait and character name)
 - [✅] fix attack: `attack: 1d20+-1 = [13] -> 12`
-- [] improve spells interface
+- [✅] improve spells interface
 - [] add or remove PV and coins dynamically
 - [] fill the input fields with class and race selected info
 - [] add copy and paste items

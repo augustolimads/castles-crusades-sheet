@@ -79,20 +79,6 @@
     {/if}
   </button>
   <input
-    id="level"
-    class="input w-8"
-    onfocus={selectAllText}
-    onkeydown={handlePress}
-    placeholder={$txt('level')}
-    type="number"
-    value={data.level}
-    oninput={(event) => {
-      const target = event.target as HTMLInputElement;
-      updateSpell(data.id, 'level', target.value);
-      saveCharacter()
-    }}
-  />
-  <input
     id="slots"
     class="input w-8"
     onfocus={selectAllText}
