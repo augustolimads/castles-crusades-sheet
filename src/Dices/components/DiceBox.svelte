@@ -19,7 +19,8 @@
   function weaponResult(results: any) {
     const atkRoll = results.sets[0];
     const bth = Number($discord.weaponAttackMod.split('+').join(''));
-    const attackNotation = `${atkRoll.num}${atkRoll.type}+${bth} = [${atkRoll.total}] -> ${atkRoll.total + bth}`;
+    const formattedBth = bth > 0 ? `+${bth}` : bth
+    const attackNotation = `${atkRoll.num}${atkRoll.type}${formattedBth} = [${atkRoll.total}] -> ${atkRoll.total + bth}`;
     const damageSubstring = results.notation.substring(5);
     const damageNotation = `${damageSubstring} = ${results.total - atkRoll.total}`;
     const notationFinal = `\n attack: ${attackNotation} \n damage: ${damageNotation}`;

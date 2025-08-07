@@ -1,0 +1,19 @@
+## Criar personagem
+- Digita o character name
+- rola os atributos
+- digita ou seleciona uma classe
+- digita ou seleciona uma raça
+- altera os atributos conforme raça
+- digita ou seleciona uma disposição
+- pega o next level lá embaixo e digita no campo
+- marca os prime attributes
+- preenche Max HP e Current HP baseado na classe e constituição
+- preenche a iniciativa baseada na destreza
+- preenche speed baseada na raça
+- prenche BTH baseado na classe
+- preenche languages baseado na raça e inteligência
+- rola starting gold e preenche em treasure
+- compra equipamentos iniciais com o dinheiro rolado
+- calcula o total de encumbrance baseado nos evs dos equipamentos adicionados
+- digita spells per day baseado na classe e inteligência
+- escolhe magias para nível 0 e 1

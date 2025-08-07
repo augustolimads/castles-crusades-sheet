@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.2] - 2025-08-06
+
+### Fixed
+
+- fixed webhook discord bonus attack attack
+
 ## [0.5.1] - 2025-08-05
 
 ### Fixed

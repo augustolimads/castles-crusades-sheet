@@ -99,6 +99,7 @@
   />
   <input
     id="bth"
+    type="number"
     class="input w-10"
     onkeydown={handlePress}
     placeholder={$txt('bth')}

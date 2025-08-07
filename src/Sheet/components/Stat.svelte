@@ -24,6 +24,7 @@
     id={id + 'Value'}
     class="input flex flex-1 text-center py-2"
     bind:value
+    type={id === 'speed' ? "string" : "number"}
     onfocus={selectAllText}
     oninput={(e) => {
       handleInputChange();

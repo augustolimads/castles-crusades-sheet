@@ -18,7 +18,7 @@ export interface ICharacter {
 export const character = writable({
     id: '',
     name: '',
-    portrait: 'character.png',
+    portrait: 'https://i.imgur.com/35Rt7n0.png',
     bg: 'https://i.imgur.com/vGsKDFx.jpeg',
     attr: {
         str: {
@@ -56,9 +56,9 @@ export const character = writable({
         temp: 0
     },
     stats: {
-        init: '+0',
-        speed: '30',
-        bth: '+0',
+        init: 0,
+        speed: '30ft',
+        bth: 0,
     },
     info: {
         charClass: '',
