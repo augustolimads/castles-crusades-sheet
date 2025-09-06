@@ -67,7 +67,7 @@ export const character = writable({
         level: 1,
         xp: 0,
         nextLevel: 0,
-        languages: 'Common',
+        languages: 'Comum',
     },
     armor: {
         helm: '',

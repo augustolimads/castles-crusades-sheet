@@ -69,14 +69,22 @@
 
   let dispositionSuggestions = $derived([
     $txt('lawfulGood'),
-    $txt('neutralGood'),
-    $txt('chaoticGood'),
     $txt('lawfulNeutral'),
-    $txt('trueNeutral'),
-    $txt('chaoticNeutral'),
     $txt('lawfulEvil'),
+    $txt('neutralGood'),
     $txt('neutralEvil'),
+    $txt('neutralLawful'),
+    $txt('neutralChaotic'),
+    $txt('trueNeutral'),
+    $txt('chaoticGood'),
+    $txt('chaoticNeutral'),
     $txt('chaoticEvil'),
+    $txt('goodLawful'),
+    $txt('goodNeutral'),
+    $txt('goodChaotic'),
+    $txt('evilLawful'),
+    $txt('evilNeutral'),
+    $txt('evilChaotic'),
   ]);
 </script>
 

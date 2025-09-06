@@ -48,7 +48,7 @@
       $locale = storageLang;
       return;
     }
-    $locale = 'en';
+    $locale = 'pt';
     if (discordWebhook) {
       discord.update(s => ({...s, webhook: discordWebhook}))
     }

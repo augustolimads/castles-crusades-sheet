@@ -8,39 +8,40 @@
 <div id="HP">
   <div
     id="CurrentHP"
-    class="card rounded-b-none! p-2 text-center flex flex-col mb-1 relative"
+    class="card rounded-b-none! text-center flex justify-center mb-1 text-4xl"
   >
-    <div class="flex gap-1 align-center">
-      <input
-        id="MaxHP"
-        class="input text-center border-b w-10"
-        type="number"
-        placeholder="0"
-        value={$character.hp.max}
-        min="0"
-        onfocus={selectAllText}
-        oninput={(event) => {
-          handleInputChange();
-          $character.hp.max = Number((event.target as HTMLInputElement).value);
-          saveCharacter()
-        }}
-      />
-      <span class="text-xs">{$txt('hpMax')}</span>
-    </div>
     <input
       id="CurrentHPValue"
-      class="input text-4xl text-center"
+      class="input text-center w-15 my-2"
       placeholder="0"
       value={$character.hp.current}
       type="number"
+      title={$txt('hpCurrent')}
       onfocus={selectAllText}
       oninput={(event) => {
         handleInputChange();
-        $character.hp.current = Number((event.target as HTMLInputElement).value);
-        saveCharacter()
+        $character.hp.current = Number(
+          (event.target as HTMLInputElement).value
+        );
+        saveCharacter();
       }}
     />
-    <label for="CurrentHPValue" class="text-xs">{$txt('hpCurrent')}</label>
+    <span class="px-1">/</span>
+    <input
+      id="MaxHP"
+      class="input text-center w-15 my-2"
+      type="number"
+      title={$txt('hpMax')}
+      placeholder="0"
+      value={$character.hp.max}
+      min="0"
+      onfocus={selectAllText}
+      oninput={(event) => {
+        handleInputChange();
+        $character.hp.max = Number((event.target as HTMLInputElement).value);
+        saveCharacter();
+      }}
+    />
   </div>
   <div
     id="TempHP"
@@ -48,15 +49,16 @@
   >
     <input
       id="TempHPValue"
-      class="input text-center"
+      class="input text-center text-xl"
       type="number"
       placeholder="0"
+      title={$txt('hpTemp')}
       value={$character.hp.temp}
       onfocus={selectAllText}
       oninput={(event) => {
         handleInputChange();
         $character.hp.temp = Number((event.target as HTMLInputElement).value);
-        saveCharacter()
+        saveCharacter();
       }}
     />
     <label for="TempHPValue" class="text-xs">{$txt('hpTemp')}</label>
