@@ -1,13 +1,13 @@
 <script lang="ts">
   import { DicesIcon, X } from '@lucide/svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges';
-  import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { onMount } from 'svelte';
-  import { inventory, weapons } from '../state/inventory';
-  import { txt } from 'src/Internationalization/state/lang';
   import { saveCharacter } from 'src/Character/state/character';
   import { setRollDice } from 'src/Dices/state/rollDice';
-  import { discord, setDiscordTitle, setIsWeaponRoll } from 'src/Sheet/state/sheet';
+  import { handleInputChange } from 'src/Global/state/appChanges';
+  import { selectAllText } from 'src/Global/utils/selectAllText';
+  import { txt } from 'src/Internationalization/state/lang';
+  import { discord } from 'src/Sheet/state/sheet';
+  import { onMount } from 'svelte';
+  import { inventory, weapons } from '../state/inventory';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();
@@ -92,7 +92,7 @@
     bind:this={inputRef}
     value={data.name}
     onfocus={selectAllText}
-    oninput={(e) => {
+    onchange={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'name', target.value);
     }}
@@ -105,7 +105,7 @@
     placeholder={$txt('bth')}
     value={data.bth}
     onfocus={selectAllText}
-    oninput={(e) => {
+    onchange={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'bth', target.value);
     }}
@@ -117,7 +117,7 @@
     placeholder={$txt('damage')}
     value={data.dmg}
     onfocus={selectAllText}
-    oninput={(e) => {
+    onchange={(e) => {
       const target = e.target as HTMLInputElement;
       updateWeapon(data.id, 'dmg', target.value);
     }}

@@ -1,18 +1,18 @@
 import { get, writable } from "svelte/store"
-import { v4 } from 'uuid';
-import { formatViewAllCharacterStorage, loadCharacterStorage, saveCharacterStorage } from "src/Character/storage/characterStorage";
+import { formatViewAllCharacterStorage } from "src/Character/storage/characterStorage";
 import { spells } from 'src/Spells/state/spell';
 import { inventory } from 'src/Inventory/state/inventory';
 import { appChanges, handleInputChange } from 'src/Global/state/appChanges';
+import { createCharacterFirebase, editCharacterFirebase, loadCharacterFirebase } from "../storage/characterFirebase";
 
 export interface ICharacter {
     id: string;
-    name: string;
-    race: string;
-    charClass: string;
-    level: number;
-    bg: string;
-    portrait: string;
+    name?: string;
+    race?: string;
+    charClass?: string;
+    level?: number;
+    bg?: string;
+    portrait?: string;
 }
 
 export const character = writable({
@@ -102,14 +102,22 @@ export function loadAllCharacters() {
     characterList.set(formatViewAllCharacterStorage());
 }
 
+export function getCharacterId() {
+    const url = new URL(window.location.href);
+    const charParamsId = url.searchParams.get('char');
+    return charParamsId;
+}
+
 export function saveCharacter() {
-    if (get(character).id) {
-        saveCharacterStorage({
-            ...get(character),
+    const id = getCharacterId()
+    if (id) {
+        editCharacterFirebase(id, {
+            ...get(character), 
             spells: { ...get(spells) },
             weapons: [...get(inventory).weapons],
             items: [...get(inventory).items],
-        });
+            id
+        })
         handleInputChange(false);
     }
 }
@@ -125,8 +133,7 @@ export function setCharacterName(event: Event) {
     });
     updateTitle();
 
-    const url = new URL(window.location.href);
-    const charParamsId = url.searchParams.get('char');
+    const charParamsId = getCharacterId();
     if (!charParamsId) {
         newCharacterId();
     }
@@ -134,32 +141,38 @@ export function setCharacterName(event: Event) {
     appChanges.set({ hasUnsavedChanges: false })
 }
 
-export function loadCharacter() {
-    const url = new URL(window.location.href);
-    const charParamsId = url.searchParams.get('char');
+export async function loadCharacter() {
+    const charParamsId = getCharacterId()
     if (charParamsId) {
-        const newData = loadCharacterStorage(charParamsId);
-        character.set({
-            ...newData,
-        });
-        spells.set({
-            ...newData.spells
-        })
-        inventory.set({
-            items: [...newData.items],
-            weapons: [...newData.weapons],
-        });
+        const newData = await loadCharacterFirebase(charParamsId);
+        if (!newData) return;
+        character.set(newData);
+        if(newData.spells) {
+            spells.set({
+                ...newData.spells
+            })
+        }
+        if(newData.items && newData.weapons) {
+            inventory.set({
+                items: [...newData.items],
+                weapons: [...newData.weapons],
+            });
+        }
         updateTitle();
     }
 }
 
-function newCharacterId() {
-    character.update((c) => {
-        return {
-            ...c,
-            id: v4(),
-        };
-    });
+async function newCharacterId() {
+    const id = await createCharacterFirebase() ?? '';
+
+    if (id) {
+        character.update((c) => {
+            return {
+                ...c,
+                id,
+            };
+        });
+    }
 
     const searchParams = new URLSearchParams(window.location.search);
 

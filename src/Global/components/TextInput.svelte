@@ -25,7 +25,7 @@
     bind:value
     {disabled}
     onfocus={selectAllText}
-    oninput={(e) => {
+    onchange={(e) => {
       handleInputChange();
       const value = isNumber
         ? parseFloat(e.currentTarget.value)

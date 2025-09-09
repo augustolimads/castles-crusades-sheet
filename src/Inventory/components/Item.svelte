@@ -1,11 +1,11 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
+  import { saveCharacter } from 'src/Character/state/character';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
+  import { txt } from 'src/Internationalization/state/lang';
   import { onMount } from 'svelte';
   import { inventory } from '../state/inventory';
-  import { txt } from 'src/Internationalization/state/lang';
-  import { saveCharacter } from 'src/Character/state/character';
 
   let inputRef: HTMLInputElement;
   let { data, newItem } = $props();
@@ -95,7 +95,7 @@
     value={data.qtd}
     type="number"
     min="1"
-    oninput={(e) => {
+    onchange={(e) => {
       const target = e.target as HTMLInputElement;
       updateItem(data.id, 'qtd', target.value);
     }}
@@ -108,7 +108,7 @@
     placeholder={$txt('name')}
     value={data.name}
     bind:this={inputRef}
-    oninput={(e) => {
+    onchange={(e) => {
       const target = e.target as HTMLInputElement;
       updateItem(data.id, 'name', target.value);
     }}
@@ -121,7 +121,7 @@
     onkeydown={handlePress}
     placeholder={$txt('ev')}
     value={data.ev}
-    oninput={(e) => {
+    onchange={(e) => {
       const target = e.target as HTMLInputElement;
       updateItem(data.id, 'ev', target.value);
     }}

@@ -9,24 +9,19 @@
   } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
 
-  let intervalId: number;
+  let intervalId: ReturnType<typeof setInterval>;
 
-  onMount(() => {
-    loadCharacter();
+  onMount(async () => {
+    await loadCharacter();
     if ($character.name) {
       intervalId = setInterval(saveCharacter, 5 * 60 * 1000);
       saveCharacter();
     }
-    return () => {
-      if ($character.name) {
-        window.removeEventListener('beforeunload', saveCharacter);
-      }
-    };
   });
 
   onDestroy(() => {
-    saveCharacter();
-    clearInterval(intervalId);
+    if (intervalId) clearInterval(intervalId);
+    window.removeEventListener("beforeunload", saveCharacter);
   });
 </script>
 
@@ -55,7 +50,7 @@
     class="input w-full card border-r-none! rounded-r-none! text-3xl py-2"
     placeholder={$txt('namePlaceholder')}
     onfocus={selectAllText}
-    oninput={setCharacterName}
+    onchange={setCharacterName}
     bind:value={$character.name}
   />
 </div>

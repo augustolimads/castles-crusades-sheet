@@ -17,7 +17,7 @@
     placeholder={name}
     rows={3}
     {value}
-    oninput={(e) => {
+    onchange={(e) => {
       handleInputChange();
       const target = e.currentTarget as HTMLTextAreaElement;
       updateInput(id, target.value);
