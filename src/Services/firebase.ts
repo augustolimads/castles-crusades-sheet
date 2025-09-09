@@ -49,7 +49,7 @@ export async function validateLogin() {
 }
 
 export function isLoggedIn() {
-    let user: any = $state(null);
+    let user: any = null;
     onAuthStateChanged(auth, (u) => {
         user = u;
     });

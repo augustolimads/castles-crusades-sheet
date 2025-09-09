@@ -1,16 +1,18 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
-  import { saveCharacter } from 'src/Character/state/character';
+  import { character, saveCharacter } from 'src/Character/state/character';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang';
   import { onMount } from 'svelte';
   import { spells } from '../state/spell';
+  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
 
   let inputRef: HTMLInputElement;
   let { newSpell, deleteSpell, data } = $props();
 
   let isHovered: boolean = $state(false);
+  let canEdit = $derived(isMyCharacter($character));
 
   function handleMouseOver() {
     isHovered = true;
@@ -73,7 +75,7 @@
   onblur={() => void 0}
   draggable
 >
-  <button class="w-12 cursor-pointer" onclick={() => deleteSpell(data.id)}>
+  <button class="w-12 cursor-pointer" disabled={!canEdit} onclick={() => deleteSpell(data.id)}>
     {#if isHovered}
       <X size={12} />
     {/if}
@@ -86,6 +88,7 @@
     placeholder={$txt('slot')}
     type="number"
     value={data.slots}
+    disabled={!canEdit}
     onchange={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'slots', target.value);
@@ -100,6 +103,7 @@
     placeholder={$txt('name')}
     bind:this={inputRef}
     value={data.name}
+    disabled={!canEdit}
     onchange={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'name', target.value);

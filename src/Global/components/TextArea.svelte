@@ -1,5 +1,7 @@
 <script lang="ts">
+  import { isMyCharacter } from "src/Character/storage/characterFirebase";
   import { handleInputChange } from "../state/appChanges";
+  import { character } from "src/Character/state/character";
 
   interface Props {
     id: string;
@@ -8,6 +10,7 @@
     updateInput: (id: string, value: string) => void;
   }
   let { id, name, value, updateInput }: Props = $props();
+  let canEdit = $derived(isMyCharacter($character));
 </script>
 
 <div class="flex flex-col text-left py-1 px-2">
@@ -16,6 +19,7 @@
     class="input"
     placeholder={name}
     rows={3}
+    disabled={!canEdit}
     {value}
     onchange={(e) => {
       handleInputChange();

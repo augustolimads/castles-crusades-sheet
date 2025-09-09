@@ -7,7 +7,9 @@
   import { inventory, setDeleteWeapons, weapons } from '../state/inventory';
   import { txt } from 'src/Internationalization/state/lang';
   import { character, saveCharacter } from 'src/Character/state/character';
-  import TextArea from 'src/Global/components/TextArea.svelte';
+  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
+
+  let canEdit = $derived(isMyCharacter($character));
 
   function updateEquipments(id: string, newValue: string | number) {
     handleInputChange();
@@ -65,12 +67,14 @@
       id="helm"
       name={$txt('helm')}
       value={$character.armor.helm}
+      disabled={!canEdit}
       updateInput={updateEquipments}
     />
     <TextInput
       id="shield"
       name={$txt('shield')}
       value={$character.armor.shield}
+      disabled={!canEdit}
       updateInput={updateEquipments}
     />
     <div class="col-span-2">
@@ -78,6 +82,7 @@
         id="main"
         name={$txt('armor')}
         value={$character.armor.main}
+        disabled={!canEdit}
         updateInput={updateEquipments}
       />
     </div>
@@ -86,6 +91,7 @@
         id="magicalItem"
         name={$txt('magicalItem')}
         value={$character.armor.magicalItem}
+        disabled={!canEdit}
         updateInput={updateEquipments}
       />
     </div>

@@ -8,10 +8,6 @@
 
   let tabs = $derived([
     {
-      id: 'abilities',
-      name: $txt('abilities'),
-    },
-    {
       id: 'inventory',
       name: $txt('inventory'),
     },

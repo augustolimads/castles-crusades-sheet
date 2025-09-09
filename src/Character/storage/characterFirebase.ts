@@ -29,7 +29,6 @@ export async function createCharacterFirebase() {
 }
 
 export async function editCharacterFirebase(id: string, characterData: any) {
-    
     const characterDoc = doc(characterCollection, id)
     await updateDoc(characterDoc, {
         ...characterData,
@@ -53,4 +52,9 @@ export async function loadCharacterFirebase(id: string) {
 export async function listAllCharacters() {
     const snapshot = await getDocs(characterCollection);
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+}
+
+export function isMyCharacter(character: any): boolean {
+    const currentUid = auth.currentUser?.uid;
+    return !!currentUid && currentUid === character.uid;
 }
