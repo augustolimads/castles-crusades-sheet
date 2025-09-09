@@ -90,17 +90,17 @@
 
 <div id="Info" class="grid grid-cols-3 gap-x-2">
   <TextInput
-    id="charClass"
-    name={$txt('classInput')}
-    list={classSuggestions}
-    value={$character.info.charClass}
-    {updateInput}
-  />
-  <TextInput
     id="race"
     name={$txt('raceInput')}
     list={raceSuggestions}
     value={$character.info.race}
+    {updateInput}
+  />
+  <TextInput
+    id="charClass"
+    name={$txt('classInput')}
+    list={classSuggestions}
+    value={$character.info.charClass}
     {updateInput}
   />
   <TextInput
