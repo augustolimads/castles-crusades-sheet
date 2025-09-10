@@ -36,7 +36,7 @@ jobs:
         run: npm run build
 
       - name: Add CNAME
-        run: echo "castles.gutods.com.br" > dist/CNAME
+        run: echo "ficha.gutods.com.br" > dist/CNAME
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
