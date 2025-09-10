@@ -10,7 +10,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      VITE_API_URL: ${{ vars.VITE_API_URL }}
+      VITE_APP_URL: ${{ vars.VITE_APP_URL }}
       VITE_FIREBASE_API_KEY: ${{ vars.VITE_FIREBASE_API_KEY }}
       VITE_FIREBASE_AUTH_DOMAIN: ${{ vars.VITE_FIREBASE_AUTH_DOMAIN }}
       VITE_FIREBASE_PROJECT_ID: ${{ vars.VITE_FIREBASE_PROJECT_ID }}
@@ -29,7 +29,7 @@ jobs:
 
       - name: Check env variables
         run: |
-          echo "API_URL is set? ${{ vars.VITE_API_URL != '' }}"
+          echo "VITE_APP_URL is set? ${{ vars.VITE_APP_URL != '' }}"
           echo "FIREBASE_API_KEY is set? ${{ vars.VITE_FIREBASE_API_KEY != '' }}"
 
       - name: Build project
