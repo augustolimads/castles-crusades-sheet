@@ -16,6 +16,8 @@
 
   let openDrawer = $state(false);
   let user: any = $state(null);
+  let email = $state('');
+  let emailSended = $state(false);
 
   function handleOpenDrawer(isOpen: boolean) {
     openDrawer = isOpen;
@@ -38,12 +40,19 @@
     localStorage.setItem('discord_webhook', String($discord.webhook));
   }
 
-  function handleLogin() {
-    const email = prompt('Digite seu e-mail para login:');
+  function handleLogin(e: Event) {
+    const target = e.target as HTMLInputElement;
+    const email = target.value;
     if (email && email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       const formattedEmail = email.trim().toLowerCase();
       loginWithEmail(formattedEmail);
+      emailSended = true;
     }
+  }
+
+  function handleLogout() {
+    logout();
+    window.location.reload();
   }
 
   onMount(() => {
@@ -78,16 +87,41 @@
     <Menu size={32} />
   </button>
   <Drawer open={openDrawer} title={$txt('title')} {handleOpenDrawer}>
-    <div class="flex flex-col gap-2">
-      {#if user}
-        <button title="logout" class="btn-xs" onclick={logout}>logout: {user.email}</button>
-      {:else}
-        <button class="btn-xs" onclick={handleLogin}>login</button>
+    <div class="flex flex-col gap-1 w-full">
+      {#if user && !emailSended}
+        <div class="flex gap-1 justify-center">
+          <p>{user.email}</p>
+          <button title="logout" class="btn-xs" onclick={handleLogout}
+            >logout</button
+          >
+        </div>
+      {:else if !user && !emailSended}
+        <div>
+          <h3 class="text-left text-sm">Digite seu e-mail para login:</h3>
+          <div class="flex py-1 gap-1 justify-start items-center">
+            <input
+              class="input border px-2 rounded-md mb-2 flex-1"
+              type="email"
+              id="login-email"
+              name="email"
+              placeholder="digite seu e-mail"
+              value={email}
+              onchange={handleLogin}
+            />
+            <button class="btn" onclick={handleLogin}>login</button>
+          </div>
+        </div>
+      {:else if !user && emailSended}
+        <div class="text-left text-sm">
+          <p>Um link de login foi enviado para o seu e-mail.</p>
+          <p>Verifique sua caixa de entrada e spam.</p>
+          <p>Se não receber, tente novamente.</p>
+        </div>
       {/if}
+      <hr class="mb-1" />
       <a href={import.meta.env.BASE_URL} class="btn-xs"
         >{$txt('newCharacterBtn')}</a
       >
-      <hr />
       <CharList characters={$characterList} {handleOpenDrawer} />
     </div>
     <div id="footer" class="flex items-center flex-col gap-2">
