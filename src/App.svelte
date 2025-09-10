@@ -25,6 +25,8 @@
     window.removeEventListener('beforeunload', handleBeforeUnload);
   });
   
+  const baseurl = import.meta.env.VITE_APP_URL 
+  console.log({baseurl})
 </script>
 
 <main
