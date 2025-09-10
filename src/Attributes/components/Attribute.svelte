@@ -62,7 +62,7 @@
     />
     <button
       title={desc}
-      disabled={true}
+      disabled={!canEdit}
       class={[
         'cursor-pointer badge w-10',
         { 'border-yellow-600!': score.isPrimary },
@@ -72,7 +72,7 @@
     <button
       title="Toggle Primary Attribute"
       aria-label="Toggle Primary Attribute"
-      disabled={true}
+      disabled={!canEdit}
       class={[
         'absolute -left-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex justify-center align-center cursor-pointer bg-white',
         { 'bg-yellow-600': score.isPrimary },
