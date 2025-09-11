@@ -1,10 +1,11 @@
 <script lang="ts">
   import { character, saveCharacter } from 'src/Character/state/character';
+  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { setRollDice } from '../../Dices/state/rollDice';
   import { setDiscordTitle } from '../state/sheet';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
+  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
 
   interface Props {
     id: string;
@@ -13,7 +14,7 @@
     updateStat: (id: any, newValue: string) => void;
   }
   let { id, name, value, updateStat }: Props = $props();
-  let canEdit = $derived(isMyCharacter($character));
+  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
 
   function handleClick() {
     setRollDice('1d20' + value);

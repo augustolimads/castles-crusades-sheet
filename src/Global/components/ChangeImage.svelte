@@ -1,6 +1,7 @@
 <script lang="ts">
   import { character } from 'src/Character/state/character';
   import { isMyCharacter } from 'src/Character/storage/characterFirebase';
+  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
 
@@ -10,7 +11,7 @@
     onChange: (value: string) => void;
   }
   let { id, image, onChange }: Props = $props();
-  let canEdit = $derived(isMyCharacter($character));
+  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
 </script>
 
 <input

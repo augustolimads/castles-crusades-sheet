@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { v4 } from 'uuid';
-  import Title from 'src/Global/components/Title.svelte';
-  import TextInput from 'src/Global/components/TextInput.svelte';
-  import Weapon from 'src/Inventory/components/Weapon.svelte';
-  import { handleInputChange } from 'src/Global/state/appChanges';
-  import { inventory, setDeleteWeapons, weapons } from '../state/inventory';
-  import { txt } from 'src/Internationalization/state/lang';
   import { character, saveCharacter } from 'src/Character/state/character';
   import { isMyCharacter } from 'src/Character/storage/characterFirebase';
+  import TextInput from 'src/Global/components/TextInput.svelte';
+  import Title from 'src/Global/components/Title.svelte';
+  import { handleInputChange } from 'src/Global/state/appChanges';
+  import { txt } from 'src/Internationalization/state/lang';
+  import Weapon from 'src/Inventory/components/Weapon.svelte';
+  import { v4 } from 'uuid';
+  import { inventory, setDeleteWeapons, weapons } from '../state/inventory';
+  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
 
-  let canEdit = $derived(isMyCharacter($character));
+  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
 
   function updateEquipments(id: string, newValue: string | number) {
     handleInputChange();

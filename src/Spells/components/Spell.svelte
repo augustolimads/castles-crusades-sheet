@@ -1,18 +1,19 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
   import { character, saveCharacter } from 'src/Character/state/character';
+  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang';
   import { onMount } from 'svelte';
   import { spells } from '../state/spell';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
+  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
 
   let inputRef: HTMLInputElement;
   let { newSpell, deleteSpell, data } = $props();
 
   let isHovered: boolean = $state(false);
-  let canEdit = $derived(isMyCharacter($character));
+  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
 
   function handleMouseOver() {
     isHovered = true;

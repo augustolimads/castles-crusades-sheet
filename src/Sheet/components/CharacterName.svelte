@@ -9,9 +9,10 @@
   } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
   import { isMyCharacter } from 'src/Character/storage/characterFirebase';
+  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
 
   let intervalId: ReturnType<typeof setInterval>;
-  let canEdit = $derived(isMyCharacter($character));
+  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
 
     onMount(async () => {
     await loadCharacter();

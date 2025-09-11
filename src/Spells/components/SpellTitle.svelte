@@ -1,9 +1,10 @@
 <script lang="ts">
   import { Plus } from '@lucide/svelte';
-  import TextInput from 'src/Global/components/TextInput.svelte';
-  import { spells } from '../state/spell';
   import { character, saveCharacter } from 'src/Character/state/character';
   import { isMyCharacter } from 'src/Character/storage/characterFirebase';
+  import TextInput from 'src/Global/components/TextInput.svelte';
+  import { spells } from '../state/spell';
+  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
 
   interface IAction {
     title: string;
@@ -18,7 +19,7 @@
   }
 
   let { name, primary, secondary, lv }: Props = $props();
-  let canEdit = $derived(isMyCharacter($character));
+  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
 
   const id = `${lv}slots`
   let slots = $spells.level[`lv${lv}` as keyof typeof $spells.level]
