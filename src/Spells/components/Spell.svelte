@@ -1,11 +1,11 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
-  import { saveCharacter } from 'src/Character/state/character';
-  import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { txt } from 'src/Internationalization/state/lang';
   import { onMount } from 'svelte';
+  import { txt } from 'src/Internationalization/state/lang';
+  import { handleInputChange } from 'src/Global/state/appChanges';
   import { spells } from '../state/spell';
+  import { saveCharacter } from 'src/Character/state/character';
 
   let inputRef: HTMLInputElement;
   let { newSpell, deleteSpell, data } = $props();
@@ -86,7 +86,7 @@
     placeholder={$txt('slot')}
     type="number"
     value={data.slots}
-    onchange={(event) => {
+    oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'slots', target.value);
       saveCharacter()
@@ -100,7 +100,7 @@
     placeholder={$txt('name')}
     bind:this={inputRef}
     value={data.name}
-    onchange={(event) => {
+    oninput={(event) => {
       const target = event.target as HTMLInputElement;
       updateSpell(data.id, 'name', target.value);
       saveCharacter()

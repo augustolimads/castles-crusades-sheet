@@ -16,7 +16,7 @@
       value={$character.ac.head}
       type="number"
       onfocus={selectAllText}
-      onchange={(event) => {
+      oninput={(event) => {
         handleInputChange();
         $character.ac.head = Number((event.target as HTMLInputElement).value);
         saveCharacter()
@@ -31,7 +31,7 @@
       value={$character.ac.main}
       type="number"
       onfocus={selectAllText}
-      onchange={(event) => {
+      oninput={(event) => {
         handleInputChange();
         $character.ac.main = Number((event.target as HTMLInputElement).value);
         saveCharacter()

@@ -17,6 +17,6 @@
 <textarea
   id="notes"
   class="h-[650px] w-full p-0.5"
-  onchange={updateNotes}
+  oninput={updateNotes}
   bind:value={$character.notes}
 ></textarea>

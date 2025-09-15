@@ -14,10 +14,11 @@
   import Menu from './Sheet/components/Menu.svelte';
   import { character } from './Character/state/character';
   import DiceBox from './Dices/components/DiceBox.svelte';
-  import { validateLogin } from './Services/firebase';
+  import { listAllCharacters } from './Character/storage/characterFirebase';
 
   onMount(async () => {
-    await validateLogin()
+    const characters = await listAllCharacters()
+    console.log(characters);
     window.addEventListener('beforeunload', handleBeforeUnload);
   });
 

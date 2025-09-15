@@ -1,8 +1,8 @@
 <script lang="ts">
   import { character, saveCharacter } from 'src/Character/state/character';
-  import { handleInputChange } from 'src/Global/state/appChanges';
-  import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang';
+  import { selectAllText } from 'src/Global/utils/selectAllText';
+  import { handleInputChange } from 'src/Global/state/appChanges';
 </script>
 
 <div id="HP">
@@ -18,7 +18,7 @@
       type="number"
       title={$txt('hpCurrent')}
       onfocus={selectAllText}
-      onchange={(event) => {
+      oninput={(event) => {
         handleInputChange();
         $character.hp.current = Number(
           (event.target as HTMLInputElement).value
@@ -36,7 +36,7 @@
       value={$character.hp.max}
       min="0"
       onfocus={selectAllText}
-      onchange={(event) => {
+      oninput={(event) => {
         handleInputChange();
         $character.hp.max = Number((event.target as HTMLInputElement).value);
         saveCharacter();
@@ -55,7 +55,7 @@
       title={$txt('hpTemp')}
       value={$character.hp.temp}
       onfocus={selectAllText}
-      onchange={(event) => {
+      oninput={(event) => {
         handleInputChange();
         $character.hp.temp = Number((event.target as HTMLInputElement).value);
         saveCharacter();

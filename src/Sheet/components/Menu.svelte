@@ -11,11 +11,8 @@
   } from 'src/Character/state/character';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import { discord, setDiscordWebhook, sheet } from '../state/sheet';
-  import { auth, loginWithEmail, logout } from 'src/Services/firebase';
-  import { onAuthStateChanged } from 'firebase/auth';
 
   let openDrawer = $state(false);
-  let user: any = $state(null);
 
   function handleOpenDrawer(isOpen: boolean) {
     openDrawer = isOpen;
@@ -38,23 +35,11 @@
     localStorage.setItem('discord_webhook', String($discord.webhook));
   }
 
-  function handleLogin() {
-    const email = prompt('Digite seu e-mail para login:');
-    if (email && email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      const formattedEmail = email.trim().toLowerCase();
-      loginWithEmail(formattedEmail);
-    }
-  }
-
   onMount(() => {
-    onAuthStateChanged(auth, (u) => {
-      user = u;
-    });
-
     const url = new URL(window.location.href);
     const urlLang = url.searchParams.get('lang') as 'en' | 'pt';
     const storageLang = localStorage.getItem('lang') as 'en' | 'pt';
-    const discordWebhook = localStorage.getItem('discord_webhook');
+    const discordWebhook = localStorage.getItem('discord_webhook')
     if (urlLang) {
       $locale = urlLang;
       return;
@@ -65,7 +50,7 @@
     }
     $locale = 'pt';
     if (discordWebhook) {
-      discord.update((s) => ({ ...s, webhook: discordWebhook }));
+      discord.update(s => ({...s, webhook: discordWebhook}))
     }
   });
 </script>
@@ -79,11 +64,6 @@
   </button>
   <Drawer open={openDrawer} title={$txt('title')} {handleOpenDrawer}>
     <div class="flex flex-col gap-2">
-      {#if user}
-        <button title="logout" class="btn-xs" onclick={logout}>logout: {user.email}</button>
-      {:else}
-        <button class="btn-xs" onclick={handleLogin}>login</button>
-      {/if}
       <a href={import.meta.env.BASE_URL} class="btn-xs"
         >{$txt('newCharacterBtn')}</a
       >

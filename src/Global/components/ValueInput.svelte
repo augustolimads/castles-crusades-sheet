@@ -23,7 +23,7 @@
     bind:value={value}
     {disabled}
     onfocus={selectAllText}
-    onchange={(event) => {
+    oninput={(event) => {
       handleInputChange();
       const inputValue = Number((event.target as HTMLInputElement).value);
       if (!isNaN(inputValue)) {

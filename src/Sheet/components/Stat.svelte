@@ -26,7 +26,7 @@
     bind:value
     type={id === 'speed' ? "string" : "number"}
     onfocus={selectAllText}
-    onchange={(e) => {
+    oninput={(e) => {
       handleInputChange();
       updateStat(id, e.currentTarget.value);
       saveCharacter();

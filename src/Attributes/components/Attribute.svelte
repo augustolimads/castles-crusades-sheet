@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { saveCharacter } from 'src/Character/state/character';
-  import { setRollDice } from 'src/Dices/state/rollDice';
-  import { handleInputChange } from 'src/Global/state/appChanges';
-  import { selectAllText } from 'src/Global/utils/selectAllText';
-  import { setDiscordTitle } from 'src/Sheet/state/sheet';
   import { onMount } from 'svelte';
   import { setAttributeMod } from '../logic/attribute';
+  import { selectAllText } from 'src/Global/utils/selectAllText';
+  import { handleInputChange } from 'src/Global/state/appChanges';
+  import { saveCharacter } from 'src/Character/state/character';
+  import { rollDice, setRollDice } from 'src/Dices/state/rollDice';
+  import { setDiscordTitle } from 'src/Sheet/state/sheet';
 
   interface Props {
     id: string;
@@ -46,7 +46,7 @@
       placeholder="10"
       value={score.value}
       onfocus={selectAllText}
-      onchange={(e: Event) => {
+      oninput={(e: Event) => {
         handleInputChange();
         const target = e.target as HTMLInputElement;
         updateAttr(id, target.value);
