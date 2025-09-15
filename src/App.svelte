@@ -17,19 +17,16 @@
   import { validateLogin } from './Services/firebase';
 
   onMount(async () => {
-    await validateLogin();
+    await validateLogin()
     window.addEventListener('beforeunload', handleBeforeUnload);
   });
 
   onDestroy(() => {
     window.removeEventListener('beforeunload', handleBeforeUnload);
   });
-
-  const baseurl = import.meta.env.VITE_APP_URL;
-  const authDomain = import.meta.env.VITE_FIREBASE_AUTH_DOMAIN;
-  const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID;
-  const storageBucket = import.meta.env.VITE_FIREBASE_STORAGE_BUCKET;
-  console.log({ baseurl, authDomain, projectId, storageBucket });
+  
+  const baseurl = import.meta.env.VITE_APP_URL 
+  console.log({baseurl})
 </script>
 
 <main
