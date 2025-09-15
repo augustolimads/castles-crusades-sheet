@@ -7,5 +7,6 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
   plugins: [svelte(), tailwindcss(), tsconfigPaths()
   ],
-  base:"/",
+  base:"/castles-crusades-sheet/",
+
 })
