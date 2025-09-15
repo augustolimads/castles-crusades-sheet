@@ -1,11 +1,8 @@
 <script lang="ts">
   import { character, saveCharacter } from 'src/Character/state/character';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang';
-
-  let canEdit = $derived(isMyCharacter($character));
 </script>
 
 <div
@@ -19,7 +16,6 @@
       value={$character.ac.head}
       type="number"
       onfocus={selectAllText}
-      disabled={!canEdit}
       onchange={(event) => {
         handleInputChange();
         $character.ac.head = Number((event.target as HTMLInputElement).value);
@@ -34,7 +30,6 @@
       class="text-4xl text-center input flex flex-1"
       value={$character.ac.main}
       type="number"
-      disabled={!canEdit}
       onfocus={selectAllText}
       onchange={(event) => {
         handleInputChange();

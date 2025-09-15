@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { character, saveCharacter } from 'src/Character/state/character';
+  import { saveCharacter } from 'src/Character/state/character';
   import { setRollDice } from 'src/Dices/state/rollDice';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { setDiscordTitle } from 'src/Sheet/state/sheet';
   import { onMount } from 'svelte';
   import { setAttributeMod } from '../logic/attribute';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
 
   interface Props {
     id: string;
@@ -22,7 +21,6 @@
 
   let { id, name, score, desc, updateAttr, togglePrimary }: Props = $props();
   let attrMod = $state('0');
-  let canEdit = $derived(isMyCharacter($character));
 
   function handleClick() {
     setRollDice('1d20' + attrMod);
@@ -47,7 +45,6 @@
       class="text-4xl pb-3.5 text-center my-1 input"
       placeholder="10"
       value={score.value}
-      disabled={!canEdit}
       onfocus={selectAllText}
       onchange={(e: Event) => {
         handleInputChange();
@@ -62,7 +59,6 @@
     />
     <button
       title={desc}
-      disabled={true}
       class={[
         'cursor-pointer badge w-10',
         { 'border-yellow-600!': score.isPrimary },
@@ -72,7 +68,6 @@
     <button
       title="Toggle Primary Attribute"
       aria-label="Toggle Primary Attribute"
-      disabled={true}
       class={[
         'absolute -left-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex justify-center align-center cursor-pointer bg-white',
         { 'bg-yellow-600': score.isPrimary },

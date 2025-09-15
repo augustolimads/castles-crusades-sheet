@@ -1,11 +1,5 @@
 # Changelog
 
-## [1.0.0] - 2025-09-09
-
-### Changed
-
-- Change the storage from localstorage to firebase
-
 ## [0.5.3] - 2025-08-07
 
 ### Changed

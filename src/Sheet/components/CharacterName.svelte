@@ -8,12 +8,10 @@
     setCharacterName,
   } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
 
   let intervalId: ReturnType<typeof setInterval>;
-  let canEdit = $derived(isMyCharacter($character));
 
-    onMount(async () => {
+  onMount(async () => {
     await loadCharacter();
     if ($character.name) {
       intervalId = setInterval(saveCharacter, 5 * 60 * 1000);
@@ -53,7 +51,6 @@
     placeholder={$txt('namePlaceholder')}
     onfocus={selectAllText}
     onchange={setCharacterName}
-    disabled={!canEdit}
     bind:value={$character.name}
   />
 </div>

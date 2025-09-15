@@ -1,13 +1,10 @@
 <script lang="ts">
   import { character, saveCharacter } from 'src/Character/state/character';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { txt } from 'src/Internationalization/state/lang';
 
   type TInfoKey = keyof typeof $character.info;
-
-  let canEdit = $derived(isMyCharacter($character));
 
   function updateInput(id: TInfoKey, newValue: string | number) {
     handleInputChange();
@@ -97,7 +94,6 @@
     name={$txt('raceInput')}
     list={raceSuggestions}
     value={$character.info.race}
-    disabled={!canEdit}
     {updateInput}
   />
   <TextInput
@@ -105,7 +101,6 @@
     name={$txt('classInput')}
     list={classSuggestions}
     value={$character.info.charClass}
-    disabled={!canEdit}
     {updateInput}
   />
   <TextInput
@@ -113,7 +108,6 @@
     name={$txt('dispositionInput')}
     list={dispositionSuggestions}
     value={$character.info.disposition}
-    disabled={!canEdit}
     {updateInput}
   />
   <TextInput
@@ -121,7 +115,6 @@
     name={$txt('levelInput')}
     isNumber
     value={$character.info.level}
-    disabled={!canEdit}
     {updateInput}
   />
   <TextInput
@@ -129,7 +122,6 @@
     name="XP"
     isNumber
     value={$character.info.xp}
-    disabled={!canEdit}
     {updateInput}
   />
   <TextInput
@@ -137,7 +129,6 @@
     name={$txt('nextLevelInput')}
     isNumber
     value={$character.info.nextLevel}
-    disabled={!canEdit}
     {updateInput}
   />
 </div>

@@ -8,9 +8,6 @@
   import { inventory } from '../state/inventory';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { txt } from 'src/Internationalization/state/lang';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
-
-  let canEdit = $derived(isMyCharacter($character));
 
   function updateTreasure(id: string, value: number) {
     if (
@@ -97,7 +94,6 @@
           label={$txt('platinum')}
           placeholder={$txt('platinum')}
           value={$character.treasure.platinum}
-          disabled={!canEdit}
           updateValue={updateTreasure}
         />
         <ValueInput
@@ -105,7 +101,6 @@
           label={$txt('gold')}
           placeholder={$txt('gold')}
           value={$character.treasure.gold}
-          disabled={!canEdit}
           updateValue={updateTreasure}
         />
         <ValueInput
@@ -113,7 +108,6 @@
           label={$txt('silver')}
           placeholder="{$txt('silver')}}"
           value={$character.treasure.silver}
-          disabled={!canEdit}
           updateValue={updateTreasure}
         />
         <ValueInput
@@ -121,7 +115,6 @@
           label={$txt('copper')}
           placeholder={$txt('copper')}
           value={$character.treasure.copper}
-          disabled={!canEdit}
           updateValue={updateTreasure}
         />
       </div>
@@ -134,7 +127,6 @@
           name="Total"
           isNumber
           value={$character.encumbrance.total}
-          disabled={!canEdit}
           updateInput={updateEncumbrance}
         />
         <TextInput

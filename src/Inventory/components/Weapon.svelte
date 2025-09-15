@@ -1,6 +1,6 @@
 <script lang="ts">
   import { DicesIcon, X } from '@lucide/svelte';
-  import { character, saveCharacter } from 'src/Character/state/character';
+  import { saveCharacter } from 'src/Character/state/character';
   import { setRollDice } from 'src/Dices/state/rollDice';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
@@ -8,13 +8,11 @@
   import { discord } from 'src/Sheet/state/sheet';
   import { onMount } from 'svelte';
   import { inventory, weapons } from '../state/inventory';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
 
   let inputRef: HTMLInputElement;
   let { newWeapon, deleteWeapon, data } = $props();
 
   let isHovered: boolean = $state(false);
-  let canEdit = $derived(isMyCharacter($character));
 
   function handleMouseOver() {
     isHovered = true;
@@ -76,13 +74,13 @@
   draggable
 >
   {#if $weapons.isDeleteMode}
-    <button class="w-12 cursor-pointer" disabled={!canEdit} onclick={() => deleteWeapon(data.id)}>
+    <button class="w-12 cursor-pointer" onclick={() => deleteWeapon(data.id)}>
       {#if isHovered}
         <X size={12} />
       {/if}
     </button>
   {:else}
-    <button class="w-12 cursor-pointer" disabled={!canEdit} onclick={handleClick}>
+    <button class="w-12 cursor-pointer" onclick={handleClick}>
       <DicesIcon size={14} />
     </button>
   {/if}
@@ -93,7 +91,6 @@
     placeholder={$txt('columnName')}
     bind:this={inputRef}
     value={data.name}
-    disabled={!canEdit}
     onfocus={selectAllText}
     onchange={(e) => {
       const target = e.target as HTMLInputElement;
@@ -107,7 +104,6 @@
     onkeydown={handlePress}
     placeholder={$txt('bth')}
     value={data.bth}
-    disabled={!canEdit}
     onfocus={selectAllText}
     onchange={(e) => {
       const target = e.target as HTMLInputElement;
@@ -120,7 +116,6 @@
     onkeydown={handlePress}
     placeholder={$txt('damage')}
     value={data.dmg}
-    disabled={!canEdit}
     onfocus={selectAllText}
     onchange={(e) => {
       const target = e.target as HTMLInputElement;

@@ -4,6 +4,7 @@
 
   const spellsLevel = Object.keys($spells.level)
   const formattedLevels =  spellsLevel.sort((a, b) => Number(a.split('lv').join('')) - Number(b.split('lv').join('')))
+  console.log({formattedLevels})
 </script>
 
 <div class="flex flex-col gap-2 overflow-y-scroll max-h-[680px] pb-4">

@@ -5,9 +5,6 @@
   import TextArea from 'src/Global/components/TextArea.svelte';
   import ValueInput from 'src/Global/components/ValueInput.svelte';
   import DiceSelector from 'src/Dices/components/DiceSelector.svelte';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
-
-  let canEdit = $derived(isMyCharacter($character));
 
   function updateLanguage(id = 'languages', value: string) {
     if (id === 'languages') {
@@ -58,7 +55,6 @@
     id="water"
     label={$txt('water')}
     placeholder={$txt('water')}
-    disabled={!canEdit}
     value={$character.tracking.water}
     {updateValue}
   />
@@ -66,7 +62,6 @@
     id="food"
     label={$txt('food')}
     placeholder={$txt('food')}
-    disabled={!canEdit}
     value={$character.tracking.food}
     {updateValue}
   />
@@ -74,7 +69,6 @@
     id="arrows"
     label={$txt('arrows')}
     placeholder={$txt('arrows')}
-    disabled={!canEdit}
     value={$character.tracking.arrows}
     {updateValue}
   />
@@ -82,7 +76,6 @@
     id="torches"
     label={$txt('torches')}
     placeholder={$txt('torches')}
-    disabled={!canEdit}
     value={$character.tracking.torches}
     {updateValue}
   />
