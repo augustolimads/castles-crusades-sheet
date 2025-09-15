@@ -24,7 +24,6 @@
   onDestroy(() => {
     window.removeEventListener('beforeunload', handleBeforeUnload);
   });
-  
 </script>
 
 <main
