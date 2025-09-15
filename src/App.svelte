@@ -78,5 +78,4 @@
       <Conditions />
     </div>
   </div>
-  <RaceClasseInfo />
 </main>

@@ -5,6 +5,7 @@
   import Notes from './Notes.svelte';
   import Spells from 'src/Spells/components/Spells.svelte';
   import { txt } from 'src/Internationalization/state/lang';
+  import Abilities from './Abilities.svelte';
 
   let tabs = $derived([
     {
@@ -49,6 +50,8 @@
   </div>
   {#if selectedId === 'inventory'}
     <Inventory />
+  {:else if selectedId === 'abilities'}
+    <Abilities />
   {:else if selectedId === 'spells'}
     <Spells />
   {:else if selectedId === 'notes'}
