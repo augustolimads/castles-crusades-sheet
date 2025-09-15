@@ -1,6 +1,6 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
-  import { deleteCharacterStorage } from '../storage/characterStorage.svelte';
+  import { deleteCharacterStorage } from '../storage/characterStorage';
 
   let { character, handleOpenDrawer } = $props();
 
