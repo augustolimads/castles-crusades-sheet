@@ -1,12 +1,11 @@
 <script lang="ts">
   import { character, saveCharacter } from 'src/Character/state/character';
   import { isMyCharacter } from 'src/Character/storage/characterFirebase';
-  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { selectAllText } from 'src/Global/utils/selectAllText';
   import { txt } from 'src/Internationalization/state/lang';
 
-  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
+  let canEdit = $derived(isMyCharacter($character));
 </script>
 
 <div

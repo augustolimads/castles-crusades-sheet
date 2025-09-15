@@ -1,14 +1,13 @@
 <script lang="ts">
   import { character, saveCharacter } from 'src/Character/state/character';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
-  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
-  import DiceSelector from 'src/Dices/components/DiceSelector.svelte';
-  import TextArea from 'src/Global/components/TextArea.svelte';
-  import Title from 'src/Global/components/Title.svelte';
-  import ValueInput from 'src/Global/components/ValueInput.svelte';
   import { txt } from 'src/Internationalization/state/lang';
+  import Title from 'src/Global/components/Title.svelte';
+  import TextArea from 'src/Global/components/TextArea.svelte';
+  import ValueInput from 'src/Global/components/ValueInput.svelte';
+  import DiceSelector from 'src/Dices/components/DiceSelector.svelte';
+  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
 
-  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
+  let canEdit = $derived(isMyCharacter($character));
 
   function updateLanguage(id = 'languages', value: string) {
     if (id === 'languages') {

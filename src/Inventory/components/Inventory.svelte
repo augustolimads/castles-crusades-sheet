@@ -1,17 +1,16 @@
 <script lang="ts">
-  import { character, saveCharacter } from 'src/Character/state/character';
-  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
-  import TextInput from 'src/Global/components/TextInput.svelte';
+  import { v4 } from 'uuid';
   import Title from 'src/Global/components/Title.svelte';
+  import Item from 'src/Inventory/components/Item.svelte';
   import ValueInput from 'src/Global/components/ValueInput.svelte';
+  import TextInput from 'src/Global/components/TextInput.svelte';
+  import { character, saveCharacter } from 'src/Character/state/character';
+  import { inventory } from '../state/inventory';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { txt } from 'src/Internationalization/state/lang';
-  import Item from 'src/Inventory/components/Item.svelte';
-  import { v4 } from 'uuid';
-  import { inventory } from '../state/inventory';
-  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
+  import { isMyCharacter } from 'src/Character/storage/characterFirebase';
 
-  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
+  let canEdit = $derived(isMyCharacter($character));
 
   function updateTreasure(id: string, value: number) {
     if (

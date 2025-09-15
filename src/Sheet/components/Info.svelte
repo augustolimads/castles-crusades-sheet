@@ -1,14 +1,13 @@
 <script lang="ts">
   import { character, saveCharacter } from 'src/Character/state/character';
   import { isMyCharacter } from 'src/Character/storage/characterFirebase';
-  import { getCharacterUrlParams } from 'src/Character/utils/getCharacterParams';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import { handleInputChange } from 'src/Global/state/appChanges';
   import { txt } from 'src/Internationalization/state/lang';
 
   type TInfoKey = keyof typeof $character.info;
 
-  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
+  let canEdit = $derived(isMyCharacter($character));
 
   function updateInput(id: TInfoKey, newValue: string | number) {
     handleInputChange();

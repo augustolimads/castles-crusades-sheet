@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { character } from "src/Character/state/character";
   import { isMyCharacter } from "src/Character/storage/characterFirebase";
   import { handleInputChange } from "../state/appChanges";
-  import { getCharacterUrlParams } from "src/Character/utils/getCharacterParams";
+  import { character } from "src/Character/state/character";
 
   interface Props {
     id: string;
@@ -11,7 +10,7 @@
     updateInput: (id: string, value: string) => void;
   }
   let { id, name, value, updateInput }: Props = $props();
-  let canEdit = $derived(isMyCharacter($character) || getCharacterUrlParams());
+  let canEdit = $derived(isMyCharacter($character));
 </script>
 
 <div class="flex flex-col text-left py-1 px-2">
