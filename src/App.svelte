@@ -24,6 +24,8 @@
   onDestroy(() => {
     window.removeEventListener('beforeunload', handleBeforeUnload);
   });
+
+  console.log(import.meta.env.VITE_API_URL)
 </script>
 
 <main

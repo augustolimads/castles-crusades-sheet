@@ -27,11 +27,6 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Check env variables
-        run: |
-          echo "API_URL is set? ${{ secrets.VITE_API_URL != '' }}"
-          echo "FIREBASE_API_KEY is set? ${{ secrets.VITE_FIREBASE_API_KEY != '' }}"
-
       - name: Build project
         run: npm run build
 
