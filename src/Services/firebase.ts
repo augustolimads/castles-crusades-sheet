@@ -18,7 +18,7 @@ export const db = getFirestore(app);
 export const auth = getAuth(app)
 
 const actionCodeSettings = {
-    url: import.meta.env.VITE_APP_URL ?? 'https://ficha.gutods.com.br',
+    url: import.meta.env.VITE_APP_URL ?? 'http://localhost:5173',
     handleCodeInApp: true
 };
 
