@@ -98,7 +98,6 @@
     name={$txt('classInput')}
     list={classSuggestions}
     value={$character.info.charClass}
-    disabled={!canEdit}
     {updateInput}
   />
   <TextInput
