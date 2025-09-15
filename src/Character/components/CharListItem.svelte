@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { X } from '@lucide/svelte';
+  import { Download, X } from '@lucide/svelte';
   import { deleteCharacterStorage } from '../storage/characterStorage';
 
   let { character, handleOpenDrawer } = $props();
 
-function handleDeleteCharacter() {
-  deleteCharacterStorage(character.id);
-  window.location.href = import.meta.env.BASE_URL
-  handleOpenDrawer(false);
-}
+  function handleDeleteCharacter() {
+    deleteCharacterStorage(character.id);
+    window.location.href = import.meta.env.BASE_URL;
+    handleOpenDrawer(false);
+  }
 </script>
 
 <div class="flex align-center gap-2">
@@ -33,7 +33,13 @@ function handleDeleteCharacter() {
       <span>{character.level}</span>
     </a>
   </div>
-  <button class="flex justify-center items-center cursor-pointer" onclick={handleDeleteCharacter}>
-    <X class="text-white" size={24} />
+  <button class="flex justify-center items-center cursor-pointer px-2 group">
+    <Download class="text-white group-hover:text-rose-500 transition-all duration-300 ease-in-out" size={24} />
+  </button>
+  <button
+    class="flex justify-center items-center cursor-pointer px-2 group hover:text-rose-500 transition-all duration-300 ease-in-out"
+    onclick={handleDeleteCharacter}
+  >
+    <X class="text-white group-hover:text-rose-500" size={24} />
   </button>
 </div>

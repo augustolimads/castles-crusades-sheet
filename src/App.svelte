@@ -10,7 +10,6 @@
   import Portrait from './Sheet/components/Portrait.svelte';
   import Conditions from './Sheet/components/Conditions.svelte';
   import RaceClasseInfo from './Sheet/components/RaceClasseInfo.svelte';
-  import Footer from './Sheet/components/Footer.svelte';
   import Menu from './Sheet/components/Menu.svelte';
   import { character } from './Character/state/character';
   import DiceBox from './Dices/components/DiceBox.svelte';
@@ -25,8 +24,8 @@
 </script>
 
 <main
-  class="relative bg-origin-border bg-repeat-y min-h-screen bg-fixed"
-  style={`background-image: url(${$character.bg}); background-size: 100vw auto;`}
+  class="relative bg-origin-border bg-repeat-y max-h-screen overflow-y-hidden bg-fixed bg-size-[100vw_auto]"
+  style={`background-image: url(${$character.bg})`}
 >
   <DiceBox />
   <div
@@ -80,5 +79,4 @@
     </div>
   </div>
   <RaceClasseInfo />
-  <Footer />
 </main>

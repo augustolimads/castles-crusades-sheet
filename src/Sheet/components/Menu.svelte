@@ -5,6 +5,7 @@
   import CharList from 'src/Character/components/CharList.svelte';
   import { locale, txt } from 'src/Internationalization/state/lang';
   import { setLocale } from 'src/Internationalization/storage/langStorage';
+  import packageJson from '../../../package.json';
   import {
     characterList,
     loadAllCharacters,
@@ -13,6 +14,8 @@
   import { discord, setDiscordWebhook, sheet } from '../state/sheet';
 
   let openDrawer = $state(false);
+
+  const currentYear = new Date().getFullYear();
 
   function handleOpenDrawer(isOpen: boolean) {
     openDrawer = isOpen;
@@ -39,7 +42,7 @@
     const url = new URL(window.location.href);
     const urlLang = url.searchParams.get('lang') as 'en' | 'pt';
     const storageLang = localStorage.getItem('lang') as 'en' | 'pt';
-    const discordWebhook = localStorage.getItem('discord_webhook')
+    const discordWebhook = localStorage.getItem('discord_webhook');
     if (urlLang) {
       $locale = urlLang;
       return;
@@ -50,7 +53,7 @@
     }
     $locale = 'pt';
     if (discordWebhook) {
-      discord.update(s => ({...s, webhook: discordWebhook}))
+      discord.update((s) => ({ ...s, webhook: discordWebhook }));
     }
   });
 </script>
@@ -79,7 +82,6 @@
         <option value="en">English</option>
         <option value="pt">Português</option>
       </select>
-      <hr />
       <div class="w-full">
         <TextInput
           id="discord"
@@ -88,6 +90,18 @@
           value={$discord.webhook}
         />
       </div>
+      <hr class="w-full" />
+      <small>
+        {$txt('smallTermOfUse00')}<br />{$txt('smallTermOfUse01')}
+      </small>
+      <p>
+        <a
+          href="https://github.com/augustolimads/castles-crusades-sheet"
+          class="mt-5 text-xs px-1"
+        >
+          Augusto © {currentYear} - Version {packageJson.version}
+        </a>
+      </p>
     </div>
   </Drawer>
 </div>

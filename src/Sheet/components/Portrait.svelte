@@ -9,8 +9,18 @@
         ...c,
         portrait: newPortrait,
       };
-    })
-    saveCharacter()
+    });
+    saveCharacter();
+  }
+
+  function changeBg(value: string) {
+    character.update((c) => {
+      return {
+        ...c,
+        bg: value,
+      };
+    });
+    saveCharacter();
   }
 </script>
 
@@ -22,10 +32,20 @@
       class="object-cover h-[394px] md:h-[300px] w-full"
     />
     <div
-      class="absolute left-0 right-0 top-0 bottom-0 bg-gray-900/80 opacity-0 hover:opacity-100 text-white transition-opacity duration-300 flex flex-col items-center justify-center px-2"
+      class="absolute left-0 right-0 top-0 bottom-0 bg-gray-900/80 opacity-0 hover:opacity-100 text-white transition-opacity duration-300 flex flex-col items-center justify-center px-2 gap-2"
     >
-    <label for="portrait">{$txt("portrait")}</label>
-      <ChangeImage id="portrait" image={$character.portrait} onChange={setPortrait} />
+      <div>
+        <label for="portrait">{$txt('portrait')}</label>
+        <ChangeImage
+          id="portrait"
+          image={$character.portrait}
+          onChange={setPortrait}
+        />
+      </div>
+      <div>
+        <label for="bg">{$txt('background')}</label>
+        <ChangeImage id="bg" image={$character.bg} onChange={changeBg} />
+      </div>
     </div>
   </div>
 </div>
