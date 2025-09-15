@@ -14,11 +14,8 @@
   import Menu from './Sheet/components/Menu.svelte';
   import { character } from './Character/state/character';
   import DiceBox from './Dices/components/DiceBox.svelte';
-  import { listAllCharacters } from './Character/storage/characterFirebase';
-
-  onMount(async () => {
-    const characters = await listAllCharacters()
-    console.log(characters);
+  
+  onMount(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
   });
 
