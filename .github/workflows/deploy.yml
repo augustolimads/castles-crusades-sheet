@@ -9,33 +9,31 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      VITE_APP_URL: ${{ vars.VITE_APP_URL }}
+      VITE_FIREBASE_API_KEY: ${{ vars.VITE_FIREBASE_API_KEY }}
+      VITE_FIREBASE_AUTH_DOMAIN: ${{ vars.VITE_FIREBASE_AUTH_DOMAIN }}
+      VITE_FIREBASE_PROJECT_ID: ${{ vars.VITE_FIREBASE_PROJECT_ID }}
+      VITE_FIREBASE_STORAGE_BUCKET: ${{ vars.VITE_FIREBASE_STORAGE_BUCKET }}
+      VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+      VITE_FIREBASE_APP_ID: ${{ vars.VITE_FIREBASE_APP_ID }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Setup Node
         uses: actions/setup-node@v3
-        with:
-          node-version: 22
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
       - name: Check env variables
         run: |
-          echo "APP_URL is set? ${{ secrets.VITE_APP_URL != '' }}"
-          echo "FIREBASE_API_KEY is set? ${{ secrets.VITE_FIREBASE_API_KEY != '' }}"
+          echo "VITE_APP_URL is set? ${{ vars.VITE_APP_URL != '' }}"
+          echo "FIREBASE_API_KEY is set? ${{ vars.VITE_FIREBASE_API_KEY != '' }}"
 
       - name: Build project
         run: npm run build
-        env:
-          VITE_APP_URL: ${{ secrets.VITE_APP_URL }}
-          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
-          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
-          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
-          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
-          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
-          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
 
       - name: Add CNAME
         run: echo "ficha.gutods.com.br" > dist/CNAME
