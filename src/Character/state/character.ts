@@ -1,5 +1,6 @@
 import { get, writable } from "svelte/store"
-import { formatViewAllCharacterStorage } from "src/Character/storage/characterStorage";
+import { v4 } from 'uuid';
+import { formatViewAllCharacterStorage, loadCharacterStorage, saveCharacterStorage } from "src/Character/storage/characterStorage.svelte";
 import { spells } from 'src/Spells/state/spell';
 import { inventory } from 'src/Inventory/state/inventory';
 import { appChanges, handleInputChange } from 'src/Global/state/appChanges';
