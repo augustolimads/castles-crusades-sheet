@@ -12,9 +12,9 @@
   } from 'src/Character/state/character';
   import TextInput from 'src/Global/components/TextInput.svelte';
   import { discord, setDiscordWebhook, sheet } from '../state/sheet';
+  import { loadCharacterByJsonFile } from 'src/Character/storage/characterStorage';
 
   let openDrawer = $state(false);
-
   const currentYear = new Date().getFullYear();
 
   function handleOpenDrawer(isOpen: boolean) {
@@ -22,7 +22,6 @@
     if (isOpen) loadAllCharacters();
   }
 
-  // locale change search params
   function handleLocaleChange(event: Event) {
     const select = event.target as HTMLSelectElement;
     $locale = select.value as 'en' | 'pt';
@@ -36,6 +35,18 @@
   function handleDiscordStorage(id: any, value: string | number) {
     setDiscordWebhook(String(value));
     localStorage.setItem('discord_webhook', String($discord.webhook));
+  }
+
+  function handleLoadCharacterJson(e: Event) {
+    loadCharacterByJsonFile(e);
+    window.location.reload();
+  }
+
+  function modalTermsOfUse() {
+    alert(`
+      ${$txt('smallTermOfUse00')}
+      ${$txt('smallTermOfUse01')}
+    `)
   }
 
   onMount(() => {
@@ -67,13 +78,25 @@
   </button>
   <Drawer open={openDrawer} title={$txt('title')} {handleOpenDrawer}>
     <div class="flex flex-col gap-2">
-      <a href={import.meta.env.BASE_URL} class="btn-xs"
-        >{$txt('newCharacterBtn')}</a
-      >
+      <div class="grid grid-cols-2 gap-2">
+        <a href={import.meta.env.BASE_URL} class="btn-xs"
+          >{$txt('newCharacterBtn')}</a
+        >
+        <div class="flex">
+          <label for="fileInput" class="btn-xs w-full">Carregar ficha JSON</label>
+          <input
+            id="fileInput"
+            type="file"
+            accept="application/json"
+            class="hidden"
+            onchange={handleLoadCharacterJson}
+          />
+        </div>
+      </div>
       <hr />
       <CharList characters={$characterList} {handleOpenDrawer} />
     </div>
-    <div id="footer" class="flex items-center flex-col gap-2">
+    <div id="footer" class="flex items-center flex-col gap-2 mt-2">
       <select
         bind:value={$locale}
         class="bg-gray-800! input"
@@ -91,13 +114,11 @@
         />
       </div>
       <hr class="w-full" />
-      <small>
-        {$txt('smallTermOfUse00')}<br />{$txt('smallTermOfUse01')}
-      </small>
       <p>
+        <button class="text-xs hover:text-rose-500 cursor-pointer" onclick={modalTermsOfUse}>Termos de uso</button>
         <a
           href="https://github.com/augustolimads/castles-crusades-sheet"
-          class="mt-5 text-xs px-1"
+          class="mt-5 text-xs px-1 hover:text-rose-500"
         >
           Augusto © {currentYear} - Version {packageJson.version}
         </a>

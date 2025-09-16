@@ -24,7 +24,7 @@
 </script>
 
 <main
-  class="relative bg-origin-border bg-repeat-y max-h-screen overflow-y-hidden bg-fixed bg-size-[100vw_auto]"
+  class="relative bg-origin-border bg-repeat-y h-screen bg-fixed bg-size-[100vw_auto]"
   style={`background-image: url(${$character.bg})`}
 >
   <DiceBox />

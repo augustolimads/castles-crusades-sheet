@@ -1,6 +1,9 @@
 <script lang="ts">
   import { Download, X } from '@lucide/svelte';
-  import { deleteCharacterStorage } from '../storage/characterStorage';
+  import {
+    deleteCharacterStorage,
+    downloadCharacterJson,
+  } from '../storage/characterStorage';
 
   let { character, handleOpenDrawer } = $props();
 
@@ -8,6 +11,10 @@
     deleteCharacterStorage(character.id);
     window.location.href = import.meta.env.BASE_URL;
     handleOpenDrawer(false);
+  }
+
+  function handleDownloadCharacter() {
+    downloadCharacterJson(character.id, character.name);
   }
 </script>
 
@@ -33,8 +40,14 @@
       <span>{character.level}</span>
     </a>
   </div>
-  <button class="flex justify-center items-center cursor-pointer px-2 group">
-    <Download class="text-white group-hover:text-rose-500 transition-all duration-300 ease-in-out" size={24} />
+  <button
+    class="flex justify-center items-center cursor-pointer px-2 group"
+    onclick={handleDownloadCharacter}
+  >
+    <Download
+      class="text-white group-hover:text-rose-500 transition-all duration-300 ease-in-out"
+      size={24}
+    />
   </button>
   <button
     class="flex justify-center items-center cursor-pointer px-2 group hover:text-rose-500 transition-all duration-300 ease-in-out"

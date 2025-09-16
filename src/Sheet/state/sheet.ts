@@ -58,12 +58,6 @@ export async function goDiscord(title: string, description: string) {
                         name: get(character).name,
                         icon_url: hasHttpPortrait,
                     },
-                    // footer: {
-                    //     text: 'Teste',
-                    // },
-                    // image: {
-                    //     url: hasHttpPortrait,
-                    // },
                     thumbnail: {
                         url: hasHttpPortrait,
                     },
