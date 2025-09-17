@@ -52,7 +52,7 @@
           </div>
 
           <div
-            class="flex h-full flex-col bg-gray-950/98 border border-l-0 border-white py-6 shadow-xl rounded-r-2xl text-white"
+            class="flex h-full flex-col bg-gray-950/90 border border-l-0 border-white py-6 shadow-xl rounded-r-2xl text-white"
           >
             <div class="px-4 sm:px-6">
               <h2 class="text-base font-semibold" id="drawer-title">

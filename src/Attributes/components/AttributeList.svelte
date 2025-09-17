@@ -3,50 +3,9 @@
   import Attribute from 'src/Attributes/components/Attribute.svelte';
   import { character } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
+  import { updateEncumbraceRating, updateAttr } from '../logic/attribute';
 
   type TAttrKey = keyof typeof $character.attr;
-
-  function updateEncumbraceRating() {
-    character.update((c) => {
-      const strPrimarySum3 = c.attr.str.isPrimary ? 3 : 0;
-      const conPrimarySum3 = c.attr.con.isPrimary ? 3 : 0;
-      const newRating = c.attr.str.value + strPrimarySum3 + conPrimarySum3;
-      return {
-        ...c,
-        encumbrance: {
-          ...c.encumbrance,
-          rating: newRating,
-          enc3x: newRating * 3,
-        },
-      };
-    });
-  }
-
-  function updateAttr(id: TAttrKey, newValue: string) {
-    if (
-      id === 'str' ||
-      id === 'dex' ||
-      id === 'con' ||
-      id === 'int' ||
-      id === 'wis' ||
-      id === 'cha'
-    ) {
-      character.update((c) => {
-        return {
-          ...c,
-          attr: {
-            ...c.attr,
-            [id]: {
-              ...c.attr[id],
-              value: parseInt(newValue),
-            },
-          },
-        };
-      });
-
-      updateEncumbraceRating();
-    }
-  }
 
   function togglePrimary(id: TAttrKey, newValue: boolean) {
     if (

@@ -8,8 +8,16 @@
     setCharacterName,
   } from 'src/Character/state/character';
   import { txt } from 'src/Internationalization/state/lang';
+  import CharGenDrawer from 'src/Sheet/components/CharGenDrawer.svelte';
+  import Drawer from 'src/Global/components/Drawer.svelte';
 
   let intervalId: number;
+
+  let openDrawer = $state(false);
+
+  function handleOpenDrawer(isOpen: boolean) {
+    openDrawer = isOpen;
+  }
 
   onMount(() => {
     loadCharacter();
@@ -49,6 +57,10 @@
         </text>
       </svg>
     </div>
+    <button class="btn-xs" onclick={() => handleOpenDrawer(true)}>Rolar personagem</button>
+    <Drawer open={openDrawer} title={'Gerador de personagem'} {handleOpenDrawer}>
+      <CharGenDrawer />
+    </Drawer>
   </dir>
   <input
     id="CharacterName"

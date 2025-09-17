@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0] - 2025-09-17
+
+### Added
+
+- Add character generator with rolls
+
 ## [0.5.3] - 2025-08-07
 
 ### Changed

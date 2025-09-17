@@ -2,7 +2,7 @@
   "name": "castles-crusades-sheet",
   "homepage": "https://ficha.gutods.com.br/",
   "private": true,
-  "version": "0.5.3",
+  "version": "0.6.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@3d-dice/dice-box-threejs": "^0.0.12",
+    "@dice-roller/rpg-dice-roller": "^5.5.1",
     "@lucide/svelte": "^0.513.0",
     "@tailwindcss/vite": "^4.1.8",
     "gh-pages": "^6.3.0",
