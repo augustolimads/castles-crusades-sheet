@@ -45,7 +45,7 @@ export function rollSpells(charClass: TCharClass) {
     const divineClasses = ['Clérigo', 'Druida']
     const lv0Results = []
     const lv1Results = []
-    if (arcaneClasses.includes(charClass)) {
+    if (arcaneClasses.includes(charClass) || divineClasses.includes(charClass)) {
         const intModBonus = Number(get(character).attr.int.value) >= 13 ? 1 : 0
         const wisModBonus = Number(get(character).attr.wis.value) >= 13 ? 1 : 0
         const modBonusBasedOnCharClass = divineClasses.includes(charClass) ? wisModBonus : intModBonus
