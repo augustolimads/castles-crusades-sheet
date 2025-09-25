@@ -1,6 +1,6 @@
 import { DiceRoll } from "@dice-roller/rpg-dice-roller";
 import { charClassIndex } from "../data/charClasses/charClassIndex";
-import { character } from "../state/character";
+import { character, saveCharacter } from "../state/character";
 import { get } from "svelte/store";
 import { setAttributeMod } from "src/Attributes/logic/attribute";
 
@@ -22,6 +22,7 @@ export function rollHp(charClass: TCharClass) {
             }
         }
     })
+    saveCharacter()
 }
 
 export function rollGold(charClass: TCharClass) {
@@ -38,6 +39,7 @@ export function rollGold(charClass: TCharClass) {
             }
         }
     })
+    saveCharacter()
 }
 
 export function rollSpells(charClass: TCharClass) {
