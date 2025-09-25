@@ -20,16 +20,13 @@
   }
 
   let { id, name, score, desc, updateAttr, togglePrimary }: Props = $props();
-  let attrMod = $state('0');
+  let attrMod = $derived(setAttributeMod(score.value));
 
   function handleClick() {
     setRollDice('1d20' + attrMod);
     setDiscordTitle(name)
   }
 
-  $effect(() => {
-    attrMod = setAttributeMod(score.value);
-  });
 </script>
 
 <div {id}>
@@ -50,7 +47,6 @@
         handleInputChange();
         const target = e.target as HTMLInputElement;
         updateAttr(id, target.value);
-        attrMod = setAttributeMod(Number(target.value));
         saveCharacter();
       }}
       type="number"
