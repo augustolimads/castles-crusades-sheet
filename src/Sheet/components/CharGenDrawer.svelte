@@ -86,6 +86,7 @@
     const roll = new DiceRoll('3d6');
     const total = roll.total;
     updateAttr(attr, String(total));
+    saveCharacter();
   }
 
   function handleAllAttributesRoll() {
@@ -94,6 +95,7 @@
     for (const attr of attrList) {
       const roll = new DiceRoll('3d6');
       updateAttr(attr, String(roll.total));
+      saveCharacter();
     }
   }
 

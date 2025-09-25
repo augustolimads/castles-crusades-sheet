@@ -27,7 +27,7 @@
     setDiscordTitle(name)
   }
 
-  onMount(() => {
+  $effect(() => {
     attrMod = setAttributeMod(score.value);
   });
 </script>
